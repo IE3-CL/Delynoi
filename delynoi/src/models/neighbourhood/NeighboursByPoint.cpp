@@ -1,5 +1,7 @@
 #include <delynoi/models/neighbourhood/NeighboursByPoint.h>
 
+using namespace Delynoi;
+
 NeighboursByPoint::NeighboursByPoint() = default;
 
 NeighboursByPoint::NeighboursByPoint(int n) {

@@ -1,6 +1,8 @@
 #include <delynoi/models/basic/Point.h>
 #include <delynoi/config/DelynoiConfig.h>
 
+using namespace Delynoi;
+
 Point::Point(double x, double y) {
     this->x = x;
     this->y = y;

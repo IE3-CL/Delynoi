@@ -3,21 +3,25 @@
 
 #include <delynoi/models/polygon/Triangle.h>
 
-/*
- * Abstract class that all classes that triangulate a Polygon must implement.
- */
-class TriangulationGenerator{
-public:
-    /* Triangulates a polygon.
-     * @param p polygon to triangulate
-     * @param points list of points instances which the polygon points reference to (most likely, mesh points)
-     * @return list of triangles obtained triangulating the polygon
-     */
-    virtual std::vector<Triangle> triangulate(Polygon p, std::vector<Point>& points) = 0;
+#include <utility>
 
-    std::vector<Triangle> triangulate(Triangle p, std::vector<Point>& points){
-        return {p};
-    }
-};
+namespace Delynoi {
+    /*
+     * Abstract class that all classes that triangulate a Polygon must implement.
+     */
+    class TriangulationGenerator {
+    public:
+        /* Triangulates a polygon.
+         * @param p polygon to triangulate
+         * @param points list of points instances which the polygon points reference to (most likely, mesh points)
+         * @return list of triangles obtained triangulating the polygon
+         */
+        virtual std::vector<Triangle> triangulate(Polygon p, std::vector<Point> &points) = 0;
+
+        std::vector<Triangle> triangulate(Triangle p, std::vector<Point> &points) {
+            return {std::move(p)};
+        }
+    };
+}
 
 #endif

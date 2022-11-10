@@ -1,5 +1,7 @@
 #include <delynoi/models/basic/IndexSegment.h>
 
+using namespace Delynoi;
+
 IndexSegment::IndexSegment(int i1, int i2) : Segment<int>(i1, i2) {
     this->hash = utilities::hash32(i1) + utilities::hash32(i2);
 }

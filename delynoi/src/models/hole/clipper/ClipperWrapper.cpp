@@ -3,6 +3,8 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
+using namespace Delynoi;
+
 ClipperLib::Paths ClipperWrapper::polyIntersection(const std::vector<Point> &parent, const std::vector<Point> &child, int maxScale) {
     ClipperLib::Path region, hole;
     ClipperLib::Paths solution;

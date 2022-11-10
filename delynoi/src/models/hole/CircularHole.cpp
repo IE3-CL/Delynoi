@@ -3,6 +3,8 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
+using namespace Delynoi;
+
 CircularHole::CircularHole(Point p, double r) : Circle(r, p) {
     this->HolePoints = discretizeCircle();
     Hole::center = Circle::center;

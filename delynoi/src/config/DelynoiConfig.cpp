@@ -1,5 +1,7 @@
 #include <delynoi/config/DelynoiConfig.h>
 
+using namespace Delynoi;
+
 DelynoiConfig* DelynoiConfig::s_instance = nullptr;
 
 DelynoiConfig::DelynoiConfig() {

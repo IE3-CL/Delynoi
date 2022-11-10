@@ -10,6 +10,8 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
+using namespace Delynoi;
+
 Region::Region(std::vector<Point> &points) : Polygon(points) {
     this->p = points;
 }

@@ -1,5 +1,7 @@
 #include <delynoi/models/generator/functions/RandomInteger.h>
 
+using namespace Delynoi;
+
 std::default_random_engine Random_Integer::rd;
 std::mt19937 Random_Integer::rng(rd());
 

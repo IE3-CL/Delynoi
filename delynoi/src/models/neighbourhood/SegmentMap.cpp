@@ -6,6 +6,8 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
+using namespace Delynoi;
+
 SegmentMap::SegmentMap() = default;
 
 void SegmentMap::insert(const IndexSegment &s, int polygonIndex) {

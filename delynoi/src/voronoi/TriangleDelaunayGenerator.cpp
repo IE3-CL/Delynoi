@@ -4,8 +4,9 @@
 #pragma ide diagnostic ignored "modernize-use-nullptr"
 
 #include <utility>
+#include <delynoi/voronoi/TriangleDelaunayGenerator.h>
 
-#include "delynoi/voronoi/TriangleDelaunayGenerator.h"
+using namespace Delynoi;
 
 TriangleDelaunayGenerator::TriangleDelaunayGenerator(const std::vector<Point> &points, const Region &region) {
     this->region = region;

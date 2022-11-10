@@ -4,6 +4,8 @@
 
 #include <delynoi/models/polygon/Triangle.h>
 
+using namespace Delynoi;
+
 Triangle::Triangle() = default;
 
 Triangle::Triangle(std::vector<int> points, std::vector<Point> &p) : Polygon(points, p) {

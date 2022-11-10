@@ -1,5 +1,7 @@
 #include <delynoi/models/generator/PointGenerator.h>
 
+using namespace Delynoi;
+
 PointGenerator::PointGenerator() {}
 
 PointGenerator::PointGenerator(Functor* lX, Functor* lY) {

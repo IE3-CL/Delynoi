@@ -13,6 +13,8 @@ extern "C"{
 };
 
 int main(){
+    using namespace Delynoi;
+
     std::vector<int> numberOfPoints = {2,3,5,6,10,12,15,20,25,30,35,40,45,50,55};
     //std::vector<int> numberOfPoints = {2,3,5};
 

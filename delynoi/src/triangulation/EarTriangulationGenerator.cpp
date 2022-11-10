@@ -1,5 +1,7 @@
 #include <delynoi/triangulation/EarTriangulationGenerator.h>
 
+using namespace Delynoi;
+
 Triangle EarTriangulationGenerator::getEar(std::vector<Point> &points, std::vector<int> &pointList) {
     int size = (int) pointList.size();
 

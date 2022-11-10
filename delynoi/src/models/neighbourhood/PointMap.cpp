@@ -3,6 +3,8 @@
 
 #include <delynoi/models/neighbourhood/PointMap.h>
 
+using namespace Delynoi;
+
 PointMap::PointMap() = default;
 
 void PointMap::insert(Point p, int neighbour) {

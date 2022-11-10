@@ -1,5 +1,7 @@
 #include <delynoi/models/polygon/BoundingBox.h>
 
+using namespace Delynoi;
+
 BoundingBox::BoundingBox(Point p1, Point p2) {
     this->p1 = p1;
     this->p2 = p2;

@@ -1,6 +1,9 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
-#include "delynoi/voronoi/DelaunayToVoronoi.h"
+
+#include <delynoi/voronoi/DelaunayToVoronoi.h>
+
+using namespace Delynoi;
 
 DelaunayToVoronoi::DelaunayToVoronoi(DelaunayInfo &del) {
     auto *voronoiEdges = new SegmentMap;

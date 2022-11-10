@@ -1,5 +1,7 @@
 #include <delynoi/models/neighbourhood/EdgeData.h>
 
+using namespace Delynoi;
+
 EdgeData::EdgeData(int p1, int p2) {
     this->p1 = p1;
     this->p2 = p2;

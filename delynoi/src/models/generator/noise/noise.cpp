@@ -2,6 +2,8 @@
 #include <delynoi/models/generator/Functor.h>
 #include <delynoi/models/generator/noise/RandomIntegerNoise.h>
 
+using namespace Delynoi;
+
 namespace noise{
     Functor* random_double_noise(Functor* f, double min, double max){
         return new RandomDoubleNoise(f, min, max);

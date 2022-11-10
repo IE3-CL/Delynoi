@@ -4,6 +4,8 @@
 #include <delynoi/utilities/UniqueList.h>
 #include <float.h>
 
+using namespace Delynoi;
+
 class Constant : public Functor {
 public:
     Constant() {}

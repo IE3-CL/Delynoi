@@ -2,6 +2,8 @@
 #pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
 #include <delynoi/triangulation/CenterTriangulationGenerator.h>
 
+using namespace Delynoi;
+
 std::vector<Triangle> CenterTriangulationGenerator::triangulate(Polygon p, std::vector<Point> &points) {
     if (!p.isConvex(points)) {
         throw std::invalid_argument("Can not use a center triangulation scheme on a non convex polygon");

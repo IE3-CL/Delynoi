@@ -8,6 +8,7 @@
 #include <delynoi/utilities/UniqueList.h>
 #include <delynoi/models/neighbourhood/SegmentMap.h>
 
+using namespace Delynoi;
 
 Polygon::Polygon(std::vector<int> &points, std::vector<Point> &p) {
     if (isSelfIntersecting(p)) {

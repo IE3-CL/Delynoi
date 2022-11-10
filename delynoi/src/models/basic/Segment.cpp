@@ -1,5 +1,7 @@
 #include <delynoi/models/basic/Segment.h>
 
+using namespace Delynoi;
+
 template <class T>
 Segment<T>::Segment(T p1, T p2) {
     this->p1 = p1;

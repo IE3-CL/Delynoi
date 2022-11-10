@@ -2,6 +2,8 @@
 #include <delynoi/models/polygon/Circle.h>
 #include <delynoi/config/DelynoiConfig.h>
 
+using namespace Delynoi;
+
 Circle::Circle(double r, Point c) {
     this->radius = r;
     this->center = c;

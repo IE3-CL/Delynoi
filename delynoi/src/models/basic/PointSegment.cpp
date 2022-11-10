@@ -1,5 +1,7 @@
 #include <delynoi/models/basic/PointSegment.h>
 
+using namespace Delynoi;
+
 PointSegment::PointSegment(Point p1, Point p2) : Segment<Point>(p1, p2) {}
 
 PointSegment::PointSegment() : Segment<Point>(){}

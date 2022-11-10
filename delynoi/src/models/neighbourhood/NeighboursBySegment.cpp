@@ -3,6 +3,8 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
+using namespace Delynoi;
+
 NeighboursBySegment::NeighboursBySegment() = default;
 
 NeighboursBySegment::NeighboursBySegment(int i1) {

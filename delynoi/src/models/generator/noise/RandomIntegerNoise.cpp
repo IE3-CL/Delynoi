@@ -1,5 +1,7 @@
 #include <delynoi/models/generator/noise/RandomIntegerNoise.h>
 
+using namespace Delynoi;
+
 std::default_random_engine RandomIntegerNoise::rd;
 std::mt19937 RandomIntegerNoise::rng(rd());
 

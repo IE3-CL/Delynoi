@@ -5,6 +5,8 @@
 #include <delynoi/models/generator/noise/noise.h>
 
 int main(){
+    using namespace Delynoi;
+
     std::vector<Point> square_points = {Point(0,0), Point(10,0), Point(10,10), Point(0,10)};
     Region square(square_points);
 
