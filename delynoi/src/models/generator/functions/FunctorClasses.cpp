@@ -1,7 +1,7 @@
 #include <delynoi/utilities/delynoi_utilities.h>
 #include <delynoi/models/generator/Functor.h>
 #include <ctime>
-#include <utilities/UniqueList.h>
+#include <delynoi/utilities/UniqueList.h>
 #include <float.h>
 
 class Constant : public Functor {

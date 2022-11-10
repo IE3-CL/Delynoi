@@ -1,7 +1,8 @@
 #ifndef DELYNOI_CONFIG_H
 #define DELYNOI_CONFIG_H
 
-#include <utilities/Precision.h>
+#include <delynoi/utilities/Precision.h>
+
 /* This class contains all global configuration parameters of the Delynoi
  * library, which default values can be changed by the user*/
 class DelynoiConfig {
@@ -26,7 +27,7 @@ private:
      */
     int precision;
 
-    static DelynoiConfig* s_instance;
+    static DelynoiConfig *s_instance;
 
     /*
      * Constructor. Sets the default parameter value.
@@ -36,11 +37,13 @@ private:
     /*
      * Deletes the copy constructor following the singleton pattern
      */
-    DelynoiConfig(const DelynoiConfig& other) = delete;
+    DelynoiConfig(const DelynoiConfig &other) = delete;
+
     /*
     * Deletes the assignment operator following the singleton pattern
     */
-    DelynoiConfig& operator=(const DelynoiConfig& copy) = delete;
+    DelynoiConfig &operator=(const DelynoiConfig &copy) = delete;
+
 public:
     /*
      * Sets the value of the circle discretization grade
@@ -95,7 +98,7 @@ public:
     /*
      * @return the DelynoiConfig instance
      */
-    static DelynoiConfig* instance();
+    static DelynoiConfig *instance();
 };
 
 

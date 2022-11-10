@@ -2,7 +2,7 @@
 #define DELYNOI_EDGEDATA_H
 
 #include <iostream>
-#include <utilities/utilities.h>
+#include <delynoi/utilities/utilities.h>
 
 /*
  * Class that models the neighbourhood information of a Delaunay triangulation (segment represnted by two points and the

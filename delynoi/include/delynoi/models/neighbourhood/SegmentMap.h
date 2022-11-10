@@ -2,7 +2,7 @@
 #define DELYNOI_SEGMENTMAP_H
 
 #include <delynoi/voronoi/structures/mapdata.h>
-#include <utilities/Pair.h>
+#include <delynoi/utilities/Pair.h>
 #include <unordered_map>
 #include "NeighboursBySegment.h"
 #include <fstream>

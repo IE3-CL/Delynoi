@@ -18,7 +18,7 @@ target_include_directories(libdelynoi PUBLIC
         PRIVATE src)
 
 # Depend on a library that we defined in the top-level file
-target_link_libraries(libdelynoi triangle libutilities)
+target_link_libraries(libdelynoi triangle libdelynoi_utilities)
 
 # 'make install' to the correct locations (provided by GNUInstallDirs).
 install(TARGETS libdelynoi EXPORT DelynoiConfig

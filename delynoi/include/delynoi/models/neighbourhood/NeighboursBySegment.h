@@ -2,7 +2,7 @@
 #define DELYNOI_NEIGHBOURS_H
 
 #include <iostream>
-#include <utilities/utilities.h>
+#include <delynoi/utilities/utilities.h>
 
 /*
  * Class that models polygon neighbourhood by segment, meaning, the two (or one in case it is a boundary segment) that share

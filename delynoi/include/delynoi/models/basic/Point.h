@@ -5,7 +5,7 @@
 #include <math.h>
 #include <cmath>
 #include <sstream>
-#include <utilities/utilities.h>
+#include <delynoi/utilities/utilities.h>
 
 /*
  * Models a geometrical two dimensional point.

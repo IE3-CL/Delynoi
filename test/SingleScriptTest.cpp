@@ -1,5 +1,5 @@
 #include <delynoi/models/basic/Point.h>
-#include <utilities/UniqueList.h>
+#include <delynoi/utilities/UniqueList.h>
 #include <fstream>
 #include <delynoi/models/Region.h>
 #include <delynoi/voronoi/structures/PointData.h>

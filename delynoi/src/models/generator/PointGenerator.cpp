@@ -46,8 +46,8 @@ Point PointGenerator::result(double x, double y) {
             return Point(x + this->lX->apply(y), y);
         case functions::independent_variable::both:
             return Point(this->lX->apply(x), this->lY->apply(y));
-
     }
+    return {0,0};
 }
 
 

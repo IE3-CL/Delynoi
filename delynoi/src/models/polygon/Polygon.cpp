@@ -5,7 +5,7 @@
 
 #include <delynoi/models/polygon/Polygon.h>
 #include <map>
-#include <utilities/UniqueList.h>
+#include <delynoi/utilities/UniqueList.h>
 #include <delynoi/models/neighbourhood/SegmentMap.h>
 
 

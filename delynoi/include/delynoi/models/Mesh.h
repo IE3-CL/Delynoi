@@ -2,7 +2,7 @@
 #define DELYNOI_MESH_H
 
 #include <delynoi/models/neighbourhood/SegmentMap.h>
-#include <utilities/UniqueList.h>
+#include <delynoi/utilities/UniqueList.h>
 #include <fstream>
 #include <delynoi/models/polygon/Polygon.h>
 #include <delynoi/models/neighbourhood/PointMap.h>

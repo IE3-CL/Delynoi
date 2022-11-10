@@ -4,7 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <delynoi/models/basic/Point.h>
-#include <utilities/Pair.h>
+#include <delynoi/utilities/Pair.h>
 
 /*
  * Namespace that includes common geometric utilities of the Delynoi library

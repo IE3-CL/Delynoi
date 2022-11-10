@@ -7,9 +7,9 @@
 #include <delynoi/utilities/geometryFunctions.h>
 #include <delynoi/utilities/convexHull.h>
 #include <delynoi/models/basic/IndexSegment.h>
-#include <utilities/Pair.h>
+#include <delynoi/utilities/Pair.h>
 #include <map>
-#include <utilities/UniqueList.h>
+#include <delynoi/utilities/UniqueList.h>
 #include <algorithm>
 #include <delynoi/models/neighbourhood/SegmentMap.h>
 #include <climits>
