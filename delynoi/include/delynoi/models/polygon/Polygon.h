@@ -35,7 +35,7 @@ protected:
      * @param p mesh points
      * @return polygon diameter
      */
-    double calculateDiameter(std::vector<Point> &p);
+    static double calculateDiameter(std::vector<Point> &p);
 
     /* Calculates the polygon area
      * @param p mesh points
@@ -78,17 +78,17 @@ public:
     /*
      * @return polygon diameter
      */
-    double getDiameter(std::vector<Point>& points);
+    double getDiameter(std::vector<Point>& _points);
 
     /*
      * @return polygon area
      */
-    double getArea(std::vector<Point>& points);
+    double getArea(std::vector<Point>& _points);
 
     /*
      * @return polygon centroid
      */
-    Point getCentroid(std::vector<Point>& points);
+    Point getCentroid(std::vector<Point>& _points);
 
     /* Gets the polygon segments and set them in the given vector
      * @param segments vector that will contain the segments
@@ -189,7 +189,7 @@ public:
      * @param points mesh points
      * @return if the polygon is self-intersecting
      */
-    bool isSelfIntersecting(std::vector<Point> &points);
+    bool isSelfIntersecting(std::vector<Point> &_points);
 
     /*
      * Hash value of the polygon (calculated using the indexes of the points)

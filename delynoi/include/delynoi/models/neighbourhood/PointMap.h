@@ -56,7 +56,7 @@ public:
     /* Prints the map to a file
      * @param fileName name of the file
      */
-    void printInFile(std::string fileName);
+    void printInFile(const std::string& fileName);
 };
 
 #endif

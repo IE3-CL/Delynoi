@@ -31,7 +31,7 @@ public:
     /*
      * @return string representation of the data of the class
      */
-    std::string getString();
+    std::string getString() const;
 
     /*
      * Equality operator.

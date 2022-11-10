@@ -51,12 +51,12 @@ private:
      * @param switches list of switches for Triangle (define a number of options)
      * @param restrictedSegment list of segments inside the domain which must be included in the triangulation
      */
-    void callTriangle(std::vector<Point> &point_list, char switches[], std::vector<PointSegment> restrictedSegments);
+    void callTriangle(std::vector<Point> &point_list, char switches[], const std::vector<PointSegment>& restrictedSegments);
 public:
     /*
      * Constructor
      */
-    TriangleDelaunayGenerator(const std::vector<Point>& points, Region region);
+    TriangleDelaunayGenerator(const std::vector<Point>& points, const Region& region);
 
     /* Returns the conforming Delaunay triangulation (all triangles, even those in the boundary or next to restricted
      * segments, are Delaunay through the inclusion of additional points)
@@ -74,7 +74,7 @@ public:
      * delaunay)
      * @return the constrained Delaunay triangulation
      */
-    Mesh<Triangle> getConstrainedDelaunayTriangulation(std::vector<PointSegment> restrictedSegments);
+    Mesh<Triangle> getConstrainedDelaunayTriangulation(const std::vector<PointSegment>& restrictedSegments);
 
     /* Returns the conforming Delaunay triangulation in the format that can be used to compute the Voronoi diagram
      * @return Delaunay triangulation in DelaunayInfo format
@@ -86,7 +86,7 @@ public:
      * @param region domain in which the triangulation must be computed
      * @param regionIndex indexes of the points (in point_list) definining the region
      */
-    void writeTriangleInputFile(UniqueList<Point> &point_list, Region region, std::vector<int> regionIndex);
+    static void writeTriangleInputFile(UniqueList<Point> &point_list, Region _region, std::vector<int> regionIndex);
 
     /* Creates a Mesh (in Delynoi format) from the information of the Delaunay triangulation
     * @return Delaunay triangulation in Mesh form

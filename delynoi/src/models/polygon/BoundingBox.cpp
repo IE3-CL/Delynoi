@@ -38,20 +38,20 @@ double BoundingBox::yMax() {
 }
 
 bool BoundingBox::operator==(const BoundingBox &other) const {
-    return getFirst()==other.getFirst() && getSecond()==other.getSecond() ||
-           getSecond()==other.getFirst() && getFirst()==other.getSecond();
+    return getFirst() == other.getFirst() && getSecond() == other.getSecond() ||
+           getSecond() == other.getFirst() && getFirst() == other.getSecond();
 }
 
 void BoundingBox::getSegments(std::vector<PointSegment> &segments) {
-    Point p3 (p2.getX(), p1.getY());
-    Point p4 (p1.getX(), p2.getY());
+    Point p3(p2.getX(), p1.getY());
+    Point p4(p1.getX(), p2.getY());
 
-    segments.push_back(PointSegment(p1,p3));
-    segments.push_back(PointSegment(p3,p2));
-    segments.push_back(PointSegment(p2,p4));
-    segments.push_back(PointSegment(p4,p1));
+    segments.emplace_back(p1, p3);
+    segments.emplace_back(p3, p2);
+    segments.emplace_back(p2, p4);
+    segments.emplace_back(p4, p1);
 }
 
 bool BoundingBox::contains(Point p) {
-    return p.getX()>=xMin() && p.getX()<=xMax() && p.getY()>=yMin() && p.getY()<=yMax();
+    return p.getX() >= xMin() && p.getX() <= xMax() && p.getY() >= yMin() && p.getY() <= yMax();
 }

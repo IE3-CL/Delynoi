@@ -1,20 +1,18 @@
 #include <delynoi/voronoi/TriangleVoronoiGenerator.h>
 #include <delynoi/voronoi/DelaunayToVoronoi.h>
 
-
-TriangleVoronoiGenerator::TriangleVoronoiGenerator(std::vector<Point> &point_list, Region region) {
+TriangleVoronoiGenerator::TriangleVoronoiGenerator(std::vector<Point> &point_list, const Region &region) {
     TriangleDelaunayGenerator delaunayGenerator(point_list, region);
-    DelaunayInfo delaunay = delaunayGenerator.getConformingDelaunay();
+    DelaunayInfo _delaunay = delaunayGenerator.getConformingDelaunay();
 
     this->delaunay = delaunayGenerator.initializeMesh<Polygon>();
-    this->voronoi = DelaunayToVoronoi(delaunay).getMesh();
+    this->voronoi = DelaunayToVoronoi(_delaunay).getMesh();
 }
 
-Mesh<Polygon>& TriangleVoronoiGenerator::getMesh() {
+Mesh<Polygon> &TriangleVoronoiGenerator::getMesh() {
     return this->voronoi;
 }
 
-Mesh<Polygon>& TriangleVoronoiGenerator::getTriangulation() {
+Mesh<Polygon> &TriangleVoronoiGenerator::getTriangulation() {
     return this->delaunay;
 }
-

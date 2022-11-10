@@ -21,7 +21,7 @@ public:
      * @param child list of points defining the child polygon (the one that clips)
      * @param maxScale scale used to transform double points to integers
      */
-    static ClipperLib::Paths polyIntersection(std::vector<Point> parent, std::vector<Point> child, int maxScale);
+    static ClipperLib::Paths polyIntersection(const std::vector<Point>& parent, const std::vector<Point>& child, int maxScale);
 };
 
 

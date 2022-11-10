@@ -23,7 +23,7 @@ private:
      * @param edge index of the edge from which we entered triangle
      * @return circumcenter
      */
-    int getCircumcenter(DelaunayInfo& del, int triangle, int edge);
+    static int getCircumcenter(DelaunayInfo& del, int triangle, int edge);
 public:
     /*
      * Constructor

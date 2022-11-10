@@ -97,7 +97,7 @@ public:
      * @param nX number of points to create in the horizontal axis
      * @param nY number of points to create in the vertical axis
      */
-    void generateSeedPoints(PointGenerator p, int nX, int nY);
+    void generateSeedPoints(PointGenerator _p, int nX, int nY);
 
     /* Adds already seed points to the list
      * @param seeds list of points to add
@@ -123,13 +123,13 @@ public:
      * @param p point to check
      * @return whether the point is inside the region or not
      */
-    bool containsPoint(Point p);
+    bool containsPoint(Point _p);
 
     /* Checks if a given point is in the border of the region
      * @param p point to check
      * @return whether the point is in the boundary or not
      */
-    bool inEdges(Point p);
+    bool inEdges(Point _p);
 
     /*
      * Empties the seed point list
@@ -140,7 +140,7 @@ public:
      * Prints the region in a file
      * @param fileName name of the file to print the region to
      */
-    void printInFile(std::string fileName);
+    void printInFile(const std::string& fileName);
 };
 
 #endif

@@ -13,7 +13,7 @@ private:
     /*
      * Indexes of the polygons that contain a segment
      */
-    int n1;
+    int n1{};
     int n2 = -1;
 public:
     /*
@@ -34,7 +34,7 @@ public:
     /*
      * Constructor. Sets both incident polygons, given as a pair
      */
-    NeighboursBySegment(Pair<int> p);
+    NeighboursBySegment(const Pair<int>& p);
 
     /*
      * Sets a new neighbour

@@ -1,28 +1,33 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
+
 #include <delynoi/models/neighbourhood/SegmentMap.h>
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
-SegmentMap::SegmentMap() {}
+SegmentMap::SegmentMap() = default;
 
-void SegmentMap::insert(IndexSegment s, int polygonIndex) {
+void SegmentMap::insert(const IndexSegment &s, int polygonIndex) {
     auto got = this->map.find(s);
 
-    if(got == this->map.end()){
-        NeighboursBySegment n (polygonIndex);
-        this->map.insert(std::make_pair(s,n));
-    }else{
+    if (got == this->map.end()) {
+        NeighboursBySegment n(polygonIndex);
+        this->map.insert(std::make_pair(s, n));
+    } else {
         got->second.setNeighbour(polygonIndex);
     }
 }
 
-void SegmentMap::insert(IndexSegment s, NeighboursBySegment n) {
+void SegmentMap::insert(const IndexSegment &s, NeighboursBySegment n) {
     this->map[s] = n;
 }
 
-NeighboursBySegment& SegmentMap::get(IndexSegment s) {
+NeighboursBySegment &SegmentMap::get(const IndexSegment &s) {
     return map[s];
 }
 
-std::unordered_map<IndexSegment,NeighboursBySegment, SegmentHasher>& SegmentMap::getMap() {
+std::unordered_map<IndexSegment, NeighboursBySegment, SegmentHasher> &SegmentMap::getMap() {
     return this->map;
 }
 
@@ -34,21 +39,24 @@ int SegmentMap::size() {
     return this->map.size();
 }
 
-void SegmentMap::printInFile(std::string fileName) {
+void SegmentMap::printInFile(const std::string &fileName) {
     std::string path = utilities::getPath();
-    path +=  fileName;
+    path += fileName;
 
     std::ofstream file;
     file.open(path, std::ios::out);
 
 
-    for(auto v : this->map){
+    for (const auto &v: this->map) {
         file << v.first.getString() + " " + v.second.getString() << std::endl;
     }
 
     file.close();
 }
 
-bool SegmentMap::containsSegment(IndexSegment s) {
-    return this->map.find(s)!= this->map.end();
+bool SegmentMap::containsSegment(const IndexSegment &s) {
+    return this->map.find(s) != this->map.end();
 }
+
+#pragma clang diagnostic pop
+#pragma clang diagnostic pop

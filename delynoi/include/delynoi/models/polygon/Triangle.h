@@ -16,7 +16,7 @@ private:
      */
     Point circumcenter;
 
-    int circumcenterIndex;
+    int circumcenterIndex{};
 
     /*
      * Calculates the circumcenter
@@ -44,7 +44,7 @@ public:
      */
     Point getCircumcenter();
 
-    int getCircumcenterIndex();
+    int getCircumcenterIndex() const;
 
     /*
      * Given an EdgeData instance and a point, determines the next edge that is to be used in the computation of the

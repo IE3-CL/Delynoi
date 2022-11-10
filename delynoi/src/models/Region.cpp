@@ -1,6 +1,16 @@
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wimplicit-const-int-float-conversion"
+#pragma ide diagnostic ignored "cert-err34-c"
+#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
+
 #include <delynoi/models/Region.h>
 
-Region::Region(std::vector<Point>& points) : Polygon(points){
+#include <utility>
+
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
+Region::Region(std::vector<Point> &points) : Polygon(points) {
     this->p = points;
 }
 
@@ -9,9 +19,9 @@ void Region::mutate(std::vector<Point> &points) {
     Polygon::mutate(points);
 }
 
-Region::Region() : Polygon(){}
+Region::Region() : Polygon() {}
 
-Region::Region(const Polygon &other, std::vector<Point>& points) : Polygon() {
+Region::Region(const Polygon &other, std::vector<Point> &points) : Polygon() {
     std::vector<int> otherPoints = other.getPoints();
 
     for (int i = 0; i < other.numberOfSides(); ++i) {
@@ -22,12 +32,12 @@ Region::Region(const Polygon &other, std::vector<Point>& points) : Polygon() {
 }
 
 
-Region::Region(const Region &other) : Polygon(other){
+Region::Region(const Region &other) : Polygon(other) {
     this->p = other.p;
     this->holes.assign(other.holes.begin(), other.holes.end());
 }
 
-std::vector<Hole>& Region::getHoles() {
+std::vector<Hole> &Region::getHoles() {
     return this->holes;
 }
 
@@ -38,19 +48,19 @@ std::vector<Point> Region::getSeedPoints() {
 void Region::addHole(Hole h) {
     //When we receive a hole we check whether the difference between the region and the hole is just
     //one path (according to the used library)
-    DelynoiConfig* config = DelynoiConfig::instance();
+    DelynoiConfig *config = DelynoiConfig::instance();
     ClipperLib::Path region, hole;
     ClipperLib::Paths solution;
 
-    for(int i=0;i<this->p.size(); i++){
-        region << ClipperLib::IntPoint((int)(config->getScale()*this->p[i].getX()),
-                                       (int)(config->getScale()*this->p[i].getY()));
+    for (auto &i: this->p) {
+        region << ClipperLib::IntPoint((int) (config->getScale() * i.getX()),
+                                       (int) (config->getScale() * i.getY()));
     }
 
     std::vector<Point> holePoints = h.getPoints();
-    for(int i=0;i<holePoints.size();i++){
-        hole << ClipperLib::IntPoint((int)(config->getScale()*holePoints[i].getX()),
-                                     (int)(config->getScale()*holePoints[i].getY()));
+    for (auto &holePoint: holePoints) {
+        hole << ClipperLib::IntPoint((int) (config->getScale() * holePoint.getX()),
+                                     (int) (config->getScale() * holePoint.getY()));
     }
 
     ClipperLib::Clipper clipper;
@@ -58,22 +68,22 @@ void Region::addHole(Hole h) {
     clipper.AddPath(hole, ClipperLib::ptClip, true);
     clipper.Execute(ClipperLib::ctDifference, solution, ClipperLib::pftNonZero, ClipperLib::pftNonZero);
 
-    if(solution.size()==1){
+    if (solution.size() == 1) {
         //Hole does intersect, so Region has to change and the hole "disappears"
         std::vector<Point> newPoints;
 
-        for(int i=0;i<solution[0].size();i++){
-            newPoints.push_back(Point(solution[0][i].X/(1.0*config->getScale()),
-                                      solution[0][i].Y/(1.0*config->getScale())));
+        for (auto &i: solution[0]) {
+            newPoints.emplace_back(i.X / (1.0 * config->getScale()),
+                                   i.Y / (1.0 * config->getScale()));
         }
 
         this->mutate(newPoints);
-    }else{
+    } else {
         //Two cases, hole is completely inside or completely outside, just ignore holes outside
 
-        if(Polygon::containsPoint(this->p, h.getCenter())){
+        if (Polygon::containsPoint(this->p, h.getCenter())) {
             this->holes.push_back(h);
-        }else{
+        } else {
             throw std::invalid_argument("Hole lies completely outside of domain region");
         }
     }
@@ -83,20 +93,20 @@ void Region::cleanInternalHoles() {
     this->holes.clear();
 }
 
-void Region::generateSeedPoints(PointGenerator p, int nX, int nY){
+void Region::generateSeedPoints(PointGenerator _p, int nX, int nY) {
     BoundingBox box = this->getBox();
-    p.generate(this->seedPoints, box, nX, nY);
+    _p.generate(this->seedPoints, box, nX, nY);
     this->clean();
 }
 
-void Region::addSeedPoints(std::vector<Point>& seeds) {
+void Region::addSeedPoints(std::vector<Point> &seeds) {
     this->seedPoints.assign(seeds.begin(), seeds.end());
     this->clean();
 }
 
 void Region::addSeedsFromFile(std::string fileName) {
     std::ifstream infile;
-    infile = utilities::openFile(fileName);
+    infile = utilities::openFile(std::move(fileName));
 
     std::string line;
     std::getline(infile, line);
@@ -119,37 +129,37 @@ BoundingBox Region::getBox() {
     double yMin = LLONG_MAX;
     double yMax = LLONG_MIN;
 
-    for(auto& v: p){
-        xMin = v.getX()<xMin? v.getX(): xMin;
-        xMax = v.getX()>xMax? v.getX(): xMax;
-        yMin = v.getY()<yMin? v.getY(): yMin;
-        yMax = v.getY()>yMax? v.getY(): yMax;
+    for (auto &v: p) {
+        xMin = v.getX() < xMin ? v.getX() : xMin;
+        xMax = v.getX() > xMax ? v.getX() : xMax;
+        yMin = v.getY() < yMin ? v.getY() : yMin;
+        yMax = v.getY() > yMax ? v.getY() : yMax;
     }
 
-    return BoundingBox(Point(xMin,yMin), Point(xMax,yMax));
+    return {Point(xMin, yMin), Point(xMax, yMax)};
 }
 
 void Region::clean() {
     std::vector<int> toKeep;
     std::vector<Point> newSeeds;
 
-    for(int i = 0; i<seedPoints.size(); i++){
-        if(Polygon::containsPoint(p,seedPoints[i])){
+    for (int i = 0; i < seedPoints.size(); i++) {
+        if (Polygon::containsPoint(p, seedPoints[i])) {
             bool keep = true;
 
-            for (Hole h : this->holes){
+            for (Hole h: this->holes) {
                 keep = keep && !h.containsPoint(seedPoints[i]);
             }
 
-            if(keep){
+            if (keep) {
                 toKeep.push_back(i);
             }
         }
 
     }
 
-    for(int i=0; i<toKeep.size(); i++){
-        newSeeds.push_back(seedPoints[toKeep[i]]);
+    for (int i: toKeep) {
+        newSeeds.push_back(seedPoints[i]);
     }
 
     this->seedPoints = newSeeds;
@@ -160,9 +170,9 @@ std::vector<Point> Region::getRegionPoints() {
     std::vector<Point> points;
     points.assign(this->p.begin(), this->p.end());
 
-    for(int i=0;i<holes.size();i++){
-        std::vector<Point> p = holes[i].getPoints();
-        points.insert(points.end(), p.begin(), p.end());
+    for (auto &hole: holes) {
+        std::vector<Point> _p = hole.getPoints();
+        points.insert(points.end(), _p.begin(), _p.end());
     }
 
     return points;
@@ -172,31 +182,31 @@ void Region::getSegments(std::vector<IndexSegment> &s) {
     Polygon::getSegments(s);
     int offset = (int) this->p.size();
 
-    for(Hole h : this->holes){
+    for (Hole h: this->holes) {
         h.getSegments(s, offset);
         offset += h.getPoints().size();
     }
 }
 
-bool Region::containsPoint(Point p) {
+bool Region::containsPoint(Point _p) {
     std::vector<Point> regionPoints = this->p;
 
-    return Polygon::containsPoint(regionPoints, p);
+    return Polygon::containsPoint(regionPoints, _p);
 }
 
-bool Region::inEdges(Point p) {
+bool Region::inEdges(Point _p) {
     std::vector<Point> regionPoints = this->p;
 
-    return Polygon::inEdges(regionPoints, p);
+    return Polygon::inEdges(regionPoints, _p);
 }
 
 void Region::cleanSeedPoints() {
     this->seedPoints.clear();
 }
 
-void Region::printInFile(std::string fileName) {
+void Region::printInFile(const std::string &fileName) {
     std::string path = utilities::getPath();
-    path +=  fileName;
+    path += fileName;
 
     std::ofstream file;
     file.open(path, std::ios::out);
@@ -204,19 +214,19 @@ void Region::printInFile(std::string fileName) {
     std::vector<Point> points = this->getRegionPoints();
 
     file << (points.size() + seedPoints.size()) << std::endl;
-    for(int i=0;i<points.size();i++){
-        file << points[i].getString() << std::endl;
+    for (auto &point: points) {
+        file << point.getString() << std::endl;
     }
 
-    for(int i=0;i<seedPoints.size();i++){
-        file << seedPoints[i].getString() << std::endl;
+    for (auto &seedPoint: seedPoints) {
+        file << seedPoint.getString() << std::endl;
     }
 
     std::vector<IndexSegment> segments;
     this->getSegments(segments);
 
     file << segments.size() << std::endl;
-    for(IndexSegment s: segments){
+    for (const IndexSegment &s: segments) {
         file << s.getString() << std::endl;
     }
 
@@ -225,3 +235,6 @@ void Region::printInFile(std::string fileName) {
     file.close();
 
 }
+
+#pragma clang diagnostic pop
+#pragma clang diagnostic pop

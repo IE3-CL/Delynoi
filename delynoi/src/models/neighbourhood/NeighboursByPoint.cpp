@@ -1,6 +1,6 @@
 #include <delynoi/models/neighbourhood/NeighboursByPoint.h>
 
-NeighboursByPoint::NeighboursByPoint() {}
+NeighboursByPoint::NeighboursByPoint() = default;
 
 NeighboursByPoint::NeighboursByPoint(int n) {
     this->neighbours.push_back(n);

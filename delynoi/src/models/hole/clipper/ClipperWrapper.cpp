@@ -1,15 +1,18 @@
 #include <delynoi/models/hole/clipper/ClipperWrapper.h>
 
-ClipperLib::Paths ClipperWrapper::polyIntersection(std::vector<Point> parent, std::vector<Point> child, int maxScale) {
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
+ClipperLib::Paths ClipperWrapper::polyIntersection(const std::vector<Point> &parent, const std::vector<Point> &child, int maxScale) {
     ClipperLib::Path region, hole;
     ClipperLib::Paths solution;
 
-    for(int i=0;i<parent.size(); i++){
-        region << scalePoint(parent[i], maxScale);
+    for (auto &i: parent) {
+        region << scalePoint(i, maxScale);
     }
 
-    for(int i=0;i<child.size();i++){
-        hole << scalePoint(child[i], maxScale);
+    for (auto &i: child) {
+        hole << scalePoint(i, maxScale);
     }
 
     ClipperLib::Clipper clipper;
@@ -21,7 +24,7 @@ ClipperLib::Paths ClipperWrapper::polyIntersection(std::vector<Point> parent, st
 }
 
 ClipperLib::IntPoint ClipperWrapper::scalePoint(Point point, int maxScale) {
-    return ClipperLib::IntPoint((int)(maxScale*point.getX()), (int)(maxScale*point.getY()));
+    return {(int) (maxScale * point.getX()), (int) (maxScale * point.getY())};
 }
 
-
+#pragma clang diagnostic pop

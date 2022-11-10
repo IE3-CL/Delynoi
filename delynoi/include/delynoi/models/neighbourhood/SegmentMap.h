@@ -37,19 +37,19 @@ public:
      * @param s segment to insert
      * @param polygonIndex index of the polygon that contains the segment
      */
-    void insert(IndexSegment s, int polygonIndex);
+    void insert(const IndexSegment& s, int polygonIndex);
 
     /* Inserts a new segment on the map, given a NeighboursBySegment instance
      * @param s segment to insert
      * @param n NeighboursBySegment instance
      */
-    void insert(IndexSegment s, NeighboursBySegment n);
+    void insert(const IndexSegment& s, NeighboursBySegment n);
 
     /*
      * @param s segment to lookup
      * @return polygons incident to the given segment
      */
-    NeighboursBySegment& get(IndexSegment s);
+    NeighboursBySegment& get(const IndexSegment& s);
 
     /*
      * @return reference to the map that relates segments and neighbours
@@ -69,13 +69,13 @@ public:
     /* Prints the map information in a file
      * @param fileName name of the file
      */
-    void printInFile(std::string fileName);
+    void printInFile(const std::string& fileName);
 
     /* Checks if a given segment is in the map
      * @param s segment to check
      * @return whether the segment is in the map or not
      */
-    bool containsSegment(IndexSegment s);
+    bool containsSegment(const IndexSegment& s);
 };
 
 #endif 
