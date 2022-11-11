@@ -1,7 +1,9 @@
-#include <delynoi/models/polygon/Polygon.h>
-#include <delynoi/models/Mesh.h>
+#include <Delynoi/models/polygon/Polygon.h>
+#include <Delynoi/models/Mesh.h>
 
-int main(){
+using namespace Delynoi;
+
+int main() {
     Mesh<Polygon> mesh;
     mesh.createFromFile("ExampleMesh.txt");
 }
