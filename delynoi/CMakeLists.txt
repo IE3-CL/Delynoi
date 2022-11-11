@@ -5,6 +5,11 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 add_subdirectory(include/delynoi/voronoi/lib)
 add_library(libdelynoi STATIC ${SRCS} ${HEADERS})
 
+# Configure flags
+target_compile_options(libdelynoi PUBLIC
+    $<$<COMPILE_LANGUAGE:CXX>:-std=c++14>
+    -pg)
+
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build
 # paths.
