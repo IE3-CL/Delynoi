@@ -41,6 +41,7 @@
 #include <Delynoi/models/hole/clipper/lib/clipper.hpp>
 #include <cmath>
 #include <vector>
+#include <algorithm>
 #include <stdexcept>
 #include <cstring>
 #include <cstdlib>
