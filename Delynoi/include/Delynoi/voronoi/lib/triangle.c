@@ -646,7 +646,7 @@ REAL_TRIANGLE o3derrboundA, o3derrboundB, o3derrboundC;
 /* Consistent definition of int64 pointers */
 #ifndef __int64
     #ifdef __APPLE__
-        #define INT_TRIANGLE long long
+        #define INT_TRIANGLE unsigned long
     #else
         #include <inttypes.h>
         #define INT_TRIANGLE int64_t

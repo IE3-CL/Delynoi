@@ -12,6 +12,7 @@
 #include <iomanip>
 #include <fstream>
 #include <regex>
+#include <sstream>
 
 namespace Delynoi {
     namespace utilities {
