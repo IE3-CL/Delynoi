@@ -645,6 +645,15 @@ REAL_TRIANGLE o3derrboundA, o3derrboundB, o3derrboundC;
 
 /* Random number seed is not constant, but I've made it global anyway.       */
 
+/* Fix for MacOS*/
+#ifndef __int64
+#ifdef __APPLE__
+typedef long long __int64;
+#else
+#error Must define __int64 for your platform
+#endif
+#endif
+
 __int64 randomseed;                     /* Current random number seed. */
 
 
