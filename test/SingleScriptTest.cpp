@@ -1,22 +1,22 @@
-#include <delynoi/models/basic/Point.h>
-#include <delynoi/utilities/UniqueList.h>
+#include <Delynoi/models/basic/Point.h>
+#include <Delynoi/utilities/UniqueList.h>
 #include <fstream>
-#include <delynoi/models/Region.h>
-#include <delynoi/voronoi/structures/PointData.h>
-#include <delynoi/models/neighbourhood/EdgeData.h>
-#include <delynoi/models/polygon/Triangle.h>
-#include <delynoi/models/neighbourhood/PointMap.h>
+#include <Delynoi/models/Region.h>
+#include <Delynoi/voronoi/structures/PointData.h>
+#include <Delynoi/models/neighbourhood/EdgeData.h>
+#include <Delynoi/models/polygon/Triangle.h>
+#include <Delynoi/models/neighbourhood/PointMap.h>
 #include <chrono>
 
-extern "C"{
-#include <delynoi/voronoi/lib/triangle.h>
+extern "C" {
+#include <Delynoi/voronoi/lib/triangle.h>
 };
 
-int main(){
-    using namespace Delynoi;
+using namespace Delynoi;
 
-    std::vector<int> numberOfPoints = {2,3,5,6,10,12,15,20,25,30,35,40,45,50,55};
-    //std::vector<int> numberOfPoints = {2,3,5};
+int main() {
+    std::vector<int> numberOfPoints = {2, 3, 5, 6, 10, 12, 15, 20, 25, 30, 35, 40, 45, 50, 55};
+    // std::vector<int> numberOfPoints = {2, 3, 5};
 
     std::string path = utilities::getPath();
     path += "time_results.txt";
@@ -38,11 +38,11 @@ int main(){
         std::vector<EdgeData> edges;
         std::vector<Point> circumcenters;
         std::unordered_map<Key, int, KeyHasher> edgeMap;
-        SegmentMap* delaunayEdges = new SegmentMap;
+        SegmentMap *delaunayEdges = new SegmentMap;
         std::vector<Point> meshPoints;
 
         std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
-        std::cout << "Numero de puntos: " << numberOfPoints[i]*numberOfPoints[i];
+        std::cout << "Numero de puntos: " << numberOfPoints[i] * numberOfPoints[i];
 
         struct triangulateio in, out;
 
@@ -162,12 +162,12 @@ int main(){
         free(out.edgelist);
         free(out.edgemarkerlist);
 
-        SegmentMap* voronoiEdges = new SegmentMap;
-        PointMap* pointMap = new PointMap;
+        SegmentMap *voronoiEdges = new SegmentMap;
+        PointMap *pointMap = new PointMap;
         std::vector<Polygon> voronoiCells;
 
         //std::cout << "Numero de puntos reales: " << del.realPoints.size() << std::endl;
-        for(int i=0;i<realPoints.size(); i++) {
+        for (int i = 0; i < realPoints.size(); i++) {
             int cellIndex = voronoiCells.size();
             std::vector<IndexSegment> thisEdges;
 
@@ -181,9 +181,9 @@ int main(){
 
             int index1, index2;
 
-            if(t1!=-1){
+            if (t1 != -1) {
                 index1 = triangles[t1].getCircumcenterIndex();
-            }else{
+            } else {
                 int edge = pointData[index].edge;
 
                 Point middlePoint = IndexSegment(edges[edge].p1, edges[edge].p2).middlePoint(meshPoints);
@@ -195,9 +195,9 @@ int main(){
                 index1 = circumcenterIndex;
             }
 
-            if(t2!=-1){
+            if (t2 != -1) {
                 index2 = triangles[t2].getCircumcenterIndex();
-            }else{
+            } else {
                 int edge = pointData[index].edge;
 
                 Point middlePoint = IndexSegment(edges[edge].p1, edges[edge].p2).middlePoint(meshPoints);
@@ -209,8 +209,8 @@ int main(){
                 index2 = circumcenterIndex;
             }
 
-            if(index1!=index2){
-                IndexSegment e (index2,index1);
+            if (index1 != index2) {
+                IndexSegment e(index2, index1);
                 thisEdges.push_back(e);
                 voronoiEdges->insert(e, cellIndex);
 
@@ -223,15 +223,15 @@ int main(){
 
             EdgeData edge = edges[triangles[t1].nextEdge(index, init_edge, edgeMap)];
 
-            while(!(edge==init_edge)){
+            while (!(edge == init_edge)) {
                 t2 = t1;
-                t1 = edge.t1!=t2? edge.t1 : edge.t2;
+                t1 = edge.t1 != t2 ? edge.t1 : edge.t2;
 
                 int currentEdge = edgeMap[Key(edge.p1, edge.p2)];
 
-                if(t1!=-1){
+                if (t1 != -1) {
                     index1 = triangles[t1].getCircumcenterIndex();
-                }else{
+                } else {
                     Point middlePoint = IndexSegment(edges[currentEdge].p1, edges[currentEdge].p2).middlePoint(meshPoints);
                     middlePoint.setBoundary();
 
@@ -241,9 +241,9 @@ int main(){
                     index1 = circumcenterIndex;
                 }
 
-                if(t2!=-1){
+                if (t2 != -1) {
                     index2 = triangles[t2].getCircumcenterIndex();
-                }else{
+                } else {
                     Point middlePoint = IndexSegment(edges[currentEdge].p1, edges[currentEdge].p2).middlePoint(meshPoints);
                     middlePoint.setBoundary();
 
@@ -253,8 +253,8 @@ int main(){
                     index2 = circumcenterIndex;
                 }
 
-                if(index1!=index2){
-                    IndexSegment e (index2, index1);
+                if (index1 != index2) {
+                    IndexSegment e(index2, index1);
 
                     thisEdges.push_back(e);
                     voronoiEdges->insert(e, cellIndex);
@@ -267,24 +267,24 @@ int main(){
                 //pointMap->insert(del.circumcenters[index1], cellIndex);
 
 
-                if(t1!=-1){
+                if (t1 != -1) {
                     edge = edges[triangles[t1].nextEdge(index, edge, edgeMap)];
-                }else{
+                } else {
                     //std::cout << "Iteraciones: " << k << std::endl;
                     break;
                 }
             }
 
-            if(edge.t2==-1){
+            if (edge.t2 == -1) {
                 int firstPoint = cellPoints[0];
-                int lastPoint = cellPoints[cellPoints.size()-1];
+                int lastPoint = cellPoints[cellPoints.size() - 1];
 
-                if(geometry_functions::collinear(circumcenters[firstPoint],regionCenter,circumcenters[lastPoint])){
-                    IndexSegment e (lastPoint, firstPoint);
+                if (geometry_functions::collinear(circumcenters[firstPoint], regionCenter, circumcenters[lastPoint])) {
+                    IndexSegment e(lastPoint, firstPoint);
                     thisEdges.push_back(e);
 
                     voronoiEdges->insert(e, cellIndex);
-                } else{
+                } else {
                     regionCenter.setBoundary();
                     int regionIndex = circumcenters.size();
                     circumcenters.push_back(regionCenter);
@@ -303,7 +303,7 @@ int main(){
                 }
             }
 
-            std::vector<int>& cellPointsList = cellPoints.getList();
+            std::vector<int> &cellPointsList = cellPoints.getList();
 
             //Check if it is necessary to use a unique list for the polygons
             // You do not need a pointmap per se, check what happens if not filled.
@@ -314,9 +314,9 @@ int main(){
 
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
 
-        auto duration = std::chrono::duration_cast<std::chrono::microseconds>( t2 - t1 ).count();
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();
 
-        file << "Numero de puntos: " << numberOfPoints[i]*numberOfPoints[i] << " Tiempo: " << duration << std::endl;
+        file << "Numero de puntos: " << numberOfPoints[i] * numberOfPoints[i] << " Tiempo: " << duration << std::endl;
     }
 
     return 0;

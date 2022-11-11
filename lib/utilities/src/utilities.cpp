@@ -2,7 +2,7 @@
 
 #include <cmath>
 #include <algorithm>
-#include <delynoi/utilities/Pair.h>
+#include <Delynoi/utilities/Pair.h>
 #include <iostream>
 #include <sstream>
 #include <ctime>

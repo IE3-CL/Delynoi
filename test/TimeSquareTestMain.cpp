@@ -1,12 +1,13 @@
-#include <delynoi/models/basic/Point.h>
-#include <delynoi/models/Region.h>
-#include <delynoi/models/generator/functions/functions.h>
-#include <delynoi/voronoi/TriangleVoronoiGenerator.h>
+#include <Delynoi/models/basic/Point.h>
+#include <Delynoi/models/Region.h>
+#include <Delynoi/models/generator/functions/functions.h>
+#include <Delynoi/voronoi/TriangleVoronoiGenerator.h>
 #include <chrono>
 
-int main(){
-    using namespace Delynoi;
-    std::vector<int> numberOfPoints = {2,3,5,6,10,12,15,20,25,30,35,40,45,50,55};
+using namespace Delynoi;
+
+int main() {
+    std::vector<int> numberOfPoints = {2, 3, 5, 6, 10, 12, 15, 20, 25, 30, 35, 40, 45, 50, 55};
 
     std::string path = utilities::getPath();
     path += "time_results.txt";
@@ -15,7 +16,7 @@ int main(){
     file.open(path, std::ios::out);
 
     for (int i = 0; i < numberOfPoints.size(); ++i) {
-        std::vector<Point> square_points = {Point(0,0), Point(10,0), Point(10,10), Point(0,10)};
+        std::vector<Point> square_points = {Point(0, 0), Point(10, 0), Point(10, 10), Point(0, 10)};
         Region square(square_points);
 
         square.generateSeedPoints(PointGenerator(functions::constant(), functions::constant()), numberOfPoints[i], numberOfPoints[i]);
@@ -29,13 +30,10 @@ int main(){
 
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
 
-        auto duration = std::chrono::duration_cast<std::chrono::microseconds>( t2 - t1 ).count();
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();
         std::cout << duration << ",";
 
-        file << "Numero de puntos: " << numberOfPoints[i]*numberOfPoints[i] << " Tiempo: " << duration << std::endl;
-
-        std::string fileName = "mesh_";
-        fileName += utilities::toString(i) + ".txt";
+        file << "Numero de puntos: " << numberOfPoints[i] * numberOfPoints[i] << " Tiempo: " << duration << std::endl;
 
         std::string trianglefileName = "triangle_";
         trianglefileName += utilities::toString(i) + ".txt";
