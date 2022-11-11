@@ -33,7 +33,7 @@ int main() {
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();
         std::cout << duration << ",";
 
-        file << "Numero de puntos: " << numberOfPoints[i] * numberOfPoints[i] << " Tiempo: " << duration << std::endl;
+        file << "Number of points: " << numberOfPoints[i] * numberOfPoints[i] << " Time: " << duration << std::endl;
 
         std::string trianglefileName = "triangle_";
         trianglefileName += utilities::toString(i) + ".txt";

@@ -52,15 +52,15 @@ int main() {
         std::vector<int> regionIndex = pointList.push_list(regionPoints);
 
         in.numberofpoints = pointList.size();
-        in.pointlist = (REAL *) malloc(in.numberofpoints * 2 * sizeof(REAL));
+        in.pointlist = (REAL_TRIANGLE *) malloc(in.numberofpoints * 2 * sizeof(REAL_TRIANGLE));
         in.numberofpointattributes = 1;
-        in.pointattributelist = (REAL *) malloc(in.numberofpoints * in.numberofpointattributes * sizeof(REAL));
+        in.pointattributelist = (REAL_TRIANGLE *) malloc(in.numberofpoints * in.numberofpointattributes * sizeof(REAL_TRIANGLE));
         int points = 0;
 
-        for (int i = 0; i < pointList.size(); i++) {
-            in.pointlist[points] = pointList[i].getX();
-            in.pointlist[points + 1] = pointList[i].getY();
-            in.pointattributelist[i] = 0.0;
+        for (int j = 0; j < pointList.size(); j++) {
+            in.pointlist[points] = pointList[j].getX();
+            in.pointlist[points + 1] = pointList[j].getY();
+            in.pointattributelist[j] = 0.0;
             points += 2;
         }
 
@@ -80,7 +80,7 @@ int main() {
 
         std::vector<Hole> &holes = square.getHoles();
         in.numberofholes = (int) holes.size();
-        in.holelist = (REAL *) malloc(in.numberofholes * 2 * sizeof(REAL));
+        in.holelist = (REAL_TRIANGLE *) malloc(in.numberofholes * 2 * sizeof(REAL_TRIANGLE));
         for (int i = 0; i < holes.size(); i++) {
             in.holelist[2 * i] = holes[i].getCenter().getX();
             in.holelist[2 * i + 1] = holes[i].getCenter().getY();
@@ -88,11 +88,11 @@ int main() {
 
         in.numberofregions = 0;
 
-        out.pointlist = (REAL *) NULL;
-        out.pointattributelist = (REAL *) NULL;
+        out.pointlist = (REAL_TRIANGLE *) NULL;
+        out.pointattributelist = (REAL_TRIANGLE *) NULL;
         out.pointmarkerlist = (int *) NULL;
         out.trianglelist = (int *) NULL;
-        out.triangleattributelist = (REAL *) NULL;
+        out.triangleattributelist = (REAL_TRIANGLE *) NULL;
         out.segmentmarkerlist = (int *) NULL;
         out.segmentlist = (int *) NULL;
         out.edgelist = (int *) NULL;

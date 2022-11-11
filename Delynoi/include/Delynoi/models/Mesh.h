@@ -1,9 +1,14 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "cppcoreguidelines-pro-type-member-init"
+#pragma ide diagnostic ignored "cert-err34-c"
+
 #ifndef DELYNOI_MESH_H
 #define DELYNOI_MESH_H
 
 #include <Delynoi/models/neighbourhood/SegmentMap.h>
 #include <Delynoi/utilities/UniqueList.h>
 #include <fstream>
+#include <utility>
 #include <Delynoi/models/polygon/Polygon.h>
 #include <Delynoi/models/neighbourhood/PointMap.h>
 #include <Delynoi/models/polygon/Triangle.h>
@@ -59,21 +64,21 @@ namespace Delynoi {
         /* Print the mesh contents in a file
          * @param fileName name of the file to print
          */
-        void printInFile(std::string fileName);
+        void printInFile(const std::string &fileName);
 
         /* Creates the mesh (fill its contents) from a file
          * @param fileName name of the file to read
          * @param startIndex Index to start reading the informtion (so to be compatible with both zero and one-indexed
          * standards)
          */
-        void createFromFile(std::string fileName, int startIndex);
+        void createFromFile(std::string fileName, int startIndex = 0);
 
         /* Creates the mesh (fill its contents) from a file
          * @param ofstream stream from which the mesh will be read
          * @param startIndex Index to start reading the informtion (so to be compatible with both zero and one-indexed
          * standards)
          */
-        void createFromStream(std::ifstream &ofstream, int startIndex);
+        void createFromStream(std::ifstream &infile, int startIndex);
 
         /*
          * @return reference list of elements of the mesh
@@ -157,7 +162,7 @@ namespace Delynoi {
 
     template<typename T>
     void Mesh<T>::createFromFile(std::string fileName, int startIndex) {
-        std::ifstream infile = utilities::openFile(fileName);
+        std::ifstream infile = utilities::openFile(std::move(fileName));
 
         createFromStream(infile, startIndex);
 
@@ -201,7 +206,7 @@ namespace Delynoi {
     }
 
     template<typename T>
-    void Mesh<T>::printInFile(std::string fileName) {
+    void Mesh<T>::printInFile(const std::string &fileName) {
         std::string path = utilities::getPath();
         path += fileName;
 
@@ -279,3 +284,4 @@ namespace Delynoi {
 }
 
 #endif
+#pragma clang diagnostic pop
