@@ -1,13 +1,16 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #include <Delynoi/models/basic/PointSegment.h>
 
 using namespace Delynoi;
 
 PointSegment::PointSegment(Point p1, Point p2) : Segment<Point>(p1, p2) {}
 
-PointSegment::PointSegment() : Segment<Point>(){}
+PointSegment::PointSegment() : Segment<Point>() {}
 
 bool PointSegment::contains(Point point) {
-    return Segment::contains(point,p1,p2);
+    return Segment::contains(point, p1, p2);
 }
 
 double PointSegment::length() {
@@ -22,9 +25,9 @@ double PointSegment::cartesianAngle() {
     return Segment::cartesianAngle(this->p1, this->p2);
 }
 
-bool PointSegment::operator==(const PointSegment& other) const {
-    return getFirst()==other.getFirst() && getSecond()==other.getSecond() ||
-           getFirst()==other.getSecond() && getSecond()==other.getFirst();
+bool PointSegment::operator==(const PointSegment &other) const {
+    return getFirst() == other.getFirst() && getSecond() == other.getSecond() ||
+           getFirst() == other.getSecond() && getSecond() == other.getFirst();
 }
 
-
+#pragma clang diagnostic pop

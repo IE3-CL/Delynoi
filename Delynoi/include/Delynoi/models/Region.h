@@ -109,7 +109,7 @@ namespace Delynoi {
         /* Adds seed points reading them from a file
          * @param fileName name of the file from which the seed points will be read
          */
-        void addSeedsFromFile(std::string fileName);
+        void addSeedsFromFile(const std::string& fileName);
 
         /*
          * @return the axis oriented bounding box of the region

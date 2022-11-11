@@ -80,22 +80,22 @@ namespace Delynoi {
         /*
          * @return value of the circle discretization grade
          */
-        int getDiscretizationGrade();
+        int getDiscretizationGrade() const;
 
         /*
          * @return the double comparison tolerance value
          */
-        double getTolerance();
+        double getTolerance() const;
 
         /*
          * @return the value of the scale used for Clipper
          */
-        int getScale();
+        int getScale() const;
 
         /*
          * @return the number of decimals of the numbers in the output files
          */
-        int getPrecision();
+        int getPrecision() const;
 
         /*
          * @return the DelynoiConfig instance

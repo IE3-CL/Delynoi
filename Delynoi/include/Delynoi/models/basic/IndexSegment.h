@@ -44,7 +44,7 @@ namespace Delynoi {
          * @param point to check
          * @return if the point is contained or not
          */
-        bool contains(const std::vector<Point> &p, IndexSegment s);
+        bool contains(const std::vector<Point> &p, const IndexSegment& s);
 
         /*
          * @param p mesh points
@@ -64,7 +64,7 @@ namespace Delynoi {
          * @param inter intersection point (only valid if segments intersect)
          * @return segments intersect or not
          */
-        bool intersection(const std::vector<Point> &points, PointSegment other, Point &inter);
+        bool intersection(const std::vector<Point> &points, const PointSegment& other, Point &inter);
 
         /*  Determines whether two segments intersect or not. Sets the intersection point in the last argument.
          * @param p mesh points
@@ -72,7 +72,7 @@ namespace Delynoi {
          * @param inter intersection point (only valid if segments intersect)
          * @return segments intersect or not
          */
-        bool intersection(const std::vector<Point> &points, IndexSegment other, Point &inter);
+        bool intersection(const std::vector<Point> &points, const IndexSegment& other, Point &inter);
 
         /*  Determines a segment is contained in this one.
          * @param s segment to check

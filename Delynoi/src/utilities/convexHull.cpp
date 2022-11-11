@@ -1,4 +1,5 @@
 #pragma clang diagnostic push
+#pragma ide diagnostic ignored "modernize-concat-nested-namespaces"
 #pragma ide diagnostic ignored "bugprone-branch-clone"
 #pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
 

@@ -23,7 +23,7 @@ namespace Delynoi {
         /*
          * @return the length of the segment
          */
-        double length(Point p1, Point p2);
+        double length(Point _p1, Point _p2);
 
         /*
          * Determines whether four points (defining two line segments) intersect or not, and set as the last value the intersection
@@ -33,12 +33,12 @@ namespace Delynoi {
          * @param inter intersection point (only valid if segments intersect)
          * @return segments intersect or not
          */
-        bool intersects(Point p1, Point p2, Point o1, Point o2, Point &inter);
+        bool intersects(Point _p1, Point _p2, Point o1, Point o2, Point &inter);
 
         /*
          * @return angle of the line segment in degrees.
          */
-        double cartesianAngle(Point p1, Point p2);
+        double cartesianAngle(Point _p1, Point _p2);
 
         /*
          * Determines whether four points (defining two infinite lines) intersect or not (it is always the case unless they are parallel).
@@ -48,7 +48,7 @@ namespace Delynoi {
          * @param inter intersection point (only valid if lines intersect)
          * @return lines intersect or not
          */
-        virtual bool intersectionInfinite(Point p1, Point p2, Point o1, Point o2, Point &inter);
+        virtual bool intersectionInfinite(Point _p1, Point _p2, Point o1, Point o2, Point &inter);
 
         /*
          * Determines whether a point is contained in a segment.
@@ -56,7 +56,7 @@ namespace Delynoi {
          * @param p1 p2 points defining a segment
          * @return whether the point is contained or not
          */
-        bool contains(Point point, Point p1, Point p2);
+        bool contains(Point point, Point _p1, Point _p2);
 
     public:
         /*

@@ -1,4 +1,5 @@
 #pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
 
 #include <Delynoi/models/neighbourhood/PointMap.h>

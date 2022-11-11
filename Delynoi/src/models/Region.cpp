@@ -5,8 +5,6 @@
 
 #include <Delynoi/models/Region.h>
 
-#include <utility>
-
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
@@ -106,9 +104,9 @@ void Region::addSeedPoints(std::vector<Point> &seeds) {
     this->clean();
 }
 
-void Region::addSeedsFromFile(std::string fileName) {
+void Region::addSeedsFromFile(const std::string &fileName) {
     std::ifstream infile;
-    infile = utilities::openFile(std::move(fileName));
+    infile = utilities::openFile(fileName);
 
     std::string line;
     std::getline(infile, line);

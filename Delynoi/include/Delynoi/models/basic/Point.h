@@ -42,7 +42,7 @@ namespace Delynoi {
         /*
          * @return boolean indicating if this point is valid
          */
-        bool isValid();
+        bool isValid() const;
 
         /*
          * @return value of the x-axis of the point
@@ -57,7 +57,7 @@ namespace Delynoi {
         /*
          * @return the square of the norm of the point
          */
-        double squareNorm();
+        double squareNorm() const;
 
         /*
          * Returns the string representation of the point.
@@ -81,12 +81,12 @@ namespace Delynoi {
          * @param other point to operate with
          * @return the difference between the two points
          */
-        Point operator-(const Point &other);
+        Point operator-(const Point &other) const;
 
         /*
          * @return flag indicating if the point is in the boundary of the mesh
          */
-        bool isInBoundary();
+        bool isInBoundary() const;
 
         /*
          * Sets the point as being in the boundary

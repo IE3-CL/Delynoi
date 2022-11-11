@@ -1,10 +1,13 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "cppcoreguidelines-pro-type-member-init"
+
 #include <Delynoi/models/generator/PointGenerator.h>
 
 using namespace Delynoi;
 
-PointGenerator::PointGenerator() {}
+PointGenerator::PointGenerator() = default;
 
-PointGenerator::PointGenerator(Functor* lX, Functor* lY) {
+PointGenerator::PointGenerator(Functor *lX, Functor *lY) {
     this->lX = lX;
     this->lY = lY;
 
@@ -14,7 +17,7 @@ PointGenerator::PointGenerator(Functor* lX, Functor* lY) {
 PointGenerator::PointGenerator(Functor *l, functions::independent_variable variable) {
     this->variable = variable;
 
-    switch(variable){
+    switch (variable) {
         case functions::independent_variable::x:
             this->lY = l;
             break;
@@ -26,30 +29,30 @@ PointGenerator::PointGenerator(Functor *l, functions::independent_variable varia
     }
 }
 
-void PointGenerator::generate(std::vector <Point> &vector, BoundingBox box, int nX, int nY) {
-    double dX = box.getWidth()/(nX-1);
-    double dY = box.getHeight()/(nY-1);
+void PointGenerator::generate(std::vector<Point> &vector, BoundingBox box, int nX, int nY) {
+    double dX = box.getWidth() / (nX - 1);
+    double dY = box.getHeight() / (nY - 1);
 
-    for(int i = 0; i<nY; i++){
-        for(int j = 0; j<nX; j++){
-            double x = box.xMin() + j*dX;
-            double y = box.yMin() + i*dY;
+    for (int i = 0; i < nY; i++) {
+        for (int j = 0; j < nX; j++) {
+            double x = box.xMin() + j * dX;
+            double y = box.yMin() + i * dY;
 
-            vector.push_back(result(x,y));
+            vector.push_back(result(x, y));
         }
     }
 }
 
 Point PointGenerator::result(double x, double y) {
-    switch(variable){
+    switch (variable) {
         case functions::independent_variable::x:
-            return Point(x, y + this->lY->apply(x));
+            return {x, y + this->lY->apply(x)};
         case functions::independent_variable::y:
-            return Point(x + this->lX->apply(y), y);
+            return {x + this->lX->apply(y), y};
         case functions::independent_variable::both:
-            return Point(this->lX->apply(x), this->lY->apply(y));
+            return {this->lX->apply(x), this->lY->apply(y)};
     }
-    return {0,0};
+    return {0, 0};
 }
 
-
+#pragma clang diagnostic pop
