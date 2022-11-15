@@ -46,6 +46,7 @@ Polygon::Polygon(std::vector<Point> &p) {
     delynoi_utilities::TrivialIndexVector(this->points, p.size());
 
     std::vector<Point> this_points;
+    this_points.reserve(points.size());
     for (int point: points) {
         this_points.push_back(p[point]);
     }
@@ -283,6 +284,7 @@ void Polygon::fixCCW(std::vector<Point> &p) {
 std::vector<Point> Polygon::getPoints(std::vector<Point> &p) {
     std::vector<Point> returnPoints;
 
+    returnPoints.reserve(this->points.size());
     for (int point: this->points) {
         returnPoints.push_back(p[point]);
     }
