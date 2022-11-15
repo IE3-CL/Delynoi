@@ -16,7 +16,7 @@ namespace Delynoi {
         /*
          * Constructor
          */
-        PointData(int p) {
+        explicit PointData(int p) {
             this->point = p;
             this->edge = -1;
         };
@@ -26,8 +26,8 @@ namespace Delynoi {
          * @param edge edge to check
          * @param marker flag indicating whether the segment is in the boundary or not
          */
-        inline void setEdge(int edge, int marker) {
-            if (this->edge == -1 || marker == 1) this->edge = edge;
+        inline void setEdge(int _edge, int marker) {
+            if (this->edge == -1 || marker == 1) this->edge = _edge;
         }
     };
 }

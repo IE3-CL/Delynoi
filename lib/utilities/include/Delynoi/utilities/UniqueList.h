@@ -1,3 +1,6 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef UTILITIES_UNIQUELIST_H
 #define UTILITIES_UNIQUELIST_H
 
@@ -22,9 +25,9 @@ namespace Delynoi {
 
         int size();
 
-        std::vector<int> push_list(std::vector<T> &list);
+        std::vector<int> push_list(std::vector<T> &_list);
 
-        std::vector<int> push_list(UniqueList<T> &list);
+        std::vector<int> push_list(UniqueList<T> &_list);
 
         void pop_front();
 
@@ -48,8 +51,7 @@ namespace Delynoi {
     };
 
     template<class T>
-    UniqueList<T>::UniqueList() {}
-
+    UniqueList<T>::UniqueList() = default;
 
     template<class T>
     UniqueList<T>::UniqueList(const UniqueList<T> &other) {
@@ -112,22 +114,22 @@ namespace Delynoi {
     }
 
     template<class T>
-    std::vector<int> UniqueList<T>::push_list(std::vector<T> &list) {
+    std::vector<int> UniqueList<T>::push_list(std::vector<T> &_list) {
         std::vector<int> index;
 
-        for (int i = 0; i < list.size(); i++) {
-            index.push_back(this->push_back(list[i]));
+        for (int i = 0; i < _list.size(); i++) {
+            index.push_back(this->push_back(_list[i]));
         }
 
         return index;
     }
 
     template<class T>
-    std::vector<int> UniqueList<T>::push_list(UniqueList<T> &list) {
+    std::vector<int> UniqueList<T>::push_list(UniqueList<T> &_list) {
         std::vector<int> index;
 
-        for (int i = 0; i < list.size(); i++) {
-            index.push_back(this->push_back(list[i]));
+        for (int i = 0; i < _list.size(); i++) {
+            index.push_back(this->push_back(_list[i]));
         }
 
         return index;
@@ -179,3 +181,4 @@ namespace Delynoi {
 }
 
 #endif
+#pragma clang diagnostic pop

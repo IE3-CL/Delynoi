@@ -1,3 +1,6 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef DELYNOI_TRIANGLEDELAUNAY_H
 #define DELYNOI_TRIANGLEDELAUNAY_H
 
@@ -10,7 +13,7 @@
 
 extern "C" {
 #include <Delynoi/voronoi/lib/triangle.h>
-};
+}
 
 namespace Delynoi {
     /*
@@ -95,9 +98,9 @@ namespace Delynoi {
         */
         template<typename T>
         Mesh<T> initializeMesh() {
-            UniqueList<Point> points;
-            PointMap *pointMap = new PointMap;
-            std::vector<int> indexes = points.push_list(this->meshPoints);
+            UniqueList<Point> _points;
+            auto *pointMap = new PointMap;
+            std::vector<int> indexes = _points.push_list(this->meshPoints);
 
             std::vector<T> polygons;
             for (int i = 0; i < triangles.size(); i++) {
@@ -114,9 +117,10 @@ namespace Delynoi {
                 polygons.push_back(T(newPoints, meshPoints));
             }
 
-            return Mesh<T>(points, polygons, this->delaunayEdges, pointMap);
+            return Mesh<T>(_points, polygons, this->delaunayEdges, pointMap);
         };
     };
 }
 
 #endif
+#pragma clang diagnostic pop

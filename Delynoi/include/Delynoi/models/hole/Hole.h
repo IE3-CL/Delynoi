@@ -1,3 +1,6 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
+
 #ifndef DELYNOI_HOLE_H
 #define DELYNOI_HOLE_H
 
@@ -22,7 +25,7 @@ namespace Delynoi {
         /*
          * Default constructor.
          */
-        Hole() {};
+        Hole() = default;
 
         /*
          * Constructor.
@@ -48,7 +51,6 @@ namespace Delynoi {
         virtual Point getCenter() {
             return this->center;
         };
-
 
         /*
          * @param s vector in which the hole segments will be set
@@ -98,12 +100,12 @@ namespace Delynoi {
             }
 
             IndexSegment container(-1, -1);
-            std::vector<IndexSegment> segments;
-            this->getSegments(segments, 0);
+            std::vector<IndexSegment> _segments;
+            this->getSegments(_segments, 0);
 
-            for (int i = 0; i < segments.size(); i++) {
-                if (segments[i].contains(HolePoints, point)) {
-                    container = segments[i];
+            for (auto &segment: _segments) {
+                if (segment.contains(HolePoints, point)) {
+                    container = segment;
                 }
             }
 
@@ -113,3 +115,4 @@ namespace Delynoi {
 }
 
 #endif
+#pragma clang diagnostic pop
