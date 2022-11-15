@@ -1,8 +1,10 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef DELYNOI_POINT_H
 #define DELYNOI_POINT_H
 
 #include <string>
-#include <math.h>
 #include <cmath>
 #include <sstream>
 #include <Delynoi/utilities/utilities.h>
@@ -107,3 +109,4 @@ namespace Delynoi {
 }
 
 #endif
+#pragma clang diagnostic pop

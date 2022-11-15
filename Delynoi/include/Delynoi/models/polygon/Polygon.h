@@ -1,3 +1,6 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef DELYNOI_POLYGON_H
 #define DELYNOI_POLYGON_H
 
@@ -64,7 +67,7 @@ namespace Delynoi {
         /*
          * Constructor. Receives a list of points representing the polygon
          */
-        Polygon(std::vector<Point> &p);
+        explicit Polygon(std::vector<Point> &p);
 
         /*
          * Copy constructor.
@@ -225,3 +228,4 @@ namespace Delynoi {
 }
 
 #endif
+#pragma clang diagnostic pop

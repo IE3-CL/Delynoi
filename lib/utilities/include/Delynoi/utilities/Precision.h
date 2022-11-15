@@ -1,3 +1,6 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef UTILITIES_PRECISION_H
 #define UTILITIES_PRECISION_H
 
@@ -10,3 +13,4 @@ namespace Delynoi {
 }
 
 #endif
+#pragma clang diagnostic pop

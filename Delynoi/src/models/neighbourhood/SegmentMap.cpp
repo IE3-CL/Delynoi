@@ -48,7 +48,6 @@ void SegmentMap::printInFile(const std::string &fileName) {
     std::ofstream file;
     file.open(path, std::ios::out);
 
-
     for (const auto &v: this->map) {
         file << v.first.getString() + " " + v.second.getString() << std::endl;
     }

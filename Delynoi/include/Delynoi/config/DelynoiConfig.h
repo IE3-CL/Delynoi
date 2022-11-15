@@ -1,3 +1,7 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+#pragma ide diagnostic ignored "modernize-use-equals-delete"
+
 #ifndef DELYNOI_CONFIG_H
 #define DELYNOI_CONFIG_H
 
@@ -105,4 +109,5 @@ namespace Delynoi {
 
 }
 
-#endif 
+#endif
+#pragma clang diagnostic pop

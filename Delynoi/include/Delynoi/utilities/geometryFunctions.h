@@ -1,3 +1,6 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef DELYNOI_GEOMETRYFUNCTIONS_H
 #define DELYNOI_GEOMETRYFUNCTIONS_H
 
@@ -50,3 +53,4 @@ namespace Delynoi {
 }
 
 #endif
+#pragma clang diagnostic pop

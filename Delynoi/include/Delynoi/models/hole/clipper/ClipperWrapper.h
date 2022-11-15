@@ -1,3 +1,6 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef DELYNOI_CLIPPERWRAPPER_H
 #define DELYNOI_CLIPPERWRAPPER_H
 
@@ -28,3 +31,4 @@ namespace Delynoi {
 }
 
 #endif
+#pragma clang diagnostic pop

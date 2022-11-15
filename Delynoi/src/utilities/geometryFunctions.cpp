@@ -1,4 +1,5 @@
 #pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #pragma ide diagnostic ignored "modernize-concat-nested-namespaces"
 
 #include <Delynoi/models/basic/Point.h>
@@ -54,4 +55,5 @@ namespace Delynoi {
         }
     }
 }
+
 #pragma clang diagnostic pop
