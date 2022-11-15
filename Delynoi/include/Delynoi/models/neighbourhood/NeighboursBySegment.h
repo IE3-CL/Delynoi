@@ -1,3 +1,5 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #ifndef DELYNOI_NEIGHBOURS_H
 #define DELYNOI_NEIGHBOURS_H
 
@@ -25,7 +27,7 @@ namespace Delynoi {
         /*
          * Constructor. Sets one of the two polygons
          */
-        NeighboursBySegment(int i1);
+        explicit NeighboursBySegment(int i1);
 
         /*
          * Constructor. Sets both incident polygons
@@ -35,7 +37,7 @@ namespace Delynoi {
         /*
          * Constructor. Sets both incident polygons, given as a pair
          */
-        NeighboursBySegment(const Pair<int> &p);
+        explicit NeighboursBySegment(const Pair<int> &p);
 
         /*
          * Sets a new neighbour
@@ -79,4 +81,5 @@ namespace Delynoi {
     };
 }
 
-#endif 
+#endif
+#pragma clang diagnostic pop

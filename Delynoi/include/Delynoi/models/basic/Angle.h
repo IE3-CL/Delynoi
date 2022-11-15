@@ -1,3 +1,7 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedStructInspection"
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef DELYNOI_ANGLE_H
 #define DELYNOI_ANGLE_H
 
@@ -17,7 +21,7 @@ namespace Delynoi {
         /*
          * Constructor. Takes an angle value and obtains the equivalent between 0 and 180.
          */
-        Angle(double a) {
+        explicit Angle(double a) {
             a = a - 360.0 * int(a / 360);
             if (a >= 0 && a < 180) {
                 angle = a;
@@ -43,4 +47,5 @@ namespace Delynoi {
     };
 }
 
-#endif 
+#endif
+#pragma clang diagnostic pop

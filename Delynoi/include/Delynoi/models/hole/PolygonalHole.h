@@ -1,3 +1,6 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef DELYNOI_POLYGONALHOLE_H
 #define DELYNOI_POLYGONALHOLE_H
 
@@ -14,9 +17,10 @@ namespace Delynoi {
         /*
          * Constructor.
          */
-        PolygonalHole(std::vector<Point> &p);
+        explicit PolygonalHole(std::vector<Point> &p);
     };
 
 }
 
 #endif
+#pragma clang diagnostic pop

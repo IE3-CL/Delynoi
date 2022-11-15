@@ -39,10 +39,8 @@ namespace Delynoi {
          * @param x argument of the function
          * @return function result
          */
-        double apply(double x);
+        double apply(double x) override;
     };
 }
 
 #endif
-
-

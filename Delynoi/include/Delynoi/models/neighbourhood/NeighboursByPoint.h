@@ -1,3 +1,6 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef DELYNOI_NEIGHBOURSBYPOINT_H
 #define DELYNOI_NEIGHBOURSBYPOINT_H
 
@@ -23,12 +26,12 @@ namespace Delynoi {
         /*
          * Constructor. Receives one neighbour
          */
-        NeighboursByPoint(int n);
+        explicit NeighboursByPoint(int n);
 
         /*
          * Constructor. Receives a list of neighbours
          */
-        NeighboursByPoint(std::vector<int> n);
+        explicit NeighboursByPoint(std::vector<int> n);
 
         /* Adds a new neighbour to the list
          * @param n neighbour to add
@@ -53,3 +56,4 @@ namespace Delynoi {
 }
 
 #endif
+#pragma clang diagnostic pop

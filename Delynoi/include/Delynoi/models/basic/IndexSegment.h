@@ -1,3 +1,6 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #ifndef DELYNOI_INDEXSEGMENT_H
 #define DELYNOI_INDEXSEGMENT_H
 
@@ -11,7 +14,7 @@ namespace Delynoi {
     class IndexSegment : public Segment<int> {
     public:
         /*
-         *
+         * Hash
          */
         std::size_t hash = 0;
 
@@ -44,7 +47,7 @@ namespace Delynoi {
          * @param point to check
          * @return if the point is contained or not
          */
-        bool contains(const std::vector<Point> &p, const IndexSegment& s);
+        bool contains(const std::vector<Point> &p, const IndexSegment &s);
 
         /*
          * @param p mesh points
@@ -64,7 +67,7 @@ namespace Delynoi {
          * @param inter intersection point (only valid if segments intersect)
          * @return segments intersect or not
          */
-        bool intersection(const std::vector<Point> &points, const PointSegment& other, Point &inter);
+        bool intersection(const std::vector<Point> &points, const PointSegment &other, Point &inter);
 
         /*  Determines whether two segments intersect or not. Sets the intersection point in the last argument.
          * @param p mesh points
@@ -72,7 +75,7 @@ namespace Delynoi {
          * @param inter intersection point (only valid if segments intersect)
          * @return segments intersect or not
          */
-        bool intersection(const std::vector<Point> &points, const IndexSegment& other, Point &inter);
+        bool intersection(const std::vector<Point> &points, const IndexSegment &other, Point &inter);
 
         /*  Determines a segment is contained in this one.
          * @param s segment to check
@@ -125,4 +128,5 @@ namespace Delynoi {
     };
 }
 
-#endif 
+#endif
+#pragma clang diagnostic pop

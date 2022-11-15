@@ -1,3 +1,7 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+#pragma ide diagnostic ignored "HidingNonVirtualFunction"
+
 #ifndef DELYNOI_REGION_H
 #define DELYNOI_REGION_H
 
@@ -45,7 +49,7 @@ namespace Delynoi {
         /*
          * Constructor.
          */
-        Region(std::vector<Point> &points);
+        explicit Region(std::vector<Point> &points);
 
         /*
          * Default constructor
@@ -109,7 +113,7 @@ namespace Delynoi {
         /* Adds seed points reading them from a file
          * @param fileName name of the file from which the seed points will be read
          */
-        void addSeedsFromFile(const std::string& fileName);
+        void addSeedsFromFile(const std::string &fileName);
 
         /*
          * @return the axis oriented bounding box of the region
@@ -147,3 +151,4 @@ namespace Delynoi {
 }
 
 #endif
+#pragma clang diagnostic pop
