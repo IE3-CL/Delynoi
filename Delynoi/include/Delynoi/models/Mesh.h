@@ -1,4 +1,5 @@
 #pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #pragma ide diagnostic ignored "cppcoreguidelines-pro-type-member-init"
 #pragma ide diagnostic ignored "cert-err34-c"
 
@@ -61,17 +62,22 @@ namespace Delynoi {
          */
         void printInStream(std::ofstream &file);
 
-        /* Print the mesh contents in a file
+        /* Print the mesh contents in a file relative to user path
          * @param fileName name of the file to print
          */
         void printInFile(const std::string &fileName);
+
+        /* Print the mesh contents in a file relative to absolute path
+         * @param fileName name of the file to print
+         */
+        void printInPath(const std::string &path);
 
         /* Creates the mesh (fill its contents) from a file
          * @param fileName name of the file to read
          * @param startIndex Index to start reading the informtion (so to be compatible with both zero and one-indexed
          * standards)
          */
-        void createFromFile(std::string fileName, int startIndex = 0);
+        void createFromFile(const std::string &fileName, int startIndex = 0);
 
         /* Creates the mesh (fill its contents) from a file
          * @param ofstream stream from which the mesh will be read
@@ -161,8 +167,8 @@ namespace Delynoi {
     }
 
     template<typename T>
-    void Mesh<T>::createFromFile(std::string fileName, int startIndex) {
-        std::ifstream infile = utilities::openFile(std::move(fileName));
+    void Mesh<T>::createFromFile(const std::string &fileName, int startIndex) {
+        std::ifstream infile = utilities::openFile(fileName);
 
         createFromStream(infile, startIndex);
 
@@ -207,9 +213,11 @@ namespace Delynoi {
 
     template<typename T>
     void Mesh<T>::printInFile(const std::string &fileName) {
-        std::string path = utilities::getPath();
-        path += fileName;
+        this->printInPath(utilities::getPath() + fileName);
+    }
 
+    template<typename T>
+    void Mesh<T>::printInPath(const std::string &path) {
         std::ofstream file;
         file.open(path, std::ios::out);
         file << std::fixed << std::setprecision(DelynoiConfig::instance()->getPrecision());

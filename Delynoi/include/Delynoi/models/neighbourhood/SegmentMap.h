@@ -71,10 +71,15 @@ namespace Delynoi {
          */
         int size();
 
-        /* Prints the map information in a file
-         * @param fileName name of the file
+        /* Prints the map information in a file relative to user path
+         * @param fileName name of the file to print
          */
         void printInFile(const std::string &fileName);
+
+        /* Prints the map information in a file relative to absolute path
+         * @param fileName name of the file to print
+         */
+        void printInPath(const std::string &path);
 
         /* Checks if a given segment is in the map
          * @param s segment to check

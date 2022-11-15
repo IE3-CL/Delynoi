@@ -205,9 +205,10 @@ void Region::cleanSeedPoints() {
 }
 
 void Region::printInFile(const std::string &fileName) {
-    std::string path = utilities::getPath();
-    path += fileName;
+    this->printInPath(utilities::getPath() + fileName);
+}
 
+void Region::printInPath(const std::string &path) {
     std::ofstream file;
     file.open(path, std::ios::out);
 
@@ -233,7 +234,6 @@ void Region::printInFile(const std::string &fileName) {
     file << 0 << std::endl;
 
     file.close();
-
 }
 
 #pragma clang diagnostic pop

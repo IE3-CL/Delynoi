@@ -142,11 +142,15 @@ namespace Delynoi {
          */
         void cleanSeedPoints();
 
-        /*
-         * Prints the region in a file
-         * @param fileName name of the file to print the region to
+        /* Prints the region in a file relative to user path
+         * @param fileName name of the file to print
          */
         void printInFile(const std::string &fileName);
+
+        /* Prints the region in a file relative to absolute path
+         * @param fileName name of the file to print
+         */
+        void printInPath(const std::string &path);
     };
 }
 

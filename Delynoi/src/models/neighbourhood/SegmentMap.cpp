@@ -42,9 +42,10 @@ int SegmentMap::size() {
 }
 
 void SegmentMap::printInFile(const std::string &fileName) {
-    std::string path = utilities::getPath();
-    path += fileName;
+    this->printInPath(utilities::getPath() + fileName);
+}
 
+void SegmentMap::printInPath(const std::string &path) {
     std::ofstream file;
     file.open(path, std::ios::out);
 

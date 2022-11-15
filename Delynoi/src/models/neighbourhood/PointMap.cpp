@@ -45,12 +45,12 @@ int PointMap::size() {
 }
 
 void PointMap::printInFile(const std::string &fileName) {
-    std::string path = utilities::getPath();
-    path += fileName;
+    this->printInPath(utilities::getPath() + fileName);
+}
 
+void PointMap::printInPath(const std::string &path) {
     std::ofstream file;
     file.open(path, std::ios::out);
-
 
     for (const auto &v: this->map) {
         file << v.first.getString() + " ";

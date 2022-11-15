@@ -57,10 +57,15 @@ namespace Delynoi {
          */
         int size();
 
-        /* Prints the map to a file
-         * @param fileName name of the file
+        /* Prints the map to a file relative to user path
+         * @param fileName name of the file to print
          */
         void printInFile(const std::string &fileName);
+
+        /* Prints the map to a file relative to absolute path
+         * @param fileName name of the file to print
+         */
+        void printInPath(const std::string &path);
     };
 }
 
