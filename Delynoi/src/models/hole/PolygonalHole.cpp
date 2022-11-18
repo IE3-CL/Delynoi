@@ -13,5 +13,4 @@ PolygonalHole::PolygonalHole(std::vector<Point> &p) : Polygon(p) {
     Polygon::getSegments(this->segments);
 }
 
-
 #pragma clang diagnostic pop

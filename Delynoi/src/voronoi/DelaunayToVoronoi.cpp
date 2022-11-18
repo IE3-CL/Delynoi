@@ -109,7 +109,6 @@ DelaunayToVoronoi::DelaunayToVoronoi(DelaunayInfo &del) {
     this->mesh = Mesh<Polygon>(points, voronoiCells, voronoiEdges, pointMap);
 }
 
-
 int DelaunayToVoronoi::getCircumcenter(DelaunayInfo &del, int triangle, int edge) {
     if (triangle != -1) {
         return del.triangles[triangle].getCircumcenterIndex();

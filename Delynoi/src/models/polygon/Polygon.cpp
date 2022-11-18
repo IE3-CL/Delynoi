@@ -227,7 +227,6 @@ int Polygon::numberOfSides() const {
     return (int) points.size();
 }
 
-
 bool Polygon::isClockwise(std::vector<Point> &p) {
     int n = (int) points.size();
 

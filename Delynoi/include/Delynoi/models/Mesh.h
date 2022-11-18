@@ -135,7 +135,6 @@ namespace Delynoi {
         NeighboursBySegment getNeighbours(IndexSegment s);
     };
 
-
     template<typename T>
     Mesh<T>::Mesh() {
         this->edges = new SegmentMap;

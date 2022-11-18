@@ -11,14 +11,14 @@ using namespace Delynoi;
 void generateTest_Polygon(std::string testName, Region r, std::vector<Point> points) {
     TriangleVoronoiGenerator g(points, r);
 
-    Mesh <Polygon> m = g.getMesh();
+    Mesh<Polygon> m = g.getMesh();
     m.printInFile(testName + ".txt");
 }
 
 void generateTest_Triangle(std::string testName, Region r, std::vector<Point> points) {
     TriangleDelaunayGenerator g(points, r);
 
-    Mesh <Triangle> m = g.getConformingDelaunayTriangulation();
+    Mesh<Triangle> m = g.getConformingDelaunayTriangulation();
     m.printInFile(testName + "_triangle.txt");
 }
 
@@ -55,7 +55,6 @@ int main() {
     generateTest_Polygon("squareRandomNoise5", square, square.getSeedPoints());
     generateTest_Triangle("squareRandomNoise5", square, square.getSeedPoints());
     square.cleanSeedPoints();
-
 
     square.generateSeedPoints(PointGenerator(functions::random_double(0, 10), functions::random_double(0, 10)), 10, 10);
     generateTest_Polygon("squareRandom10", square, square.getSeedPoints());
@@ -191,7 +190,6 @@ int main() {
     generateTest_Polygon("quarter_circleUniformNoise10", quarter_circle, quarter_circle.getSeedPoints());
     generateTest_Triangle("quarter_circleUniformNoise10", quarter_circle, quarter_circle.getSeedPoints());
     quarter_circle.cleanSeedPoints();
-
 
     unicorn.generateSeedPoints(PointGenerator(functions::constant(), functions::constant()), 10, 10);
     generateTest_Polygon("unicornUniform10", unicorn, unicorn.getSeedPoints());

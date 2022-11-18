@@ -31,7 +31,6 @@ Region::Region(const Polygon &other, std::vector<Point> &points) : Polygon() {
     Polygon::mutate(this->p);
 }
 
-
 Region::Region(const Region &other) : Polygon(other) {
     this->p = other.p;
     this->holes.assign(other.holes.begin(), other.holes.end());
@@ -53,14 +52,12 @@ void Region::addHole(Hole h) {
     ClipperLib::Paths solution;
 
     for (auto &i: this->p) {
-        region << ClipperLib::IntPoint((int) (config->getScale() * i.getX()),
-                                       (int) (config->getScale() * i.getY()));
+        region << ClipperLib::IntPoint((int) (config->getScale() * i.getX()), (int) (config->getScale() * i.getY()));
     }
 
     std::vector<Point> holePoints = h.getPoints();
     for (auto &holePoint: holePoints) {
-        hole << ClipperLib::IntPoint((int) (config->getScale() * holePoint.getX()),
-                                     (int) (config->getScale() * holePoint.getY()));
+        hole << ClipperLib::IntPoint((int) (config->getScale() * holePoint.getX()), (int) (config->getScale() * holePoint.getY()));
     }
 
     ClipperLib::Clipper clipper;
@@ -73,8 +70,7 @@ void Region::addHole(Hole h) {
         std::vector<Point> newPoints;
 
         for (auto &i: solution[0]) {
-            newPoints.emplace_back(i.X / (1.0 * config->getScale()),
-                                   i.Y / (1.0 * config->getScale()));
+            newPoints.emplace_back(i.X / (1.0 * config->getScale()), i.Y / (1.0 * config->getScale()));
         }
 
         this->mutate(newPoints);
@@ -158,13 +154,13 @@ void Region::clean() {
 
     }
 
+    newSeeds.reserve(toKeep.size());
     for (int i: toKeep) {
         newSeeds.push_back(seedPoints[i]);
     }
 
     this->seedPoints = newSeeds;
 }
-
 
 std::vector<Point> Region::getRegionPoints() {
     std::vector<Point> points;

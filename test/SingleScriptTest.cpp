@@ -266,7 +266,6 @@ int main() {
                 cellPoints.push_back(index1);
                 //pointMap->insert(del.circumcenters[index1], cellIndex);
 
-
                 if (t1 != -1) {
                     edge = edges[triangles[t1].nextEdge(index, edge, edgeMap)];
                 } else {

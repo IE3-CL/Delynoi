@@ -48,8 +48,6 @@ namespace Delynoi {
          * Map that relates edges endpoints and the index of the corresponding EdgeData
          */
         std::unordered_map<Key, int, KeyHasher> edgeMap;
-
-
         UniqueList<Point> circumcenters;
 
         /*
