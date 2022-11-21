@@ -24,8 +24,8 @@ namespace Delynoi {
         /*
          * SegmentMap and PointMap instances representing neighbourhood information
          */
-        SegmentMap *edges;
-        PointMap *pointMap;
+        SegmentMap *edges = nullptr;
+        PointMap *pointMap = nullptr;
 
         /*
          * List of points fo the mesh (forced to be unique)
@@ -36,6 +36,7 @@ namespace Delynoi {
          * List of elements of the mesh
          */
         std::vector<T> polygons;
+
     public:
         /*
          * Default constructor
@@ -56,6 +57,11 @@ namespace Delynoi {
          * Copy constructor
          */
         Mesh(const Mesh &m);
+
+        /*
+         * Clear data
+         */
+        void clear();
 
         /* Prints the mesh contents in a file stream
          * @param file file stream to print the mesh
@@ -136,10 +142,7 @@ namespace Delynoi {
     };
 
     template<typename T>
-    Mesh<T>::Mesh() {
-        this->edges = new SegmentMap;
-        this->pointMap = new PointMap;
-    }
+    Mesh<T>::Mesh() = default;
 
     template<typename T>
     Mesh<T>::Mesh(std::vector<Point> &p, std::vector<T> &e, SegmentMap *s, PointMap *pM) {
@@ -166,16 +169,23 @@ namespace Delynoi {
     }
 
     template<typename T>
+    void Mesh<T>::clear() {
+        delete this->edges;
+        delete this->pointMap;
+    }
+
+    template<typename T>
     void Mesh<T>::createFromFile(const std::string &fileName, int startIndex) {
         std::ifstream infile = utilities::openFile(fileName);
-
         createFromStream(infile, startIndex);
-
         infile.close();
     }
 
     template<typename T>
     void Mesh<T>::createFromStream(std::ifstream &infile, int startIndex) {
+        if (this->edges == nullptr) this->edges = new SegmentMap;
+        if (this->pointMap == nullptr) this->pointMap = new PointMap;
+
         std::string line;
         std::getline(infile, line);
         int numberMeshPoints = std::atoi(line.c_str());
@@ -247,10 +257,12 @@ namespace Delynoi {
             file << points[i].getString() << std::endl;
         }
 
-        file << this->edges->size() << std::endl;
-        for (auto e: this->edges->getMap()) {
-            IndexSegment edge = e.first;
-            file << edge.getString() << std::endl;
+        if (this->edges != nullptr) {
+            file << this->edges->size() << std::endl;
+            for (auto e: this->edges->getMap()) {
+                IndexSegment edge = e.first;
+                file << edge.getString() << std::endl;
+            }
         }
 
         file << this->polygons.size() << std::endl;
