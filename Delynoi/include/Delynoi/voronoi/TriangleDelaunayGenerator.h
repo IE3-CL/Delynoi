@@ -17,7 +17,7 @@ extern "C" {
 
 namespace Delynoi {
     /*
-     * Class in charge of computing the Delaunay triangulation using the seed points and domain given, using Triangle
+     * Class in charge of computing the Delaunay triangulation using the seed points and domain given, using Triangle.
      */
     class TriangleDelaunayGenerator {
     private:
@@ -92,6 +92,11 @@ namespace Delynoi {
          * @param regionIndex indexes of the points (in point_list) definining the region
          */
         static void writeTriangleInputFile(UniqueList<Point> &point_list, Region _region, std::vector<int> regionIndex);
+
+        /*
+         * Clear data
+         */
+        void clear();
 
         /* Creates a Mesh (in Delynoi format) from the information of the Delaunay triangulation
         * @return Delaunay triangulation in Mesh form

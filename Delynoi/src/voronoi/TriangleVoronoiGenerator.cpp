@@ -18,3 +18,8 @@ Mesh<Polygon> &TriangleVoronoiGenerator::getMesh() {
 Mesh<Polygon> &TriangleVoronoiGenerator::getTriangulation() {
     return this->delaunay;
 }
+
+void TriangleVoronoiGenerator::clear() {
+    this->voronoi.clear();
+    this->delaunay.clear();
+}

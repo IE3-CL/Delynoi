@@ -10,7 +10,7 @@
 
 namespace Delynoi {
     /*
-     * Class in charge of creating the Voronoi diagram from the Delaunay triangulation
+     * Class in charge of creating the Voronoi diagram from the Delaunay triangulation.
      */
     class TriangleVoronoiGenerator {
     private:
@@ -35,6 +35,11 @@ namespace Delynoi {
          * @return delaunay diagram
          */
         Mesh<Polygon> &getTriangulation();
+
+        /*
+         * Clear data
+         */
+        void clear();
     };
 }
 
