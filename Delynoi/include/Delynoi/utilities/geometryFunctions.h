@@ -9,9 +9,9 @@
 #include <vector>
 
 namespace Delynoi {
-/*
- * Namespace that contains all standard geometric functions
- */
+    /*
+     * Namespace that contains all standard geometric functions.
+     */
     namespace geometry_functions {
         /* Calculates the area2 defined by three points
          * @param p1 p2 p3 points that define the area

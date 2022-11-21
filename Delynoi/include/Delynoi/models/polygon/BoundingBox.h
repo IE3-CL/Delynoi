@@ -5,9 +5,9 @@
 #include <Delynoi/models/basic/PointSegment.h>
 
 namespace Delynoi {
-/*
- * Models an axes oriented bounding box (basically, a rectangle)
- */
+    /*
+     * Models an axes oriented bounding box (basically, a rectangle).
+     */
     class BoundingBox {
     private:
         /*

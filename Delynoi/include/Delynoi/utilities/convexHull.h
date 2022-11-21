@@ -4,9 +4,9 @@
 #include <Delynoi/models/basic/Point.h>
 
 namespace Delynoi {
-/*
- * Namespace that contains all functions related to the computation of the convex hull
- */
+    /*
+     * Namespace that contains all functions related to the computation of the convex hull.
+     */
     namespace convex {
         /* Computes the convex hull of a set of points
          * @param points list of points which convex hull will be calculated

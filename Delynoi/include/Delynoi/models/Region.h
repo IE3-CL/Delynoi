@@ -19,10 +19,10 @@
 #include <Delynoi/config/DelynoiConfig.h>
 
 namespace Delynoi {
-/*
- * Models a region inside which a mesh can be generated. Region inherits from Polygon (as it is a polygon after all),
- * but keeps its points directly instead of their indexes, and can contain holes and seed points (used for mesh generation)
- */
+    /*
+     * Models a region inside which a mesh can be generated. Region inherits from Polygon (as it is a polygon after all),
+     * but keeps its points directly instead of their indexes, and can contain holes and seed points (used for mesh generation).
+     */
     class Region : public Polygon {
     private:
         /*

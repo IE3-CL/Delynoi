@@ -6,7 +6,7 @@
 
 namespace Delynoi {
     /*
-     * Structure used as a key for the EdgeData map (used for the Voronoi diagram generation algorithm)
+     * Structure used as a key for the EdgeData map (used for the Voronoi diagram generation algorithm).
      */
     struct Key {
         int first;

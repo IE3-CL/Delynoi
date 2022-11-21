@@ -8,9 +8,9 @@
 #include <Delynoi/models/basic/PointSegment.h>
 
 namespace Delynoi {
-/*
- * This class models a segment which endpoints are represented by their indexes in the mesh.
- */
+    /*
+     * This class models a segment which endpoints are represented by their indexes in the mesh.
+     */
     class IndexSegment : public Segment<int> {
     public:
         /*

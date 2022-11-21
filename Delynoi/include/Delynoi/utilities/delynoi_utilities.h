@@ -11,7 +11,7 @@
 
 namespace Delynoi {
     /*
-     * Namespace that includes common geometric utilities of the Delynoi library
+     * Namespace that includes common geometric utilities of the Delynoi library.
      */
     namespace delynoi_utilities {
         /*

@@ -9,9 +9,9 @@
 #include <Delynoi/config/DelynoiConfig.h>
 
 namespace Delynoi {
-/*
- * Structure modeling a cartesian angle for segments comparison. Its value is bounded between 0 and 180.
- */
+    /*
+     * Structure modeling a cartesian angle for segments comparison. Its value is bounded between 0 and 180.
+     */
     struct Angle {
         /*
          * Value of the angle

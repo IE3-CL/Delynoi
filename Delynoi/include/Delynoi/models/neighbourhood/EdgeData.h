@@ -5,10 +5,10 @@
 #include <Delynoi/utilities/utilities.h>
 
 namespace Delynoi {
-/*
- * Class that models the neighbourhood information of a Delaunay triangulation (segment represnted by two points and the
- * two incident triangles).
- */
+    /*
+     * Class that models the neighbourhood information of a Delaunay triangulation (segment represnted by two points and the
+     * two incident triangles).
+     */
     class EdgeData {
     public:
         /*

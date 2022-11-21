@@ -10,9 +10,9 @@
 #include <Delynoi/models/basic/IndexSegment.h>
 
 namespace Delynoi {
-/*
- * Class that models a generic hole, which has a center and a list of points that define its boundary.
- */
+    /*
+     * Class that models a generic hole, which has a center and a list of points that define its boundary.
+     */
     class Hole {
     protected:
         /*

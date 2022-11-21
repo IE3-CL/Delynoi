@@ -19,9 +19,7 @@ void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, cha
     this->callTriangle(point_list, switches, std::vector<PointSegment>());
 }
 
-void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, char *switches,
-                                             const std::vector<PointSegment> &restrictedSegments) {
-
+void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, char *switches, const std::vector<PointSegment> &restrictedSegments) {
     this->empty = true;
     struct triangulateio in{}, out{};
 
@@ -156,8 +154,7 @@ Mesh<Triangle> &TriangleDelaunayGenerator::getConformingDelaunayTriangulation() 
     return mesh;
 }
 
-void
-TriangleDelaunayGenerator::writeTriangleInputFile(UniqueList<Point> &point_list, Region _region, std::vector<int> regionIndex) {
+void TriangleDelaunayGenerator::writeTriangleInputFile(UniqueList<Point> &point_list, Region _region, std::vector<int> regionIndex) {
     std::string path = utilities::getPath();
     path += "toTriangle.poly";
 
@@ -206,8 +203,7 @@ Mesh<Triangle> TriangleDelaunayGenerator::getConstrainedDelaunayTriangulation() 
     return initializeMesh<Triangle>();
 }
 
-Mesh<Triangle>
-TriangleDelaunayGenerator::getConstrainedDelaunayTriangulation(const std::vector<PointSegment> &restrictedSegments) {
+Mesh<Triangle> TriangleDelaunayGenerator::getConstrainedDelaunayTriangulation(const std::vector<PointSegment> &restrictedSegments) {
     if (!this->empty) {
         char switches[] = "pzejQ";
         callTriangle(seedPoints, switches, restrictedSegments);

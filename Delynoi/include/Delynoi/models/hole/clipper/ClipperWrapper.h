@@ -9,10 +9,10 @@
 #include <Delynoi/models/polygon/Polygon.h>
 
 namespace Delynoi {
-/*
- * Class that transform the polygon and region information of the Delynoi library to a format accepted by Clipper,
- * computing the intersection as required.
- */
+    /*
+     * Class that transform the polygon and region information of the Delynoi library to a format accepted by Clipper,
+     * computing the intersection as required.
+     */
     class ClipperWrapper {
     private:
         /*

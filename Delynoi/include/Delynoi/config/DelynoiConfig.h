@@ -8,9 +8,10 @@
 #include <Delynoi/utilities/Precision.h>
 
 namespace Delynoi {
-
-    /* This class contains all global configuration parameters of the Delynoi
-     * library, which default values can be changed by the user*/
+    /*
+     * This class contains all global configuration parameters of the Delynoi
+     * library, which default values can be changed by the user.
+     */
     class DelynoiConfig {
     private:
         /*

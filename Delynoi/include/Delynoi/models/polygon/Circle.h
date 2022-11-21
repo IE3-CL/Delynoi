@@ -9,9 +9,9 @@
 #include <Delynoi/utilities/delynoi_utilities.h>
 
 namespace Delynoi {
-/*
- * Class that models a circle using its center and its radius.
- */
+    /*
+     * Class that models a circle using its center and its radius.
+     */
     class Circle {
     protected:
         /*

@@ -10,9 +10,9 @@
 #include <unordered_map>
 
 namespace Delynoi {
-/*
- * Class that models a triangle, which, differently from an arbitrary polygon, has a circumcenter.
- */
+    /*
+     * Class that models a triangle, which, differently from an arbitrary polygon, has a circumcenter.
+     */
     class Triangle : public Polygon {
     private:
         /*

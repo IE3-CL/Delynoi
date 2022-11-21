@@ -58,4 +58,5 @@ namespace Delynoi {
         }
     }
 }
+
 #pragma clang diagnostic pop

@@ -18,9 +18,9 @@
 #include <climits>
 
 namespace Delynoi {
-/*
- * Models a polygon (with an arbitrary number of sides)
- */
+    /*
+     * Models a polygon (with an arbitrary number of sides).
+     */
     class Polygon {
     protected:
         /*

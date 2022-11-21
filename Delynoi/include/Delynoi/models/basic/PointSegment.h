@@ -8,9 +8,9 @@
 #include <Delynoi/models/basic/Segment.h>
 
 namespace Delynoi {
-/*
- * This class models a segment which endpoints are represented by the points directly.
- */
+    /*
+     * This class models a segment which endpoints are represented by the points directly.
+     */
     class PointSegment : public Segment<Point> {
     public:
         /*

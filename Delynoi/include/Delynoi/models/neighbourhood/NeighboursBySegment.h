@@ -7,10 +7,10 @@
 #include <Delynoi/utilities/utilities.h>
 
 namespace Delynoi {
-/*
- * Class that models polygon neighbourhood by segment, meaning, the two (or one in case it is a boundary segment) that share
- * a segment.
- */
+    /*
+     * Class that models polygon neighbourhood by segment, meaning, the two (or one in case it is a boundary segment) that share
+     * a segment.
+     */
     class NeighboursBySegment {
     private:
         /*

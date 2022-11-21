@@ -9,9 +9,9 @@
 #include <Delynoi/models/hole/Hole.h>
 
 namespace Delynoi {
-/*
- * Class modeling a polygonal hole.
- */
+    /*
+     * Class modeling a polygonal hole.
+     */
     class PolygonalHole : public Hole, public Polygon {
     public:
         /*

@@ -5,7 +5,7 @@
 
 namespace Delynoi {
     /*
-     * Class that triangulates a polygon using the classic ear triangulation scheme
+     * Class that triangulates a polygon using the classic ear triangulation scheme.
      */
     class EarTriangulationGenerator : public TriangulationGenerator {
     private:

@@ -3,7 +3,7 @@
 
 namespace Delynoi {
     /*
-     * Class used dor the compuattion of the Voronoi diagram. It relates a point index to an edge index
+     * Class used dor the compuattion of the Voronoi diagram. It relates a point index to an edge index.
      */
     class PointData {
     public:

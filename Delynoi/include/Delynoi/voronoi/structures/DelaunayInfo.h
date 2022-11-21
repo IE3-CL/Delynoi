@@ -10,7 +10,7 @@
 namespace Delynoi {
     /*
      * Structure that contains all information about the Delaunay triangulation required for the Voronoi diagram
-     * calculation
+     * calculation.
      */
     struct DelaunayInfo {
         /*

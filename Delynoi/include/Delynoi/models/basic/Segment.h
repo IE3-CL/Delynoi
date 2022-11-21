@@ -10,10 +10,9 @@
 #include <Delynoi/config/DelynoiConfig.h>
 
 namespace Delynoi {
-/*
- * Template class that encapsulates all behaviour common to segments, no matter how they are represented.
- */
-
+    /*
+     * Template class that encapsulates all behaviour common to segments, no matter how they are represented.
+     */
     template<class T>
     class Segment {
     protected:

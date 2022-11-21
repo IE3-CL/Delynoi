@@ -7,7 +7,7 @@
 
 namespace Delynoi {
     /*
-     * Class that trriangulates a Polygon using its Delaunay triangulation
+     * Class that trriangulates a Polygon using its Delaunay triangulation.
      */
     class DelaunayTriangulationGenerator : public TriangulationGenerator {
     public:

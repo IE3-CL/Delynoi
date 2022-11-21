@@ -9,7 +9,7 @@
 
 namespace Delynoi {
     /*
-     * Class in charge of using the Delaunay triangulation to compute the Voronoi diagram
+     * Class in charge of using the Delaunay triangulation to compute the Voronoi diagram.
      */
     class DelaunayToVoronoi {
     private:

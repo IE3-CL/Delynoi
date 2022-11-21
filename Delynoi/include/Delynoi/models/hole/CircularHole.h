@@ -12,9 +12,9 @@
 #include <Delynoi/models/polygon/Polygon.h>
 
 namespace Delynoi {
-/*
- * Class modeling a circular hole.
- */
+    /*
+     * Class modeling a circular hole.
+     */
     class CircularHole : public Hole, public Circle {
     private:
         /*

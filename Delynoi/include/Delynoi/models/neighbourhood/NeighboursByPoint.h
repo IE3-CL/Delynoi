@@ -7,10 +7,10 @@
 #include <vector>
 
 namespace Delynoi {
-/*
- * Class that models polygon neighbourhood by point, meaning, it lists all polygons (referred by their indexes) that share
- * a point.
- */
+    /*
+     * Class that models polygon neighbourhood by point, meaning, it lists all polygons (referred by their indexes) that share
+     * a point.
+     */
     class NeighboursByPoint {
     private:
         /*

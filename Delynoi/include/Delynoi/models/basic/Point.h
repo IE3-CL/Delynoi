@@ -10,9 +10,9 @@
 #include <Delynoi/utilities/utilities.h>
 
 namespace Delynoi {
-/*
- * Models a geometrical two dimensional point.
- */
+    /*
+     * Models a geometrical two dimensional point.
+     */
     class Point {
     private:
         /*
