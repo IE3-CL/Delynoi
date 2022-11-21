@@ -10,6 +10,10 @@ using namespace Delynoi;
 
 SegmentMap::SegmentMap() = default;
 
+SegmentMap::~SegmentMap() {
+    this->map.clear();
+}
+
 void SegmentMap::insert(const IndexSegment &s, int polygonIndex) {
     auto got = this->map.find(s);
 

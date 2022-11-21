@@ -8,6 +8,10 @@ using namespace Delynoi;
 
 PointMap::PointMap() = default;
 
+PointMap::~PointMap() {
+    map.clear();
+}
+
 void PointMap::insert(Point p, int neighbour) {
     auto got = this->map.find(p);
 

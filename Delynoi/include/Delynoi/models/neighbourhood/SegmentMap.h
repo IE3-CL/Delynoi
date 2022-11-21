@@ -13,19 +13,19 @@
 #include <Delynoi/models/basic/IndexSegment.h>
 
 namespace Delynoi {
-/*
- * Struct used to compute the hash value of an NeighboursBySegment instance (so it can be used as hash map key)
- */
+    /*
+     * Struct used to compute the hash value of an NeighboursBySegment instance (so it can be used as hash map key).
+     */
     struct NeighboursHasher {
         std::size_t operator()(const NeighboursBySegment &k) const {
             return utilities::hash32(k.getFirst()) + utilities::hash32(k.getSecond());
         }
     };
 
-/*
- * Class that models the neighbourhood by segment relationship, keeping a map that relates each mesh segment to all polygons
- * that contain it
- */
+    /*
+     * Class that models the neighbourhood by segment relationship, keeping a map that relates each mesh segment
+     * to all polygons that contain it.
+     */
     class SegmentMap {
     protected:
         /*
@@ -37,6 +37,11 @@ namespace Delynoi {
          * Default constructor
          */
         SegmentMap();
+
+        /*
+         * Destructor
+         */
+        ~SegmentMap();
 
         /* Inserts a new segment on the map, given one of the polygons that contains it
          * @param s segment to insert

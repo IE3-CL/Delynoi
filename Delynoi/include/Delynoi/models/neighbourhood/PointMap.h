@@ -11,10 +11,10 @@
 #include <fstream>
 
 namespace Delynoi {
-/*
- * Class that models the neighbourhood by point relationship, keeping a map that relates each mesh point to all polygons
- * that contain it
- */
+    /*
+     * Class that models the neighbourhood by point relationship, keeping a map that relates each mesh point to all polygons
+     * that contain it.
+     */
     class PointMap {
     protected:
         /*
@@ -26,6 +26,11 @@ namespace Delynoi {
          * Constructor
          */
         PointMap();
+
+        /*
+         * Destructor
+         */
+        ~PointMap();
 
         /*
          * Inserts a new point to the map, including a polygon that contains it
