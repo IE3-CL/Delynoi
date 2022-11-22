@@ -25,6 +25,7 @@ This will create the ``delynoi`` folder inside ``lib``. Then, inside ``CMakeList
 
 ```cmake
 import_library(lib/delynoi/delynoi)
+import_library(lib/delynoi/lib/utilities)
 target_link_libraries(MyProject Delynoi)
 ```
 
