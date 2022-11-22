@@ -13,8 +13,20 @@ or created from a number of generation rules included in the library. New genera
 is considered as a mesh that is left available for use if needed. Then, it computes the constrained Voronoi diagram.</li>
 </ul>
 
-<h2>Author</h2>
-<a href="https://github.com/capalvarez">Catalina Alvarez</a> -  B.Sc., M.Sc., Universidad de Chile.
+## Installation
+
+To use the library, it must be created as a submodule in git inside the path of a project:
+
+```bash
+git submodule add https://github.com/IE3-CL/Delynoi.git lib/delynoi
+```
+
+This will create the ``delynoi`` folder inside ``lib``. Then, inside ``CMakeLists.txt``:
+
+```cmake
+import_library(lib/delynoi/delynoi)
+target_link_libraries(MyProject Delynoi)
+```
 
 <h2>Usage instructions</h2>
 Delynoi is currently for Unix systems only.
@@ -87,3 +99,6 @@ Delaunay Triangulator. </a></li>
 This project is licensed under the GPL License. This program is free software; 
 it can be redistributed or modified under the terms of the GNU General Public License as published by
 the Free Software Foundation.
+
+<h2>Author</h2>
+<a href="https://github.com/capalvarez">Catalina Alvarez</a> -  B.Sc., M.Sc., Universidad de Chile.
