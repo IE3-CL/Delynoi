@@ -59,7 +59,7 @@ namespace Delynoi {
         Mesh(const Mesh &m);
 
         /*
-         * Clear data
+         * Clear mesh data
          */
         void clear();
 

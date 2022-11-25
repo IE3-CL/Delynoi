@@ -95,11 +95,6 @@ namespace Delynoi {
          */
         static void writeTriangleInputFile(UniqueList<Point> &point_list, Region _region, std::vector<int> regionIndex);
 
-        /*
-         * Clear data
-         */
-        void clear();
-
         /* Creates a Mesh (in Delynoi format) from the information of the Delaunay triangulation
         * @return Delaunay triangulation in Mesh form
         */

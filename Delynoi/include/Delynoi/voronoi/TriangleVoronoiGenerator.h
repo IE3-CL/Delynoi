@@ -37,7 +37,7 @@ namespace Delynoi {
         Mesh<Polygon> &getTriangulation();
 
         /*
-         * Clear data
+         * Clear mesh data
          */
         void clear();
     };
