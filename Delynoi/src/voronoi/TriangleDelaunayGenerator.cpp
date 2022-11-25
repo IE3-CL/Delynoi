@@ -149,9 +149,10 @@ Mesh<Triangle> &TriangleDelaunayGenerator::getConformingDelaunayTriangulation() 
         char switches[] = "pzejDQ";
         callTriangle(seedPoints, switches);
     }
-
-    static Mesh<Triangle> mesh = initializeMesh<Triangle>();
-    return mesh;
+    if (this->meshInitialized) return this->mesh;
+    this->mesh = initializeMesh<Triangle>();
+    this->meshInitialized = true;
+    return this->mesh;
 }
 
 void TriangleDelaunayGenerator::writeTriangleInputFile(UniqueList<Point> &point_list, Region _region, std::vector<int> regionIndex) {

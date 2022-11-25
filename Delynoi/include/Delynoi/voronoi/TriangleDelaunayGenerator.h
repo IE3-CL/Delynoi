@@ -43,6 +43,8 @@ namespace Delynoi {
         UniqueList<Point> circumcenters;
         std::unordered_map<Key, int, KeyHasher> edgeMap;
         bool empty = false;
+        bool meshInitialized = false;
+        Mesh<Triangle> mesh;
 
         /* Calls the Triangle library, filling the class members with the result
          * @param point_list points which Delaunay triangulation must be computed
