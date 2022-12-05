@@ -24,7 +24,7 @@ git submodule add https://github.com/IE3-CL/Delynoi.git lib/delynoi
 This will create the ``delynoi`` folder inside ``lib``. Then, inside ``CMakeLists.txt``:
 
 ```cmake
-import_library(lib/delynoi/delynoi)
+import_library(lib/delynoi/Delynoi)
 import_library(lib/delynoi/lib/utilities)
 target_link_libraries(MyProject Delynoi)
 ```
