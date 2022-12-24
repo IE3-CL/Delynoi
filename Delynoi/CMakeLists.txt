@@ -1,8 +1,13 @@
+if (TARGET Delynoi)
+	return()
+endif ()
+
 file(GLOB_RECURSE SRCS ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/*.c)
 file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 add_subdirectory(include/Delynoi/voronoi/lib)
+add_subdirectory(lib/utilities)
 add_library(Delynoi STATIC ${SRCS} ${HEADERS})
 
 # Define headers for this library. PUBLIC headers are used for
@@ -14,7 +19,7 @@ target_include_directories(Delynoi PUBLIC
 		PRIVATE src)
 
 # Depend on a library that we defined in the top-level file
-target_link_libraries(Delynoi triangle Delynoi_utilities)
+target_link_libraries(Delynoi Delynoi_triangle Delynoi_utilities)
 
 # 'make install' to the correct locations (provided by GNUInstallDirs)
 install(TARGETS Delynoi EXPORT DelynoiConfig

@@ -1,11 +1,15 @@
-add_library(triangle STATIC triangle.c)
-target_compile_definitions(triangle PUBLIC -DTRILIBRARY -DANSI_DECLARATORS)
+if (TARGET Delynoi_triangle)
+	return()
+endif ()
+
+add_library(Delynoi_triangle STATIC triangle.c)
+target_compile_definitions(Delynoi_triangle PUBLIC -DTRILIBRARY -DANSI_DECLARATORS)
 if (WIN32)
-	target_compile_definitions(triangle PUBLIC -DNO_TIMER)
+	target_compile_definitions(Delynoi_triangle PUBLIC -DNO_TIMER)
 endif ()
 
 # 'make install' to the correct locations (provided by GNUInstallDirs).
-install(TARGETS triangle EXPORT TriangleConfig
+install(TARGETS Delynoi_triangle EXPORT TriangleConfig
 		ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 		LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 		RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})  # This is for Windows
@@ -17,4 +21,4 @@ install(TARGETS triangle EXPORT TriangleConfig
 install(EXPORT TriangleConfig DESTINATION share/TriangleConfig/cmake)
 
 # This makes the project importable from the build directory
-export(TARGETS triangle FILE TriangleConfig.cmake)
+export(TARGETS Delynoi_triangle FILE TriangleConfig.cmake)

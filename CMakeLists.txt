@@ -11,5 +11,4 @@ include(GNUInstallDirs)
 # Targets that we develop here
 enable_testing()
 add_subdirectory(Delynoi)
-add_subdirectory(lib/utilities)
 add_subdirectory(test)

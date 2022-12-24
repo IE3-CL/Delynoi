@@ -1,3 +1,7 @@
+if (TARGET Delynoi_utilities)
+	return()
+endif ()
+
 file(GLOB_RECURSE SRCS ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 
