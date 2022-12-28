@@ -1,8 +1,8 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "HidingNonVirtualFunction"
-
 #ifndef DELYNOI_REGION_H
 #define DELYNOI_REGION_H
+
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "HidingNonVirtualFunction"
 
 #include <vector>
 #include <Delynoi/models/basic/Segment.h>
@@ -153,5 +153,5 @@ namespace Delynoi {
     };
 }
 
-#endif
 #pragma clang diagnostic pop
+#endif
