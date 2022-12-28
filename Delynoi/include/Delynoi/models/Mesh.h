@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #ifndef DELYNOI_MESH_H
 #define DELYNOI_MESH_H
 
@@ -301,4 +298,3 @@ namespace Delynoi {
 }
 
 #endif
-#pragma clang diagnostic pop

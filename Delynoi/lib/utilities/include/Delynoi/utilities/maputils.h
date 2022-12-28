@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedStructInspection"
-
 #ifndef UTILITIES_MAPUTILS_H
 #define UTILITIES_MAPUTILS_H
 
@@ -23,4 +20,3 @@ namespace Delynoi {
 }
 
 #endif
-#pragma clang diagnostic pop

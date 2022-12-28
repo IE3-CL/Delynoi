@@ -1,8 +1,5 @@
 #include <Delynoi/models/hole/PolygonalHole.h>
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 using namespace Delynoi;
 
 PolygonalHole::PolygonalHole(std::vector<Point> &p) : Polygon(p) {
@@ -12,5 +9,3 @@ PolygonalHole::PolygonalHole(std::vector<Point> &p) : Polygon(p) {
     this->center = this->getCentroid(p);
     Polygon::getSegments(this->segments);
 }
-
-#pragma clang diagnostic pop

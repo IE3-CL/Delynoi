@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #include <Delynoi/models/basic/PointSegment.h>
 
 using namespace Delynoi;
@@ -29,5 +26,3 @@ bool PointSegment::operator==(const PointSegment &other) const {
     return getFirst() == other.getFirst() && getSecond() == other.getSecond() ||
            getFirst() == other.getSecond() && getSecond() == other.getFirst();
 }
-
-#pragma clang diagnostic pop

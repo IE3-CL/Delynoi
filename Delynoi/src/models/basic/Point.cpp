@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #include <Delynoi/models/basic/Point.h>
 #include <Delynoi/config/DelynoiConfig.h>
 
@@ -77,5 +74,3 @@ bool Point::operator<(const Point &other) const {
 
     return this->x < other.x;
 }
-
-#pragma clang diagnostic pop

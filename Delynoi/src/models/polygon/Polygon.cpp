@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #include <Delynoi/models/polygon/Polygon.h>
 #include <map>
 #include <Delynoi/utilities/UniqueList.h>
@@ -347,5 +344,3 @@ double Polygon::getMaxDistance(std::vector<Point> &_points) {
 
     return maxEdge;
 }
-
-#pragma clang diagnostic pop

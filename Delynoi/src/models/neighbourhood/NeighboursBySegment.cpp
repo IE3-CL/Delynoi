@@ -1,8 +1,5 @@
 #include <Delynoi/models/neighbourhood/NeighboursBySegment.h>
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 using namespace Delynoi;
 
 NeighboursBySegment::NeighboursBySegment() = default;
@@ -49,5 +46,3 @@ void NeighboursBySegment::setFirst(int value) {
 void NeighboursBySegment::setSecond(int value) {
     this->n2 = value;
 }
-
-#pragma clang diagnostic pop

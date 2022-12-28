@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #ifndef DELYNOI_CIRCULARHOLE_H
 #define DELYNOI_CIRCULARHOLE_H
 
@@ -31,4 +28,3 @@ namespace Delynoi {
 }
 
 #endif
-#pragma clang diagnostic pop

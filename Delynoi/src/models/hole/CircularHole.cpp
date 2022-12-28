@@ -1,8 +1,5 @@
 #include <Delynoi/models/hole/CircularHole.h>
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 using namespace Delynoi;
 
 CircularHole::CircularHole(Point p, double r) : Circle(r, p) {
@@ -18,5 +15,3 @@ void CircularHole::computeSegments() {
     Polygon discretePolygon(indexes, this->HolePoints);
     discretePolygon.getSegments(this->segments);
 }
-
-#pragma clang diagnostic pop

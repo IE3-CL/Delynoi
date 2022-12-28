@@ -3,9 +3,6 @@
 
 #include <Delynoi/models/Region.h>
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 using namespace Delynoi;
 
 Region::Region(std::vector<Point> &points) : Polygon(points) {
@@ -230,5 +227,4 @@ void Region::printInPath(const std::string &path) {
     file.close();
 }
 
-#pragma clang diagnostic pop
 #pragma clang diagnostic pop

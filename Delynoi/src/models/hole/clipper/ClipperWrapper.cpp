@@ -1,8 +1,5 @@
 #include <Delynoi/models/hole/clipper/ClipperWrapper.h>
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 using namespace Delynoi;
 
 ClipperLib::Paths ClipperWrapper::polyIntersection(const std::vector<Point> &parent, const std::vector<Point> &child, int maxScale) {
@@ -28,5 +25,3 @@ ClipperLib::Paths ClipperWrapper::polyIntersection(const std::vector<Point> &par
 ClipperLib::IntPoint ClipperWrapper::scalePoint(Point point, int maxScale) {
     return {(int) (maxScale * point.getX()), (int) (maxScale * point.getY())};
 }
-
-#pragma clang diagnostic pop

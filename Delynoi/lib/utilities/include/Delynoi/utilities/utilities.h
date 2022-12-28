@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #ifndef UTILITIES_UTILITIES_H
 #define UTILITIES_UTILITIES_H
 
@@ -58,4 +55,3 @@ namespace Delynoi {
 }
 
 #endif
-#pragma clang diagnostic pop

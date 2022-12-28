@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #include <Delynoi/models/generator/noise/RandomDoubleNoise.h>
 #include <Delynoi/models/generator/Functor.h>
 #include <Delynoi/models/generator/noise/RandomIntegerNoise.h>
@@ -16,5 +13,3 @@ namespace Delynoi {
         }
     }
 }
-
-#pragma clang diagnostic pop

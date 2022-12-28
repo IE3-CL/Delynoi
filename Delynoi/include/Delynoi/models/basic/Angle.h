@@ -1,7 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedStructInspection"
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #ifndef DELYNOI_ANGLE_H
 #define DELYNOI_ANGLE_H
 
@@ -48,4 +44,3 @@ namespace Delynoi {
 }
 
 #endif
-#pragma clang diagnostic pop

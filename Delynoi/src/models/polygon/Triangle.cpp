@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #include <Delynoi/models/polygon/Triangle.h>
 
 using namespace Delynoi;
@@ -71,5 +68,3 @@ int Triangle::thirdPoint(EdgeData edge) {
 bool Triangle::isNull() {
     return this->points.empty();
 }
-
-#pragma clang diagnostic pop

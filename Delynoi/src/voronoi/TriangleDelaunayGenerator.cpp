@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #include <utility>
 #include <Delynoi/voronoi/TriangleDelaunayGenerator.h>
 
@@ -210,5 +207,3 @@ Mesh<Triangle> TriangleDelaunayGenerator::getConstrainedDelaunayTriangulation(co
 
     return initializeMesh<Triangle>();
 }
-
-#pragma clang diagnostic pop

@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #ifndef DELYNOI_POLYGON_H
 #define DELYNOI_POLYGON_H
 
@@ -228,4 +225,3 @@ namespace Delynoi {
 }
 
 #endif
-#pragma clang diagnostic pop

@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #include <Delynoi/models/neighbourhood/PointMap.h>
 
 using namespace Delynoi;
@@ -68,5 +65,3 @@ void PointMap::printInPath(const std::string &path) {
 
     file.close();
 }
-
-#pragma clang diagnostic pop

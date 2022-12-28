@@ -1,5 +1,4 @@
 #pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #pragma ide diagnostic ignored "UnusedParameter"
 
 #ifndef DELYNOI_TRIANGULATIONGENERATOR_H

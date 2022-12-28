@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #include <cmath>
 #include <algorithm>
 #include <Delynoi/utilities/Pair.h>
@@ -97,5 +94,3 @@ namespace Delynoi {
         }
     }
 }
-
-#pragma clang diagnostic pop
