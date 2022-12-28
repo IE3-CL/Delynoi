@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "modernize-concat-nested-namespaces"
-
 #include <vector>
 #include <cmath>
 #include <Delynoi/models/basic/Point.h>
@@ -58,5 +55,3 @@ namespace Delynoi {
         }
     }
 }
-
-#pragma clang diagnostic pop

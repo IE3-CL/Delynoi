@@ -1,6 +1,4 @@
 #pragma clang diagnostic push
-#pragma ide diagnostic ignored "cert-msc51-cpp"
-#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
 #pragma ide diagnostic ignored "UnusedValue"
 
 #include <Delynoi/models/generator/functions/RandomInteger.h>

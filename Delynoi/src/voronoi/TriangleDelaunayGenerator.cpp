@@ -1,7 +1,5 @@
 #pragma clang diagnostic push
-#pragma ide diagnostic ignored "modernize-return-braced-init-list"
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-#pragma ide diagnostic ignored "modernize-use-nullptr"
 
 #include <utility>
 #include <Delynoi/voronoi/TriangleDelaunayGenerator.h>

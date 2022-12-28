@@ -1,6 +1,6 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-#pragma ide diagnostic ignored "readability-convert-member-functions-to-static"
+#pragma ide diagnostic ignored "UnusedParameter"
 
 #ifndef DELYNOI_TRIANGULATIONGENERATOR_H
 #define DELYNOI_TRIANGULATIONGENERATOR_H

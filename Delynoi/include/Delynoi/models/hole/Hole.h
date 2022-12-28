@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
-
 #ifndef DELYNOI_HOLE_H
 #define DELYNOI_HOLE_H
 
@@ -115,4 +112,3 @@ namespace Delynoi {
 }
 
 #endif
-#pragma clang diagnostic pop

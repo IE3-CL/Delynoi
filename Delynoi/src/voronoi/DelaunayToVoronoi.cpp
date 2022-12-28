@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
-
 #include <Delynoi/voronoi/DelaunayToVoronoi.h>
 
 using namespace Delynoi;
@@ -125,5 +122,3 @@ int DelaunayToVoronoi::getCircumcenter(DelaunayInfo &del, int triangle, int edge
 Mesh<Polygon> &DelaunayToVoronoi::getMesh() {
     return this->mesh;
 }
-
-#pragma clang diagnostic pop

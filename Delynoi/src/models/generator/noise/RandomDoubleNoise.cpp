@@ -1,6 +1,5 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "UnusedValue"
-#pragma ide diagnostic ignored "cert-msc51-cpp"
 
 #include <Delynoi/models/generator/noise/RandomDoubleNoise.h>
 

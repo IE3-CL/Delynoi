@@ -1,5 +1,4 @@
 #pragma clang diagnostic push
-#pragma ide diagnostic ignored "modernize-concat-nested-namespaces"
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 #include <Delynoi/models/generator/noise/RandomDoubleNoise.h>

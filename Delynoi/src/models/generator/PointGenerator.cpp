@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "cppcoreguidelines-pro-type-member-init"
-
 #include <Delynoi/models/generator/PointGenerator.h>
 
 using namespace Delynoi;
@@ -54,5 +51,3 @@ Point PointGenerator::result(double x, double y) {
     }
     return {0, 0};
 }
-
-#pragma clang diagnostic pop

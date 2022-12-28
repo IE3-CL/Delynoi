@@ -1,7 +1,6 @@
 #pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedStructInspection"
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-#pragma ide diagnostic ignored "modernize-concat-nested-namespaces"
+#pragma ide diagnostic ignored "OCUnusedStructInspection"
 
 #include <Delynoi/models/generator/functions/RandomDouble.h>
 #include <Delynoi/models/generator/functions/RandomInteger.h>

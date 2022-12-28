@@ -1,7 +1,5 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-#pragma ide diagnostic ignored "cppcoreguidelines-pro-type-member-init"
-#pragma ide diagnostic ignored "cert-err34-c"
 
 #ifndef DELYNOI_MESH_H
 #define DELYNOI_MESH_H

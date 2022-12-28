@@ -31,8 +31,8 @@ namespace Delynoi {
         /*
          * Pre-calculated polygon properties
          */
-        double diameter;
-        double area;
+        double diameter = -1;
+        double area = -1;
         Point centroid;
 
         /* Calculates the polygon diameter

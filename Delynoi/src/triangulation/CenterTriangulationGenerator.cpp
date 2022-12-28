@@ -1,5 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
 #include <Delynoi/triangulation/CenterTriangulationGenerator.h>
 
 using namespace Delynoi;
@@ -26,5 +24,3 @@ std::vector<Triangle> CenterTriangulationGenerator::triangulate(Polygon p, std::
 
     return triangles;
 }
-
-#pragma clang diagnostic pop

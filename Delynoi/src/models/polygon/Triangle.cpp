@@ -1,7 +1,5 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-#pragma ide diagnostic ignored "cppcoreguidelines-pro-type-member-init"
-#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
 
 #include <Delynoi/models/polygon/Triangle.h>
 

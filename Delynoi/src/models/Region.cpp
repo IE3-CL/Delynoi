@@ -1,7 +1,5 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wimplicit-const-int-float-conversion"
-#pragma ide diagnostic ignored "cert-err34-c"
-#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
 
 #include <Delynoi/models/Region.h>
 

@@ -1,10 +1,7 @@
 #pragma clang diagnostic push
-#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 #include <Delynoi/models/neighbourhood/SegmentMap.h>
-
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 
 using namespace Delynoi;
 
@@ -63,6 +60,3 @@ void SegmentMap::printInPath(const std::string &path) {
 bool SegmentMap::containsSegment(const IndexSegment &s) {
     return this->map.find(s) != this->map.end();
 }
-
-#pragma clang diagnostic pop
-#pragma clang diagnostic pop

@@ -1,8 +1,5 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-#pragma ide diagnostic ignored "cppcoreguidelines-pro-type-member-init"
-#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
-#pragma ide diagnostic ignored "bugprone-throw-keyword-missing"
 
 #include <Delynoi/models/polygon/Polygon.h>
 #include <map>
@@ -17,9 +14,6 @@ Polygon::Polygon(std::vector<int> &points, std::vector<Point> &p) {
     }
 
     this->points.assign(points.begin(), points.end());
-
-    this->diameter = -1;
-    this->area = -1;
     this->centroid = Point();
     calculateHash();
 }
@@ -32,15 +26,13 @@ void Polygon::mutate(std::vector<Point> &p) {
         throw std::invalid_argument("Self intersecting polygons are not supported");
     }
 
-    this->diameter = -1;
-    this->area = -1;
     this->centroid = Point();
     calculateHash();
 }
 
 Polygon::Polygon(std::vector<Point> &p) {
     if (isSelfIntersecting(p)) {
-        std::invalid_argument("Self intersecting polygons are not supported");
+        throw std::invalid_argument("Self intersecting polygons are not supported");
     }
 
     delynoi_utilities::TrivialIndexVector(this->points, p.size());
@@ -51,8 +43,6 @@ Polygon::Polygon(std::vector<Point> &p) {
         this_points.push_back(p[point]);
     }
 
-    this->diameter = -1;
-    this->area = -1;
     this->centroid = Point();
     calculateHash();
 }

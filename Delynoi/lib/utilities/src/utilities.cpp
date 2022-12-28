@@ -1,6 +1,5 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-#pragma ide diagnostic ignored "modernize-concat-nested-namespaces"
 
 #include <cmath>
 #include <algorithm>
@@ -12,7 +11,6 @@
 #include <iomanip>
 #include <fstream>
 #include <regex>
-#include <sstream>
 
 namespace Delynoi {
     namespace utilities {
@@ -55,7 +53,6 @@ namespace Delynoi {
 
         double degrees(double angle) {
             double a = (angle > 0 ? angle : (2 * M_PI + angle));
-
             return a * 180 / (M_PI);
         }
 
