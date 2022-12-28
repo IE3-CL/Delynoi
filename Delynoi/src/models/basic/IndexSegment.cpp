@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #include <Delynoi/models/basic/IndexSegment.h>
 
 using namespace Delynoi;
@@ -85,5 +82,3 @@ bool IndexSegment::isContained(PointSegment s, const std::vector<Point> &p) {
 IndexSegment IndexSegment::add(int o) {
     return {this->p1 + o, this->p2 + o};
 }
-
-#pragma clang diagnostic pop

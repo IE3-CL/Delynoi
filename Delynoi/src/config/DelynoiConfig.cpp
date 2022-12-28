@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #include <Delynoi/config/DelynoiConfig.h>
 
 using namespace Delynoi;
@@ -57,5 +54,3 @@ DelynoiConfig *DelynoiConfig::instance() {
 
     return s_instance;
 }
-
-#pragma clang diagnostic pop

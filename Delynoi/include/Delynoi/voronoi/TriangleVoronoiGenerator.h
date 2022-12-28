@@ -1,6 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
 #ifndef DELYNOI_TRIANGLEMESHGENERATOR_H
 #define DELYNOI_TRIANGLEMESHGENERATOR_H
 
@@ -44,4 +41,3 @@ namespace Delynoi {
 }
 
 #endif
-#pragma clang diagnostic pop
