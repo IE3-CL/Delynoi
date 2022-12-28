@@ -42,7 +42,7 @@ int main() {
         std::vector<Point> meshPoints;
 
         std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
-        std::cout << "Numero de puntos: " << numberOfPoints[i] * numberOfPoints[i];
+        std::cout << "Number of points: " << numberOfPoints[i] * numberOfPoints[i];
 
         struct triangulateio in, out;
 
@@ -166,7 +166,7 @@ int main() {
         PointMap *pointMap = new PointMap;
         std::vector<Polygon> voronoiCells;
 
-        //std::cout << "Numero de puntos reales: " << del.realPoints.size() << std::endl;
+        //std::cout << "Number of real points: " << del.realPoints.size() << std::endl;
         for (int i = 0; i < realPoints.size(); i++) {
             int cellIndex = voronoiCells.size();
             std::vector<IndexSegment> thisEdges;

@@ -290,5 +290,4 @@ int main() {
     generateTest_Polygon("unicornHoleBorderUniform10", unicorn, unicorn.getSeedPoints());
     generateTest_Triangle("unicornHoleBorderUniform10", unicorn, unicorn.getSeedPoints());
     unicorn.cleanSeedPoints();
-
 }

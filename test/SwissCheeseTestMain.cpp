@@ -25,5 +25,4 @@ int main() {
     TriangleVoronoiGenerator generator(seeds, square);
     Mesh<Polygon> m = generator.getMesh();
     m.printInFile("SwissCheeseMesh.txt");
-
 }
