@@ -11,6 +11,7 @@
 #include <iomanip>
 #include <fstream>
 #include <regex>
+#include <sstream> // Required for Mac-OS
 
 namespace Delynoi {
     namespace utilities {
