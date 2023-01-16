@@ -1,0 +1,27 @@
+name: CI
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.repository }}-${{ github.workflow }}-${{ github.ref }}
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    uses: ppizarror/workflow-actions/.github/workflows/test_cpp.yml@master
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+    with:
+      os: ${{ matrix.os }}
+
+  delete-artifacts:
+    needs: test
+    uses: ppizarror/workflow-actions/.github/workflows/delete_artifacts.yml@master
