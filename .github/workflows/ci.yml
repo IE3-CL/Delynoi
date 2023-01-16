@@ -18,11 +18,13 @@ jobs:
     strategy:
       matrix:
         os:
+          - macos-latest
           - ubuntu-latest
+          - windows-latest
     with:
       linter: false
       os: ${{ matrix.os }}
-      test-optional: ./test/DelynoiTest
+      test-after: ./test/DelynoiTest
 
   delete-artifacts:
     needs: test
