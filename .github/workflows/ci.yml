@@ -22,6 +22,7 @@ jobs:
     with:
       linter: false
       os: ${{ matrix.os }}
+      test-optional: ./test/DelynoiTest
 
   delete-artifacts:
     needs: test
