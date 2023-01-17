@@ -29,3 +29,8 @@ jobs:
   delete-artifacts:
     needs: test
     uses: ppizarror/workflow-actions/.github/workflows/delete_artifacts.yml@master
+
+  semgrep:
+    uses: ppizarror/workflow-actions/.github/workflows/semgrep.yml@master
+    secrets:
+      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
