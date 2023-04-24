@@ -1,8 +1,8 @@
 #ifndef DELYNOI_CLIPPERWRAPPER_H
 #define DELYNOI_CLIPPERWRAPPER_H
 
-#include <Delynoi/models/hole/clipper/lib/clipper.hpp>
 #include <Delynoi/models/basic/Point.h>
+#include <Delynoi/models/hole/clipper/lib/clipper.hpp>
 #include <Delynoi/models/polygon/Polygon.h>
 
 namespace Delynoi {
@@ -25,6 +25,6 @@ namespace Delynoi {
          */
         static ClipperLib::Paths polyIntersection(const std::vector<Point> &parent, const std::vector<Point> &child, int maxScale);
     };
-}
+} // namespace Delynoi
 
 #endif

@@ -2,9 +2,9 @@
 #define DELYNOI_POINTGENERATOR_H
 
 #include <Delynoi/models/basic/Point.h>
-#include <Delynoi/models/polygon/BoundingBox.h>
 #include <Delynoi/models/generator/Functor.h>
 #include <Delynoi/models/generator/functions/functions.h>
+#include <Delynoi/models/polygon/BoundingBox.h>
 #include <vector>
 
 namespace Delynoi {
@@ -60,6 +60,6 @@ namespace Delynoi {
          */
         virtual void generate(std::vector<Point> &vector, BoundingBox box, int nX, int nY);
     };
-}
+} // namespace Delynoi
 
 #endif

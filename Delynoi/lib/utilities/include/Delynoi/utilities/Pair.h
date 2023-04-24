@@ -68,6 +68,6 @@ namespace Delynoi {
 
         return this->first < other.first;
     }
-}
+} // namespace Delynoi
 
 #endif

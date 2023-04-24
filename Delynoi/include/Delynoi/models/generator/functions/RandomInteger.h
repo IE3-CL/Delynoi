@@ -1,8 +1,8 @@
 #ifndef DELYNOI_RANDOMINTEGER_H
 #define DELYNOI_RANDOMINTEGER_H
 
-#include <random>
 #include <Delynoi/models/generator/Functor.h>
+#include <random>
 
 namespace Delynoi {
     /*
@@ -22,6 +22,7 @@ namespace Delynoi {
         static std::default_random_engine rd;
         static std::mt19937 rng;
         std::uniform_int_distribution<int> uni;
+
     public:
         /*
          * Constructor.
@@ -35,6 +36,6 @@ namespace Delynoi {
        */
         double apply(double x) override;
     };
-}
+} // namespace Delynoi
 
 #endif

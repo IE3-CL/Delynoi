@@ -104,6 +104,6 @@ namespace Delynoi {
         static DelynoiConfig *instance();
     };
 
-}
+} // namespace Delynoi
 
 #endif

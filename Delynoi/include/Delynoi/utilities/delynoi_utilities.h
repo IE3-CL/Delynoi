@@ -1,10 +1,10 @@
 #ifndef DELYNOI_DELYNOIUTILITIES_H
 #define DELYNOI_DELYNOIUTILITIES_H
 
-#include <vector>
-#include <iostream>
 #include <Delynoi/models/basic/Point.h>
 #include <Delynoi/utilities/Pair.h>
+#include <iostream>
+#include <vector>
 
 namespace Delynoi {
     /*
@@ -55,7 +55,7 @@ namespace Delynoi {
          * @param trianglePoints list of indexes of the triangle
          */
         extern void checkTriangleIntegrity(std::vector<int> &trianglePoints);
-    }
-}
+    } // namespace delynoi_utilities
+} // namespace Delynoi
 
 #endif

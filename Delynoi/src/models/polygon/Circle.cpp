@@ -1,6 +1,6 @@
-#include <Delynoi/utilities/delynoi_utilities.h>
-#include <Delynoi/models/polygon/Circle.h>
 #include <Delynoi/config/DelynoiConfig.h>
+#include <Delynoi/models/polygon/Circle.h>
+#include <Delynoi/utilities/delynoi_utilities.h>
 
 using namespace Delynoi;
 

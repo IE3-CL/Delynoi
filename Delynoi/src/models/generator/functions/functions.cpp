@@ -1,8 +1,8 @@
+#include <Delynoi/models/generator/Functor.h>
 #include <Delynoi/models/generator/functions/RandomDouble.h>
 #include <Delynoi/models/generator/functions/RandomInteger.h>
-#include <Delynoi/models/generator/Functor.h>
-#include <Delynoi/utilities/delynoi_utilities.h>
 #include <Delynoi/utilities/UniqueList.h>
+#include <Delynoi/utilities/delynoi_utilities.h>
 
 namespace Delynoi {
     class Constant : public Functor {
@@ -15,6 +15,7 @@ namespace Delynoi {
     class Uniform : public Functor {
     private:
         double delta;
+
     public:
         explicit Uniform(double delta) { this->delta = delta; }
 
@@ -26,6 +27,7 @@ namespace Delynoi {
         double amplitude;
         double frecuency;
         double phase;
+
     public:
         Sine(double a, double f, double p) {
             this->amplitude = a;
@@ -43,6 +45,7 @@ namespace Delynoi {
         double amplitude;
         double frecuency;
         double phase;
+
     public:
         Cosine(double a, double f, double p) {
             this->amplitude = a;
@@ -59,6 +62,7 @@ namespace Delynoi {
     private:
         double delta;
         bool alternating = false;
+
     public:
         explicit DisplaceDelta(double delta) {
             this->delta = delta;
@@ -80,6 +84,7 @@ namespace Delynoi {
         UniqueList<double> visitedPlaces;
         double delta{};
         bool alternating = false;
+
     public:
         ConstantAlternating() = default;
 
@@ -135,5 +140,5 @@ namespace Delynoi {
         Functor *random_double(double min, double max) {
             return new Random_Double(min, max);
         }
-    }
-}
+    } // namespace functions
+} // namespace Delynoi

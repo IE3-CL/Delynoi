@@ -1,12 +1,12 @@
 #ifndef DELYNOI_SEGMENTMAP_H
 #define DELYNOI_SEGMENTMAP_H
 
-#include <Delynoi/voronoi/structures/mapdata.h>
-#include <Delynoi/utilities/Pair.h>
-#include <unordered_map>
-#include <Delynoi/models/neighbourhood/NeighboursBySegment.h>
-#include <fstream>
 #include <Delynoi/models/basic/IndexSegment.h>
+#include <Delynoi/models/neighbourhood/NeighboursBySegment.h>
+#include <Delynoi/utilities/Pair.h>
+#include <Delynoi/voronoi/structures/mapdata.h>
+#include <fstream>
+#include <unordered_map>
 
 namespace Delynoi {
     /*
@@ -28,6 +28,7 @@ namespace Delynoi {
          * Map that relates segments and the polygons that contain it (as a NeighboursBySegment instance)
          */
         std::unordered_map<IndexSegment, NeighboursBySegment, SegmentHasher> map;
+
     public:
         /*
          * Default constructor
@@ -88,6 +89,6 @@ namespace Delynoi {
          */
         bool containsSegment(const IndexSegment &s);
     };
-}
+} // namespace Delynoi
 
 #endif

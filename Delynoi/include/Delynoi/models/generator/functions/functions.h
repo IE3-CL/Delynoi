@@ -12,7 +12,9 @@ namespace Delynoi {
          * Defines the different options for the Fucntion classes variables.
          */
         enum independent_variable {
-            x, y, both
+            x,
+            y,
+            both
         };
 
         /* Creates a class that given a coordinate, returns the same value.
@@ -67,7 +69,7 @@ namespace Delynoi {
         * @return an instance of the Cosine class
         */
         Functor *cosine(double amplitude, double frecuency, double phase);
-    }
-}
+    } // namespace functions
+} // namespace Delynoi
 
 #endif

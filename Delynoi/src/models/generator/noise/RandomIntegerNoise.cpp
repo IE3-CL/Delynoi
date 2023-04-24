@@ -16,7 +16,7 @@ RandomIntegerNoise::RandomIntegerNoise(Functor *f, double min, double max) {
 }
 
 double RandomIntegerNoise::apply(double x) {
-    return f->apply(x) + (uni)(Delynoi::RandomIntegerNoise::rng) * ((uni)(Delynoi::RandomIntegerNoise::rng) % 2 ? 1 : -1);
+    return f->apply(x) + (uni) (Delynoi::RandomIntegerNoise::rng) * ((uni) (Delynoi::RandomIntegerNoise::rng) % 2 ? 1 : -1);
 }
 
 #pragma clang diagnostic pop

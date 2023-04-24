@@ -1,13 +1,13 @@
 #ifndef UTILITIES_UTILITIES_H
 #define UTILITIES_UTILITIES_H
 
+#include <Delynoi/utilities/Pair.h>
+#include <algorithm>
+#include <iomanip>
 #include <iostream>
+#include <regex>
 #include <sstream>
 #include <vector>
-#include <algorithm>
-#include <Delynoi/utilities/Pair.h>
-#include <iomanip>
-#include <regex>
 
 namespace Delynoi {
     namespace utilities {
@@ -51,7 +51,7 @@ namespace Delynoi {
         extern std::vector<std::string> splitBySpaces(std::string s);
 
         extern std::ifstream openFile(const std::string &fileName);
-    }
-}
+    } // namespace utilities
+} // namespace Delynoi
 
 #endif

@@ -1,14 +1,14 @@
-#include <cmath>
-#include <algorithm>
 #include <Delynoi/utilities/Pair.h>
+#include <algorithm>
+#include <cmath>
+#include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <random>
-#include <utility>
-#include <vector>
-#include <iomanip>
-#include <fstream>
 #include <regex>
 #include <sstream> // Required for Mac-OS
+#include <utility>
+#include <vector>
 
 namespace Delynoi {
     namespace utilities {
@@ -64,7 +64,7 @@ namespace Delynoi {
             return key;
         }
 
-        std::vector<std::string> split(std::string s, const std::regex& regex) {
+        std::vector<std::string> split(std::string s, const std::regex &regex) {
             std::vector<std::string> result;
 
             std::sregex_token_iterator it(s.begin(), s.end(), regex, -1);
@@ -82,7 +82,7 @@ namespace Delynoi {
             return split(std::move(s), std::regex("\\s+"));
         }
 
-        std::ifstream openFile(const std::string& fileName) {
+        std::ifstream openFile(const std::string &fileName) {
             std::string completeName = utilities::getPath() + fileName;
             std::ifstream infile(completeName);
 
@@ -92,5 +92,5 @@ namespace Delynoi {
 
             return infile;
         }
-    }
-}
+    } // namespace utilities
+} // namespace Delynoi

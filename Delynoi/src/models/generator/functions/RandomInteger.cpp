@@ -15,7 +15,7 @@ Random_Integer::Random_Integer(double min, double max) {
 }
 
 double Random_Integer::apply(double x) {
-    return (uni)(Delynoi::Random_Integer::rng);
+    return (uni) (Delynoi::Random_Integer::rng);
 }
 
 #pragma clang diagnostic pop

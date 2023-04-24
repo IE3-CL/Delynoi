@@ -1,5 +1,5 @@
-#include <utility>
 #include <Delynoi/voronoi/TriangleDelaunayGenerator.h>
+#include <utility>
 
 using namespace Delynoi;
 
@@ -16,7 +16,8 @@ void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, cha
 
 void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, char *switches, const std::vector<PointSegment> &restrictedSegments) {
     this->empty = true;
-    struct triangulateio in{}, out{};
+    struct triangulateio in {
+    }, out{};
 
     std::vector<Point> regionPoints = region.getRegionPoints();
     UniqueList<Point> pointList;

@@ -18,7 +18,7 @@ RandomDoubleNoise::RandomDoubleNoise(Functor *f, double min, double max) {
 }
 
 double RandomDoubleNoise::apply(double x) {
-    return f->apply(x) + (uni)(Delynoi::RandomDoubleNoise::rng) * ((uni_int)(Delynoi::RandomDoubleNoise::rng) % 2 ? 1 : -1);
+    return f->apply(x) + (uni) (Delynoi::RandomDoubleNoise::rng) * ((uni_int) (Delynoi::RandomDoubleNoise::rng) % 2 ? 1 : -1);
 }
 
 #pragma clang diagnostic pop

@@ -1,10 +1,10 @@
 #ifndef DELYNOI_POINT_H
 #define DELYNOI_POINT_H
 
-#include <string>
+#include <Delynoi/utilities/utilities.h>
 #include <cmath>
 #include <sstream>
-#include <Delynoi/utilities/utilities.h>
+#include <string>
 
 namespace Delynoi {
     /*
@@ -27,6 +27,7 @@ namespace Delynoi {
          * Boolean flag indicating if this point has been initialized
          */
         bool isEmpty = false;
+
     public:
         /*
          * Constructor. Creates a point with its two coordinates.
@@ -103,6 +104,6 @@ namespace Delynoi {
         void setY(double newY);
     };
 
-}
+} // namespace Delynoi
 
 #endif

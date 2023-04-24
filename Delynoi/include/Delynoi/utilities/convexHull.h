@@ -19,8 +19,8 @@ namespace Delynoi {
          * @param points point that will be processed
          * @return the list of antipodal pairs
          */
-        extern std::vector<std::pair<Point, Point> > rotatingCalipers(std::vector<Point> &points);
-    }
-}
+        extern std::vector<std::pair<Point, Point>> rotatingCalipers(std::vector<Point> &points);
+    } // namespace convex
+} // namespace Delynoi
 
 #endif

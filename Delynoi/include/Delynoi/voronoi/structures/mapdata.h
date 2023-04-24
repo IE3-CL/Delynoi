@@ -1,8 +1,8 @@
 #ifndef DELYNOI_MAPDATA_H
 #define DELYNOI_MAPDATA_H
 
-#include <functional>
 #include <Delynoi/models/basic/IndexSegment.h>
+#include <functional>
 
 namespace Delynoi {
     /*
@@ -30,8 +30,8 @@ namespace Delynoi {
      */
     struct KeyHasher {
         std::size_t operator()(const Key &k) const {
-            using std::size_t;
             using std::hash;
+            using std::size_t;
 
             return k.hash;
         }
@@ -43,12 +43,12 @@ namespace Delynoi {
      */
     struct SegmentHasher {
         std::size_t operator()(const IndexSegment &k) const {
-            using std::size_t;
             using std::hash;
+            using std::size_t;
 
             return k.hash;
         }
     };
-}
+} // namespace Delynoi
 
 #endif

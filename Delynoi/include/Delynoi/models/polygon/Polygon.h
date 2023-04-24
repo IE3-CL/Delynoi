@@ -1,18 +1,18 @@
 #ifndef DELYNOI_POLYGON_H
 #define DELYNOI_POLYGON_H
 
-#include <vector>
+#include <Delynoi/models/basic/IndexSegment.h>
 #include <Delynoi/models/basic/Point.h>
 #include <Delynoi/models/basic/Segment.h>
-#include <Delynoi/utilities/geometryFunctions.h>
-#include <Delynoi/utilities/convexHull.h>
-#include <Delynoi/models/basic/IndexSegment.h>
-#include <Delynoi/utilities/Pair.h>
-#include <map>
-#include <Delynoi/utilities/UniqueList.h>
-#include <algorithm>
 #include <Delynoi/models/neighbourhood/SegmentMap.h>
+#include <Delynoi/utilities/Pair.h>
+#include <Delynoi/utilities/UniqueList.h>
+#include <Delynoi/utilities/convexHull.h>
+#include <Delynoi/utilities/geometryFunctions.h>
+#include <algorithm>
 #include <climits>
+#include <map>
+#include <vector>
 
 namespace Delynoi {
     /*
@@ -222,6 +222,6 @@ namespace Delynoi {
          */
         double getMaxDistance(std::vector<Point> &points);
     };
-}
+} // namespace Delynoi
 
 #endif

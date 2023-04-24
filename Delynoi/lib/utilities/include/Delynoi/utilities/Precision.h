@@ -4,9 +4,11 @@
 namespace Delynoi {
     namespace Precision {
         enum precision {
-            small = 6, mid = 10, large = 16
+            small = 6,
+            mid = 10,
+            large = 16
         };
     }
-}
+} // namespace Delynoi
 
 #endif

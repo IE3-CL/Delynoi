@@ -1,9 +1,9 @@
 #ifndef DELYNOI_RANDOMDOUBLENOISE_H
 #define DELYNOI_RANDOMDOUBLENOISE_H
 
-#include <random>
-#include <climits>
 #include <Delynoi/models/generator/Functor.h>
+#include <climits>
+#include <random>
 
 namespace Delynoi {
     /*
@@ -30,6 +30,7 @@ namespace Delynoi {
         static std::mt19937 rng;
         std::uniform_real_distribution<double> uni;
         std::uniform_int_distribution<int> uni_int;
+
     public:
         /*
         * Constructor.
@@ -42,8 +43,7 @@ namespace Delynoi {
         * @return function result
         */
         double apply(double x) override;
-
     };
-}
+} // namespace Delynoi
 
 #endif

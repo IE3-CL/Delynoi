@@ -25,7 +25,7 @@ namespace Delynoi {
             return {std::move(p)};
         }
     };
-}
+} // namespace Delynoi
 
 #pragma clang diagnostic pop
 #endif

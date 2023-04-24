@@ -1,8 +1,8 @@
 #ifndef DELYNOI_ANGLE_H
 #define DELYNOI_ANGLE_H
 
-#include <cmath>
 #include <Delynoi/config/DelynoiConfig.h>
+#include <cmath>
 
 namespace Delynoi {
     /*
@@ -41,6 +41,6 @@ namespace Delynoi {
             return angle < other.angle;
         };
     };
-}
+} // namespace Delynoi
 
 #endif

@@ -33,11 +33,10 @@ bool Segment<T>::contains(Point point, Point _p1, Point _p2) {
                   (point.getX() <= _p2.getX() || std::abs(point.getX() - _p2.getX()) < config->getTolerance())) ||
                  ((point.getX() >= _p2.getX() || std::abs(point.getX() - _p2.getX()) < config->getTolerance()) &&
                   (point.getX() <= _p1.getX() || std::abs(point.getX() - _p1.getX()) < config->getTolerance()));
-    bool test2 = (
-            (point.getY() >= _p1.getY() || std::abs(point.getY() - _p1.getY()) < config->getTolerance()) &&
-            (point.getY() <= _p2.getY() || std::abs(point.getY() - _p2.getY()) < config->getTolerance()) ||
-            ((point.getY() >= _p2.getY() || std::abs(point.getY() - _p2.getY()) < config->getTolerance()) &&
-             (point.getY() <= _p1.getY() || std::abs(point.getY() - _p1.getY()) < config->getTolerance())));
+    bool test2 = ((point.getY() >= _p1.getY() || std::abs(point.getY() - _p1.getY()) < config->getTolerance()) &&
+                          (point.getY() <= _p2.getY() || std::abs(point.getY() - _p2.getY()) < config->getTolerance()) ||
+                  ((point.getY() >= _p2.getY() || std::abs(point.getY() - _p2.getY()) < config->getTolerance()) &&
+                   (point.getY() <= _p1.getY() || std::abs(point.getY() - _p1.getY()) < config->getTolerance())));
 
     return test1 && test2 &&
            std::abs(_p1.getX() * (_p2.getY() - point.getY()) + _p2.getX() * (point.getY() - _p1.getY()) + point.getX() * (_p1.getY() - _p2.getY())) < config->getTolerance();
@@ -115,10 +114,8 @@ double Segment<T>::length(Point _p1, Point _p2) {
     return std::sqrt(std::pow(_p1.getX() - _p2.getX(), 2) + std::pow(_p1.getY() - _p2.getY(), 2));
 }
 
-template
-class Delynoi::Segment<int>;
+template class Delynoi::Segment<int>;
 
-template
-class Delynoi::Segment<Point>;
+template class Delynoi::Segment<Point>;
 
 #pragma clang diagnostic pop

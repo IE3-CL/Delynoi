@@ -1,9 +1,9 @@
 #ifndef DELYNOI_POLYGONALHOLE_H
 #define DELYNOI_POLYGONALHOLE_H
 
-#include <vector>
-#include <Delynoi/models/polygon/Polygon.h>
 #include <Delynoi/models/hole/Hole.h>
+#include <Delynoi/models/polygon/Polygon.h>
+#include <vector>
 
 namespace Delynoi {
     /*
@@ -17,6 +17,6 @@ namespace Delynoi {
         explicit PolygonalHole(std::vector<Point> &p);
     };
 
-}
+} // namespace Delynoi
 
 #endif

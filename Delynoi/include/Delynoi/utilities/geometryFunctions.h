@@ -46,7 +46,7 @@ namespace Delynoi {
          * @return area of the polygon
          */
         extern double area(std::vector<Point> &points);
-    }
-}
+    } // namespace geometry_functions
+} // namespace Delynoi
 
 #endif

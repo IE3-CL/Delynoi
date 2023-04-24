@@ -16,7 +16,7 @@ namespace Delynoi {
                 return keyValuePair.second;
             }
         };
-    }
-}
+    } // namespace map_utils
+} // namespace Delynoi
 
 #endif

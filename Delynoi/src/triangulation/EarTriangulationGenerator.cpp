@@ -31,7 +31,6 @@ Triangle EarTriangulationGenerator::getEar(std::vector<Point> &points, std::vect
                 pointList.erase(pointList.begin() + i);
                 return t;
             }
-
         }
     }
 

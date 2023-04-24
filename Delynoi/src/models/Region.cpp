@@ -146,7 +146,6 @@ void Region::clean() {
                 toKeep.push_back(i);
             }
         }
-
     }
 
     newSeeds.reserve(toKeep.size());

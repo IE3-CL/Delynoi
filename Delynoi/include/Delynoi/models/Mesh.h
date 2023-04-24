@@ -1,13 +1,13 @@
 #ifndef DELYNOI_MESH_H
 #define DELYNOI_MESH_H
 
+#include <Delynoi/models/neighbourhood/PointMap.h>
 #include <Delynoi/models/neighbourhood/SegmentMap.h>
+#include <Delynoi/models/polygon/Polygon.h>
+#include <Delynoi/models/polygon/Triangle.h>
 #include <Delynoi/utilities/UniqueList.h>
 #include <fstream>
 #include <utility>
-#include <Delynoi/models/polygon/Polygon.h>
-#include <Delynoi/models/neighbourhood/PointMap.h>
-#include <Delynoi/models/polygon/Triangle.h>
 
 namespace Delynoi {
     /*
@@ -295,6 +295,6 @@ namespace Delynoi {
     NeighboursBySegment Mesh<T>::getNeighbours(IndexSegment s) {
         return this->edges->get(s);
     }
-}
+} // namespace Delynoi
 
 #endif

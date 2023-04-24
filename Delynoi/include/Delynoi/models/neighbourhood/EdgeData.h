@@ -1,8 +1,8 @@
 #ifndef DELYNOI_EDGEDATA_H
 #define DELYNOI_EDGEDATA_H
 
-#include <iostream>
 #include <Delynoi/utilities/utilities.h>
+#include <iostream>
 
 namespace Delynoi {
     /*
@@ -41,6 +41,6 @@ namespace Delynoi {
          */
         bool operator==(const EdgeData &other) const;
     };
-}
+} // namespace Delynoi
 
 #endif

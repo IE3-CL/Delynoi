@@ -1,10 +1,10 @@
 #ifndef DELYNOI_SEGMENT_H
 #define DELYNOI_SEGMENT_H
 
-#include <vector>
+#include <Delynoi/config/DelynoiConfig.h>
 #include <Delynoi/models/basic/Point.h>
 #include <Delynoi/utilities/delynoi_utilities.h>
-#include <Delynoi/config/DelynoiConfig.h>
+#include <vector>
 
 namespace Delynoi {
     /*
@@ -91,6 +91,6 @@ namespace Delynoi {
          */
         bool isVertex(T p);
     };
-}
+} // namespace Delynoi
 
 #endif

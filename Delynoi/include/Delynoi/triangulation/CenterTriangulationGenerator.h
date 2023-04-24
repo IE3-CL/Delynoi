@@ -16,6 +16,6 @@ namespace Delynoi {
         */
         std::vector<Triangle> triangulate(Polygon p, std::vector<Point> &points) override;
     };
-}
+} // namespace Delynoi
 
 #endif

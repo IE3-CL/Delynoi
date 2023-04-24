@@ -1,8 +1,8 @@
 #ifndef DELYNOI_DELAUNAYTRIANGULATIONGENERATOR_H
 #define DELYNOI_DELAUNAYTRIANGULATIONGENERATOR_H
 
-#include <Delynoi/triangulation/TriangulationGenerator.h>
 #include <Delynoi/models/Region.h>
+#include <Delynoi/triangulation/TriangulationGenerator.h>
 #include <Delynoi/voronoi/TriangleDelaunayGenerator.h>
 
 namespace Delynoi {
@@ -18,6 +18,6 @@ namespace Delynoi {
         */
         std::vector<Triangle> triangulate(Polygon p, std::vector<Point> &points) override;
     };
-}
+} // namespace Delynoi
 
 #endif

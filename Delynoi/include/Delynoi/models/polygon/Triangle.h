@@ -1,8 +1,8 @@
 #ifndef DELYNOI_TRIANGLE_H
 #define DELYNOI_TRIANGLE_H
 
-#include <Delynoi/models/polygon/Polygon.h>
 #include <Delynoi/models/neighbourhood/EdgeData.h>
+#include <Delynoi/models/polygon/Polygon.h>
 #include <Delynoi/voronoi/structures/mapdata.h>
 #include <unordered_map>
 
@@ -70,6 +70,6 @@ namespace Delynoi {
          */
         bool isNull();
     };
-}
+} // namespace Delynoi
 
 #endif

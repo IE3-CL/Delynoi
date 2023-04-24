@@ -1,7 +1,7 @@
-#include <vector>
 #include <Delynoi/models/basic/Point.h>
-#include <algorithm>
 #include <Delynoi/utilities/delynoi_utilities.h>
+#include <algorithm>
+#include <vector>
 
 namespace Delynoi {
     namespace convex {
@@ -32,12 +32,12 @@ namespace Delynoi {
             }
         }
 
-        std::vector<std::pair<Point, Point> > rotatingCalipers(std::vector<Point> &points) {
+        std::vector<std::pair<Point, Point>> rotatingCalipers(std::vector<Point> &points) {
             std::vector<Point> u;
             std::vector<Point> l;
             convexHull(points, u, l);
 
-            std::vector<std::pair<Point, Point> > pairs;
+            std::vector<std::pair<Point, Point>> pairs;
 
             int i = 0, j = l.size() - 1;
             while (i < u.size() - 1 || j > 0) {
@@ -52,10 +52,9 @@ namespace Delynoi {
                     i++;
                 else
                     j--;
-
             }
 
             return pairs;
         }
-    }
-}
+    } // namespace convex
+} // namespace Delynoi

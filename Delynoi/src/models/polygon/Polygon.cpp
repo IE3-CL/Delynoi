@@ -1,7 +1,7 @@
-#include <Delynoi/models/polygon/Polygon.h>
-#include <map>
-#include <Delynoi/utilities/UniqueList.h>
 #include <Delynoi/models/neighbourhood/SegmentMap.h>
+#include <Delynoi/models/polygon/Polygon.h>
+#include <Delynoi/utilities/UniqueList.h>
+#include <map>
 
 using namespace Delynoi;
 
@@ -56,7 +56,7 @@ Polygon::Polygon(const Polygon &obj) {
 }
 
 double Polygon::calculateDiameter(std::vector<Point> &p) {
-    std::vector<std::pair<Point, Point> > rotatingCalipers = convex::rotatingCalipers(p);
+    std::vector<std::pair<Point, Point>> rotatingCalipers = convex::rotatingCalipers(p);
     double max = -1;
 
     for (auto &rotatingCaliper: rotatingCalipers) {
@@ -150,8 +150,7 @@ bool Polygon::containsPoint(std::vector<Point> &p, Point point) {
             continue;
         }
 
-        if (pI.getY() <= point.getY() && pJ.getY() > point.getY()
-            || pJ.getY() <= point.getY() && pI.getY() > point.getY()) {
+        if (pI.getY() <= point.getY() && pJ.getY() > point.getY() || pJ.getY() <= point.getY() && pI.getY() > point.getY()) {
 
             if (pI.getX() + (point.getY() - pI.getY()) / (pJ.getY() - pI.getY()) * (pJ.getX() - pI.getX()) < point.getX()) {
                 oddNodes = !oddNodes;

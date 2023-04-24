@@ -1,8 +1,8 @@
 #ifndef DELYNOI_NEIGHBOURS_H
 #define DELYNOI_NEIGHBOURS_H
 
-#include <iostream>
 #include <Delynoi/utilities/utilities.h>
+#include <iostream>
 
 namespace Delynoi {
     /*
@@ -16,6 +16,7 @@ namespace Delynoi {
          */
         int n1{};
         int n2 = -1;
+
     public:
         /*
          * Default constructor
@@ -77,6 +78,6 @@ namespace Delynoi {
          */
         bool operator==(const NeighboursBySegment &other) const;
     };
-}
+} // namespace Delynoi
 
 #endif

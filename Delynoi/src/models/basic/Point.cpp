@@ -1,5 +1,5 @@
-#include <Delynoi/models/basic/Point.h>
 #include <Delynoi/config/DelynoiConfig.h>
+#include <Delynoi/models/basic/Point.h>
 
 using namespace Delynoi;
 

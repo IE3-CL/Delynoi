@@ -63,6 +63,6 @@ namespace Delynoi {
             circumcenters = c;
         }
     };
-}
+} // namespace Delynoi
 
 #endif

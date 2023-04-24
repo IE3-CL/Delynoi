@@ -1,7 +1,7 @@
-#include <Delynoi/models/basic/Point.h>
 #include <Delynoi/config/DelynoiConfig.h>
-#include <Delynoi/utilities/delynoi_utilities.h>
+#include <Delynoi/models/basic/Point.h>
 #include <Delynoi/models/basic/PointSegment.h>
+#include <Delynoi/utilities/delynoi_utilities.h>
 
 namespace Delynoi {
     namespace geometry_functions {
@@ -49,5 +49,5 @@ namespace Delynoi {
 
             return area;
         }
-    }
-}
+    } // namespace geometry_functions
+} // namespace Delynoi

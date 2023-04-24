@@ -1,8 +1,8 @@
 #ifndef DELYNOI_RANDOMDOUBLE_H
 #define DELYNOI_RANDOMDOUBLE_H
 
-#include <random>
 #include <Delynoi/models/generator/Functor.h>
+#include <random>
 
 namespace Delynoi {
     /*
@@ -35,6 +35,6 @@ namespace Delynoi {
         */
         double apply(double x) override;
     };
-}
+} // namespace Delynoi
 
 #endif

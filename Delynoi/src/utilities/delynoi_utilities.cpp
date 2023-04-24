@@ -1,7 +1,7 @@
-#include <vector>
-#include <cmath>
-#include <Delynoi/models/basic/Point.h>
 #include <Delynoi/config/DelynoiConfig.h>
+#include <Delynoi/models/basic/Point.h>
+#include <cmath>
+#include <vector>
 
 namespace Delynoi {
     namespace delynoi_utilities {
@@ -47,11 +47,9 @@ namespace Delynoi {
         }
 
         void checkTriangleIntegrity(std::vector<int> &trianglePoints) {
-            if (trianglePoints.size() != 3 || trianglePoints[0] == trianglePoints[1] || trianglePoints[1] == trianglePoints[2]
-                || trianglePoints[2] == trianglePoints[0]) {
+            if (trianglePoints.size() != 3 || trianglePoints[0] == trianglePoints[1] || trianglePoints[1] == trianglePoints[2] || trianglePoints[2] == trianglePoints[0]) {
                 throw std::invalid_argument("Invalid triangle detected. Stopping meshing.");
             }
-
         }
-    }
-}
+    } // namespace delynoi_utilities
+} // namespace Delynoi

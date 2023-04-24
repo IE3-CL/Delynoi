@@ -30,6 +30,6 @@ namespace Delynoi {
             if (this->edge == -1 || marker == 1) this->edge = _edge;
         }
     };
-}
+} // namespace Delynoi
 
 #endif

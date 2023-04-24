@@ -1,12 +1,12 @@
 #ifndef DELYNOI_CIRCLE_H
 #define DELYNOI_CIRCLE_H
 
-#include <vector>
 #include <Delynoi/models/basic/Point.h>
-#include <cstdlib>
-#include <cmath>
-#include <Delynoi/utilities/geometryFunctions.h>
 #include <Delynoi/utilities/delynoi_utilities.h>
+#include <Delynoi/utilities/geometryFunctions.h>
+#include <cmath>
+#include <cstdlib>
+#include <vector>
 
 namespace Delynoi {
     /*
@@ -22,6 +22,7 @@ namespace Delynoi {
          * Circle center
          */
         Point center;
+
     public:
         /*
          * Constructor
@@ -33,6 +34,6 @@ namespace Delynoi {
          */
         std::vector<Point> discretizeCircle();
     };
-}
+} // namespace Delynoi
 
 #endif

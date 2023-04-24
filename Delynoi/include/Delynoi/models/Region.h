@@ -4,18 +4,18 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "HidingNonVirtualFunction"
 
-#include <vector>
-#include <Delynoi/models/basic/Segment.h>
-#include <Delynoi/models/hole/Hole.h>
-#include <Delynoi/models/polygon/Polygon.h>
-#include <algorithm>
-#include <Delynoi/utilities/delynoi_utilities.h>
-#include <Delynoi/models/generator/PointGenerator.h>
-#include <climits>
-#include <Delynoi/models/hole/PolygonalHole.h>
-#include <Delynoi/models/hole/clipper/lib/clipper.hpp>
-#include <Delynoi/models/hole/clipper/ClipperWrapper.h>
 #include <Delynoi/config/DelynoiConfig.h>
+#include <Delynoi/models/basic/Segment.h>
+#include <Delynoi/models/generator/PointGenerator.h>
+#include <Delynoi/models/hole/Hole.h>
+#include <Delynoi/models/hole/PolygonalHole.h>
+#include <Delynoi/models/hole/clipper/ClipperWrapper.h>
+#include <Delynoi/models/hole/clipper/lib/clipper.hpp>
+#include <Delynoi/models/polygon/Polygon.h>
+#include <Delynoi/utilities/delynoi_utilities.h>
+#include <algorithm>
+#include <climits>
+#include <vector>
 
 namespace Delynoi {
     /*
@@ -151,7 +151,7 @@ namespace Delynoi {
          */
         void printInPath(const std::string &path);
     };
-}
+} // namespace Delynoi
 
 #pragma clang diagnostic pop
 #endif

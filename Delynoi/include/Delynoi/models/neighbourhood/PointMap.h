@@ -1,11 +1,11 @@
 #ifndef DELYNOI_POINTMAP_H
 #define DELYNOI_POINTMAP_H
 
-#include <map>
-#include <vector>
 #include <Delynoi/models/basic/Point.h>
 #include <Delynoi/models/neighbourhood/NeighboursByPoint.h>
 #include <fstream>
+#include <map>
+#include <vector>
 
 namespace Delynoi {
     /*
@@ -18,6 +18,7 @@ namespace Delynoi {
          * Map that relates points and the polygons that contain it (as a NeighboursByPoint instance)
          */
         std::map<Point, NeighboursByPoint> map;
+
     public:
         /*
          * Constructor
@@ -69,6 +70,6 @@ namespace Delynoi {
          */
         void printInPath(const std::string &path);
     };
-}
+} // namespace Delynoi
 
 #endif

@@ -14,6 +14,6 @@ namespace Delynoi {
          */
         virtual double apply(double x) = 0;
     };
-}
+} // namespace Delynoi
 
-#endif 
+#endif

@@ -1,8 +1,8 @@
 #ifndef DELYNOI_INDEXSEGMENT_H
 #define DELYNOI_INDEXSEGMENT_H
 
-#include <Delynoi/models/basic/Segment.h>
 #include <Delynoi/models/basic/PointSegment.h>
+#include <Delynoi/models/basic/Segment.h>
 
 namespace Delynoi {
     /*
@@ -123,6 +123,6 @@ namespace Delynoi {
          */
         IndexSegment add(int o);
     };
-}
+} // namespace Delynoi
 
 #endif

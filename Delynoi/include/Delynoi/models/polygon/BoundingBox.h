@@ -79,6 +79,6 @@ namespace Delynoi {
          */
         void getSegments(std::vector<PointSegment> &segments);
     };
-}
+} // namespace Delynoi
 
 #endif

@@ -14,6 +14,7 @@ namespace Delynoi {
          * List of neighbours
          */
         std::vector<int> neighbours;
+
     public:
         /*
          * Default constructor
@@ -50,6 +51,6 @@ namespace Delynoi {
          */
         std::vector<int> &getNeighbours();
     };
-}
+} // namespace Delynoi
 
 #endif

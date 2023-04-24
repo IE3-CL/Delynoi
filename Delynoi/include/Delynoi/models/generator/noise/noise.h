@@ -23,7 +23,7 @@ namespace Delynoi {
          * @return Function class with the noise applied
          */
         Functor *random_integer_noise(Functor *f, double min, double max);
-    }
-}
+    } // namespace noise
+} // namespace Delynoi
 
 #endif

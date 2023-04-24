@@ -12,5 +12,5 @@ Random_Double::Random_Double(double min, double max) {
 }
 
 double Random_Double::apply(double x) {
-    return (uni)(Delynoi::Random_Double::rng);
+    return (uni) (Delynoi::Random_Double::rng);
 }

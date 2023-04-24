@@ -49,6 +49,6 @@ namespace Delynoi {
          */
         bool operator==(const PointSegment &other) const;
     };
-}
+} // namespace Delynoi
 
 #endif

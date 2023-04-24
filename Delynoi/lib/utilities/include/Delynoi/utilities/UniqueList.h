@@ -1,9 +1,9 @@
 #ifndef UTILITIES_UNIQUELIST_H
 #define UTILITIES_UNIQUELIST_H
 
-#include <vector>
 #include <algorithm>
 #include <map>
+#include <vector>
 
 namespace Delynoi {
     template<class T>
@@ -11,6 +11,7 @@ namespace Delynoi {
     private:
         std::vector<T> list;
         std::map<T, int> map;
+
     public:
         UniqueList();
 
@@ -175,6 +176,6 @@ namespace Delynoi {
             map.insert(std::make_pair(e, i));
         }
     }
-}
+} // namespace Delynoi
 
 #endif

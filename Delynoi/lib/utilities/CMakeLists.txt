@@ -1,6 +1,6 @@
-if (TARGET Delynoi_utilities)
-	return()
-endif ()
+if(TARGET Delynoi_utilities)
+    return()
+endif()
 
 file(GLOB_RECURSE SRCS ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
@@ -12,15 +12,15 @@ add_library(Delynoi_utilities STATIC ${SRCS} ${HEADERS})
 # compiling the library, and will be added to consumers' build
 # paths
 target_include_directories(Delynoi_utilities PUBLIC
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-		$<INSTALL_INTERFACE:include>
-		PRIVATE src)
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+        PRIVATE src)
 
 # 'make install' to the correct locations (provided by GNUInstallDirs)
 install(TARGETS Delynoi_utilities EXPORT UtilitiesConfig
-		ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-		LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-		RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})  # This is for Windows
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})  # This is for Windows
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 # This makes the project importable from the install directory

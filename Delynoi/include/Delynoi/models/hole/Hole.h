@@ -1,10 +1,10 @@
 #ifndef DELYNOI_HOLE_H
 #define DELYNOI_HOLE_H
 
+#include <Delynoi/models/basic/IndexSegment.h>
 #include <Delynoi/models/basic/Point.h>
 #include <Delynoi/models/basic/Segment.h>
 #include <vector>
-#include <Delynoi/models/basic/IndexSegment.h>
 
 namespace Delynoi {
     /*
@@ -18,6 +18,7 @@ namespace Delynoi {
         std::vector<Point> HolePoints;
         Point center;
         std::vector<IndexSegment> segments;
+
     public:
         /*
          * Default constructor.
@@ -82,8 +83,7 @@ namespace Delynoi {
                     continue;
                 }
 
-                if (pI.getY() <= point.getY() && pJ.getY() > point.getY()
-                    || pJ.getY() <= point.getY() && pI.getY() > point.getY()) {
+                if (pI.getY() <= point.getY() && pJ.getY() > point.getY() || pJ.getY() <= point.getY() && pI.getY() > point.getY()) {
 
                     if (pI.getX() + (point.getY() - pI.getY()) / (pJ.getY() - pI.getY()) * (pJ.getX() - pI.getX()) < point.getX()) {
                         oddNodes = !oddNodes;
@@ -109,6 +109,6 @@ namespace Delynoi {
             return container.getFirst() != -1 && container.getSecond() != -1;
         };
     };
-}
+} // namespace Delynoi
 
 #endif
