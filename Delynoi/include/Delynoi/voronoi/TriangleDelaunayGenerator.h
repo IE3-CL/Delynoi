@@ -1,11 +1,11 @@
 #ifndef DELYNOI_TRIANGLEDELAUNAY_H
 #define DELYNOI_TRIANGLEDELAUNAY_H
 
-#include <Delynoi/models/Region.h>
-#include <Delynoi/voronoi/structures/PointData.h>
-#include <Delynoi/voronoi/structures/DelaunayInfo.h>
 #include <Delynoi/models/Mesh.h>
+#include <Delynoi/models/Region.h>
 #include <Delynoi/utilities/delynoi_utilities.h>
+#include <Delynoi/voronoi/structures/DelaunayInfo.h>
+#include <Delynoi/voronoi/structures/PointData.h>
 #include <chrono>
 
 extern "C" {
@@ -66,19 +66,19 @@ namespace Delynoi {
          * segments, are Delaunay through the inclusion of additional points)
          * @return the conforming Delaunay triangulation
          */
-        Mesh<Triangle> &getConformingDelaunayTriangulation();
+        Mesh<Triangle> &getConformingDelaunayTriangulation(bool ignoreInvalidTriangles = false);
 
         /* Returns the constrained Delaunay triangulation (triangles next to constrained segments are not necessarily
          * delaunay)
          * @return the constrained Delaunay triangulation
          */
-        Mesh<Triangle> getConstrainedDelaunayTriangulation();
+        Mesh<Triangle> getConstrainedDelaunayTriangulation(bool ignoreInvalidTriangles = false);
 
         /* Returns the constrained Delaunay triangulation (triangles next to constrained segments are not necessarily
          * delaunay)
          * @return the constrained Delaunay triangulation
          */
-        Mesh<Triangle> getConstrainedDelaunayTriangulation(const std::vector<PointSegment> &restrictedSegments);
+        Mesh<Triangle> getConstrainedDelaunayTriangulation(const std::vector<PointSegment> &restrictedSegments, bool ignoreInvalidTriangles = false);
 
         /* Returns the conforming Delaunay triangulation in the format that can be used to compute the Voronoi diagram
          * @return Delaunay triangulation in DelaunayInfo format
@@ -96,7 +96,7 @@ namespace Delynoi {
         * @return Delaunay triangulation in Mesh form
         */
         template<typename T>
-        Mesh<T> initializeMesh() {
+        Mesh<T> initializeMesh(bool ignoreInvalidTriangles = false) {
             UniqueList<Point> _points;
             auto *pointMap = new PointMap;
             std::vector<int> indexes = _points.push_list(this->meshPoints);
@@ -112,13 +112,17 @@ namespace Delynoi {
                     pointMap->insert(meshPoints[newPoints[j]], i);
                 }
 
-                delynoi_utilities::checkTriangleIntegrity(newPoints);
-                polygons.push_back(T(newPoints, meshPoints));
+                try {
+                    delynoi_utilities::checkTriangleIntegrity(newPoints);
+                    polygons.push_back(T(newPoints, meshPoints));
+                } catch (std::exception &e) {
+                    if (!ignoreInvalidTriangles) throw e;
+                }
             }
 
             return Mesh<T>(_points, polygons, this->delaunayEdges, pointMap);
         };
     };
-}
+} // namespace Delynoi
 
 #endif

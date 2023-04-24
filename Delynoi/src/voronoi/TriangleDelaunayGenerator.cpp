@@ -140,13 +140,13 @@ void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, cha
     free(out.edgemarkerlist);
 }
 
-Mesh<Triangle> &TriangleDelaunayGenerator::getConformingDelaunayTriangulation() {
+Mesh<Triangle> &TriangleDelaunayGenerator::getConformingDelaunayTriangulation(bool ignoreInvalidTriangles) {
     if (!this->empty) {
         char switches[] = "pzejDQ";
         callTriangle(seedPoints, switches);
     }
     if (this->meshInitialized) return this->mesh;
-    this->mesh = initializeMesh<Triangle>();
+    this->mesh = initializeMesh<Triangle>(ignoreInvalidTriangles);
     this->meshInitialized = true;
     return this->mesh;
 }
@@ -191,20 +191,20 @@ DelaunayInfo TriangleDelaunayGenerator::getConformingDelaunay() {
     return DelaunayInfo(triangles, meshPoints, delaunayEdges, points, realPoints, edges, edgeMap, circumcenters);
 }
 
-Mesh<Triangle> TriangleDelaunayGenerator::getConstrainedDelaunayTriangulation() {
+Mesh<Triangle> TriangleDelaunayGenerator::getConstrainedDelaunayTriangulation(bool ignoreInvalidTriangles) {
     if (!this->empty) {
         char switches[] = "pzejQ";
         callTriangle(seedPoints, switches);
     }
 
-    return initializeMesh<Triangle>();
+    return initializeMesh<Triangle>(ignoreInvalidTriangles);
 }
 
-Mesh<Triangle> TriangleDelaunayGenerator::getConstrainedDelaunayTriangulation(const std::vector<PointSegment> &restrictedSegments) {
+Mesh<Triangle> TriangleDelaunayGenerator::getConstrainedDelaunayTriangulation(const std::vector<PointSegment> &restrictedSegments, bool ignoreInvalidTriangles) {
     if (!this->empty) {
         char switches[] = "pzejQ";
         callTriangle(seedPoints, switches, restrictedSegments);
     }
 
-    return initializeMesh<Triangle>();
+    return initializeMesh<Triangle>(ignoreInvalidTriangles);
 }

@@ -1,8 +1,9 @@
 #include <Delynoi/models/generator/Functor.h>
 #include <Delynoi/models/generator/functions/RandomDouble.h>
 #include <Delynoi/models/generator/functions/RandomInteger.h>
-#include <Delynoi/utilities/UniqueList.h>
 #include <Delynoi/utilities/delynoi_utilities.h>
+
+#include <Delynoi/utilities/UniqueList.h>
 
 namespace Delynoi {
     class Constant : public Functor {
