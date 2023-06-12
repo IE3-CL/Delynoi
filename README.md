@@ -18,7 +18,7 @@ is considered as a mesh that is left available for use if needed. Then, it compu
 To use the library, it must be created as a submodule in git inside the path of a project:
 
 ```bash
-git submodule add https://github.com/IE3-CL/Delynoi.git lib/delynoi
+git submodule add https://github.com/SmartBuildingDesign/Delynoi.git lib/delynoi
 ```
 
 This will create the ``delynoi`` folder inside ``lib``. Then, inside ``CMakeLists.txt``:
