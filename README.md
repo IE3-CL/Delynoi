@@ -25,7 +25,7 @@ This will create the ``delynoi`` folder inside ``lib``. Then, inside ``CMakeList
 
 ```cmake
 import_library(lib/delynoi/Delynoi)
-target_link_libraries(MyProject Delynoi)
+target_link_libraries(${PROJECT_NAME} Delynoi)
 ```
 
 <h2>Usage instructions</h2>
@@ -96,9 +96,9 @@ Delaunay Triangulator. </a></li>
 </ul>
 
 <h2>License</h2>
-This project is licensed under the GPL License. This program is free software; 
+This project is licensed under the GPL License. This program is free software;
 it can be redistributed or modified under the terms of the GNU General Public License as published by
 the Free Software Foundation.
 
 <h2>Author</h2>
-<a href="https://github.com/capalvarez">Catalina Alvarez</a> -  B.Sc., M.Sc., Universidad de Chile.
+<a href="https://github.com/capalvarez">Catalina Alvarez</a> - B.Sc., M.Sc., Universidad de Chile.
