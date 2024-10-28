@@ -6,14 +6,14 @@
 #include <Delynoi/utilities/UniqueList.h>
 
 namespace Delynoi {
-    class Constant : public Functor {
+    class Constant final : public Functor {
     public:
         Constant() = default;
 
         inline double apply(double x) override { return x; }
     };
 
-    class Uniform : public Functor {
+    class Uniform final : public Functor {
     private:
         double delta;
 
@@ -23,7 +23,7 @@ namespace Delynoi {
         inline double apply(double x) override { return x * delta; }
     };
 
-    class Sine : public Functor {
+    class Sine final : public Functor {
     private:
         double amplitude;
         double frecuency;
@@ -41,7 +41,7 @@ namespace Delynoi {
         };
     };
 
-    class Cosine : public Functor {
+    class Cosine final : public Functor {
     private:
         double amplitude;
         double frecuency;
@@ -59,7 +59,7 @@ namespace Delynoi {
         };
     };
 
-    class DisplaceDelta : public Functor {
+    class DisplaceDelta final : public Functor {
     private:
         double delta;
         bool alternating = false;
@@ -74,13 +74,12 @@ namespace Delynoi {
 
             if (alternating) {
                 return x + delta / 2;
-            } else {
-                return x;
             }
+            return x;
         }
     };
 
-    class ConstantAlternating : public Functor {
+    class ConstantAlternating final : public Functor {
     private:
         UniqueList<double> visitedPlaces;
         double delta{};
@@ -103,9 +102,8 @@ namespace Delynoi {
 
             if (alternating) {
                 return x + delta / 2;
-            } else {
-                return x;
             }
+            return x;
         }
     };
 

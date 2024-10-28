@@ -109,14 +109,13 @@ DelaunayToVoronoi::DelaunayToVoronoi(DelaunayInfo &del) {
 int DelaunayToVoronoi::getCircumcenter(DelaunayInfo &del, int triangle, int edge) {
     if (triangle != -1) {
         return del.triangles[triangle].getCircumcenterIndex();
-    } else {
-        Point middlePoint = IndexSegment(del.edges[edge].p1, del.edges[edge].p2).middlePoint(del.meshPoints);
-        middlePoint.setBoundary();
-
-        int circumcenterIndex = del.circumcenters.push_back(middlePoint);
-
-        return circumcenterIndex;
     }
+    Point middlePoint = IndexSegment(del.edges[edge].p1, del.edges[edge].p2).middlePoint(del.meshPoints);
+    middlePoint.setBoundary();
+
+    int circumcenterIndex = del.circumcenters.push_back(middlePoint);
+
+    return circumcenterIndex;
 }
 
 Mesh<Polygon> &DelaunayToVoronoi::getMesh() {
