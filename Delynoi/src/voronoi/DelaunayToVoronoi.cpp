@@ -104,7 +104,8 @@ DelaunayToVoronoi::DelaunayToVoronoi(DelaunayInfo &del) {
 
     UniqueList<Point> &points = del.circumcenters;
 
-    this->mesh = Mesh(points, voronoiCells, voronoiEdges, pointMap);
+    // ReSharper disable once CppTemplateArgumentsCanBeDeduced
+    this->mesh = Mesh<Polygon>(points, voronoiCells, voronoiEdges, pointMap); // <Polygon> required in MacOS
 }
 
 int DelaunayToVoronoi::getCircumcenter(DelaunayInfo &del, const int triangle, const int edge) {
