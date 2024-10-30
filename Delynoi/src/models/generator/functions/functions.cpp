@@ -99,7 +99,8 @@ namespace Delynoi {
                 delta = std::abs(visitedPlaces[0] - x);
             }
 
-            if (const int index = visitedPlaces.push_back(x); index < visitedPlaces.size() - 1) {
+            const int index = visitedPlaces.push_back(x);
+            if (index < visitedPlaces.size() - 1) {
                 alternating = !alternating;
                 visitedPlaces.clear();
             }

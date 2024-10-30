@@ -9,7 +9,8 @@ SegmentMap::~SegmentMap() {
 }
 
 void SegmentMap::insert(const IndexSegment &s, const int polygonIndex) {
-    if (const auto got = this->map.find(s); got == this->map.end()) {
+    const auto got = this->map.find(s);
+    if (got == this->map.end()) {
         NeighboursBySegment n(polygonIndex);
         this->map.insert(std::make_pair(s, n));
     } else {

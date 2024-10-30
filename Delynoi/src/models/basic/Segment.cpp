@@ -62,7 +62,8 @@ bool Segment<T>::intersects(const Point &_p1, const Point &_p2, const Point &o1,
 
     const double s = (-s1_y * (_p1.getX() - o1.getX()) + s1_x * (_p1.getY() - o1.getY())) / (-s2_x * s1_y + s1_x * s2_y);
 
-    if (const double t = (s2_x * (_p1.getY() - o1.getY()) - s2_y * (_p1.getX() - o1.getX())) / (-s2_x * s1_y + s1_x * s2_y); s >= 0 - tolerance && s <= 1 + tolerance && t >= 0 - tolerance && t <= 1 + tolerance) {
+    const double t = (s2_x * (_p1.getY() - o1.getY()) - s2_y * (_p1.getX() - o1.getX())) / (-s2_x * s1_y + s1_x * s2_y);
+    if (s >= 0 - tolerance && s <= 1 + tolerance && t >= 0 - tolerance && t <= 1 + tolerance) {
         const double i_x = _p1.getX() + t * s1_x;
         const double i_y = _p1.getY() + t * s1_y;
 
@@ -84,7 +85,8 @@ bool Segment<T>::intersectionInfinite(const Point _p1, const Point _p2, const Po
     const double s2_x = o2.getX() - o1.getX();
     const double s2_y = o2.getY() - o1.getY();
 
-    if (const double t = (s2_x * (_p1.getY() - o1.getY()) - s2_y * (_p1.getX() - o1.getX())) / (-s2_x * s1_y + s1_x * s2_y); t <= 1 + tolerance && t >= 0 - tolerance) {
+    const double t = (s2_x * (_p1.getY() - o1.getY()) - s2_y * (_p1.getX() - o1.getX())) / (-s2_x * s1_y + s1_x * s2_y);
+    if (t <= 1 + tolerance && t >= 0 - tolerance) {
         const double i_x = _p1.getX() + t * s1_x;
         const double i_y = _p1.getY() + t * s1_y;
 

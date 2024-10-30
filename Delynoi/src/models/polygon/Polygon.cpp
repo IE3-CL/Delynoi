@@ -61,7 +61,8 @@ double Polygon::calculateDiameter(std::vector<Point> &p) {
     double max = -1;
 
     for (auto &[fst, snd]: rotatingCalipers) {
-        if (const double distance = delynoi_utilities::norm(fst - snd); distance > max) {
+        const double distance = delynoi_utilities::norm(fst - snd);
+        if (distance > max) {
             max = distance;
         }
     }
@@ -191,11 +192,11 @@ bool Polygon::isConvex(const std::vector<Point> &p) const {
     const double determinant = delynoi_utilities::orientation(p[this->points[0]], p[this->points[1]], p[this->points[2]]);
 
     for (int i = 1; i < n; i++) {
-        if (const double newResult = delynoi_utilities::orientation(
-                    p[this->points[i]],
-                    p[this->points[(i + 1) % n]],
-                    p[this->points[(i + 2) % n]]);
-            determinant * newResult < 0) {
+        const double newResult = delynoi_utilities::orientation(
+                            p[this->points[i]],
+                            p[this->points[(i + 1) % n]],
+                            p[this->points[(i + 2) % n]]);
+        if (determinant * newResult < 0) {
             return false;
         }
     }
@@ -336,7 +337,8 @@ double Polygon::getMaxDistance(const std::vector<Point> &points) const {
     double maxEdge = LLONG_MIN;
 
     for (int i = 0; i < this->points.size(); ++i) {
-        if (const double distance = IndexSegment(this->points[i], this->points[(i + 1) % n]).length(points); distance > maxEdge) {
+        const double distance = IndexSegment(this->points[i], this->points[(i + 1) % n]).length(points);
+        if (distance > maxEdge) {
             maxEdge = distance;
         }
     }

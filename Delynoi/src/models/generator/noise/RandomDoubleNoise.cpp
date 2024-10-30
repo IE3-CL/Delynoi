@@ -11,8 +11,10 @@ RandomDoubleNoise::RandomDoubleNoise(Functor *f, const double min, const double 
     this->max = max;
     this->f = f;
 
-    this->uni = std::uniform_real_distribution(min, max);
-    this->uni_int = std::uniform_int_distribution(INT_MIN + 100000, INT_MAX - 100000);
+    // ReSharper disable CppTemplateArgumentsCanBeDeduced
+    this->uni = std::uniform_real_distribution<double>(min, max); // MacOS require template
+    // ReSharper disable CppTemplateArgumentsCanBeDeduced
+    this->uni_int = std::uniform_int_distribution<int>(INT_MIN + 100000, INT_MAX - 100000);
 }
 
 double RandomDoubleNoise::apply(const double x) {

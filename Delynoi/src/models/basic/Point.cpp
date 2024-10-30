@@ -65,8 +65,8 @@ void Point::setY(const double newY) {
 }
 
 bool Point::operator<(const Point &other) const {
-    if (const DelynoiConfig *config = DelynoiConfig::instance();
-        std::abs(this->x - other.x) < config->getTolerance()) {
+    const DelynoiConfig *config = DelynoiConfig::instance();
+    if (std::abs(this->x - other.x) < config->getTolerance()) {
         if (std::abs(this->y - other.y) < config->getTolerance()) {
             return false;
         }
