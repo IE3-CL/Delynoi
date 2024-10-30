@@ -193,9 +193,9 @@ bool Polygon::isConvex(const std::vector<Point> &p) const {
 
     for (int i = 1; i < n; i++) {
         const double newResult = delynoi_utilities::orientation(
-                            p[this->points[i]],
-                            p[this->points[(i + 1) % n]],
-                            p[this->points[(i + 2) % n]]);
+                p[this->points[i]],
+                p[this->points[(i + 1) % n]],
+                p[this->points[(i + 2) % n]]);
         if (determinant * newResult < 0) {
             return false;
         }
