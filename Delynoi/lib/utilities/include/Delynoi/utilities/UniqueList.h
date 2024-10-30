@@ -1,7 +1,6 @@
 #ifndef UTILITIES_UNIQUELIST_H
 #define UTILITIES_UNIQUELIST_H
 
-#include <algorithm>
 #include <map>
 #include <vector>
 
