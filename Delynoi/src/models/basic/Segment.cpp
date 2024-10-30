@@ -102,6 +102,8 @@ double Segment<T>::length(const Point &_p1, const Point &_p2) {
     return std::sqrt(std::pow(_p1.getX() - _p2.getX(), 2) + std::pow(_p1.getY() - _p2.getY(), 2));
 }
 
-template class Segment<int>;
+// ReSharper disable once CppRedundantQualifier
+template class Delynoi::Segment<int>; // Fix explicit instantiation for MacOS
 
-template class Segment<Point>;
+// ReSharper disable once CppRedundantQualifier
+template class Delynoi::Segment<Point>; // Fix explicit instantiation for MacOS
