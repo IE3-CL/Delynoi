@@ -22,7 +22,8 @@ namespace Delynoi::utilities {
     int random_integer(const int min, const int max) {
         static std::random_device rd;
         static std::mt19937 rng(rd());
-        std::uniform_int_distribution uni(min, max);
+        // ReSharper disable once CppTemplateArgumentsCanBeDeduced
+        std::uniform_int_distribution<int> uni(min, max); // Template required for MacOS
 
         return uni(rng);
     }
