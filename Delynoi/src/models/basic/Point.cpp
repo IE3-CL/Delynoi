@@ -1,9 +1,11 @@
 #include <Delynoi/config/DelynoiConfig.h>
 #include <Delynoi/models/basic/Point.h>
 
+#include <cmath>
+
 using namespace Delynoi;
 
-Point::Point(double x, double y) {
+Point::Point(const double x, const double y) {
     this->x = x;
     this->y = y;
 }
@@ -36,7 +38,7 @@ double Point::squareNorm() const {
 }
 
 bool Point::operator==(const Point &other) const {
-    DelynoiConfig *config = DelynoiConfig::instance();
+    const DelynoiConfig *config = DelynoiConfig::instance();
 
     return std::abs(this->x - other.x) < config->getTolerance() &&
            std::abs(this->y - other.y) < config->getTolerance();
@@ -54,18 +56,17 @@ void Point::setBoundary() {
     this->isBoundaryPoint = true;
 }
 
-void Point::setX(double newX) {
+void Point::setX(const double newX) {
     this->x = newX;
 }
 
-void Point::setY(double newY) {
+void Point::setY(const double newY) {
     this->y = newY;
 }
 
 bool Point::operator<(const Point &other) const {
-    DelynoiConfig *config = DelynoiConfig::instance();
-
-    if (std::abs(this->x - other.x) < config->getTolerance()) {
+    if (const DelynoiConfig *config = DelynoiConfig::instance();
+        std::abs(this->x - other.x) < config->getTolerance()) {
         if (std::abs(this->y - other.y) < config->getTolerance()) {
             return false;
         }

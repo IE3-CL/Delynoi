@@ -11,23 +11,23 @@ DelynoiConfig::DelynoiConfig() {
     this->precision = 6;
 }
 
-void DelynoiConfig::setDiscretizationGrade(int d) {
+void DelynoiConfig::setDiscretizationGrade(const int d) {
     this->circle_discretization_grade = d;
 }
 
-void DelynoiConfig::setTolerance(double t) {
+void DelynoiConfig::setTolerance(const double t) {
     this->double_comparison_tolerance = t;
 }
 
-void DelynoiConfig::setScale(int s) {
+void DelynoiConfig::setScale(const int s) {
     this->scale_for_clipper = s;
 }
 
-void DelynoiConfig::setPrecision(Precision::precision p) {
+void DelynoiConfig::setPrecision(const Precision::precision p) {
     this->precision = p;
 }
 
-void DelynoiConfig::setPrecision(int p) {
+void DelynoiConfig::setPrecision(const int p) {
     this->precision = p;
 }
 

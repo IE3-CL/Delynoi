@@ -11,7 +11,7 @@ PointGenerator::PointGenerator(Functor *lX, Functor *lY) {
     this->variable = functions::independent_variable::both;
 }
 
-PointGenerator::PointGenerator(Functor *l, functions::independent_variable variable) {
+PointGenerator::PointGenerator(Functor *l, const functions::independent_variable variable) {
     this->variable = variable;
 
     switch (variable) {
@@ -26,21 +26,21 @@ PointGenerator::PointGenerator(Functor *l, functions::independent_variable varia
     }
 }
 
-void PointGenerator::generate(std::vector<Point> &vector, BoundingBox box, int nX, int nY) {
-    double dX = box.getWidth() / (nX - 1);
-    double dY = box.getHeight() / (nY - 1);
+void PointGenerator::generate(std::vector<Point> &vector, const BoundingBox &box, const int nX, const int nY) const {
+    const double dX = box.getWidth() / (nX - 1);
+    const double dY = box.getHeight() / (nY - 1);
 
     for (int i = 0; i < nY; i++) {
         for (int j = 0; j < nX; j++) {
-            double x = box.xMin() + j * dX;
-            double y = box.yMin() + i * dY;
+            const double x = box.xMin() + j * dX;
+            const double y = box.yMin() + i * dY;
 
             vector.push_back(result(x, y));
         }
     }
 }
 
-Point PointGenerator::result(double x, double y) {
+Point PointGenerator::result(double x, double y) const {
     switch (variable) {
         case functions::independent_variable::x:
             return {x, y + this->lY->apply(x)};

@@ -2,7 +2,7 @@
 
 using namespace Delynoi;
 
-BoundingBox::BoundingBox(Point p1, Point p2) {
+BoundingBox::BoundingBox(const Point &p1, const Point &p2) {
     this->p1 = p1;
     this->p2 = p2;
 }
@@ -15,27 +15,27 @@ Point BoundingBox::getSecond() const {
     return this->p2;
 }
 
-double BoundingBox::getWidth() {
+double BoundingBox::getWidth() const {
     return std::abs(p1.getX() - p2.getX());
 }
 
-double BoundingBox::getHeight() {
+double BoundingBox::getHeight() const {
     return std::abs(p1.getY() - p2.getY());
 }
 
-double BoundingBox::xMin() {
+double BoundingBox::xMin() const {
     return std::min(p1.getX(), p2.getX());
 }
 
-double BoundingBox::yMin() {
+double BoundingBox::yMin() const {
     return std::min(p1.getY(), p2.getY());
 }
 
-double BoundingBox::xMax() {
+double BoundingBox::xMax() const {
     return std::max(p1.getX(), p2.getX());
 }
 
-double BoundingBox::yMax() {
+double BoundingBox::yMax() const {
     return std::max(p1.getY(), p2.getY());
 }
 
@@ -54,6 +54,6 @@ void BoundingBox::getSegments(std::vector<PointSegment> &segments) {
     segments.emplace_back(p4, p1);
 }
 
-bool BoundingBox::contains(Point p) {
+bool BoundingBox::contains(const Point &p) const {
     return p.getX() >= xMin() && p.getX() <= xMax() && p.getY() >= yMin() && p.getY() <= yMax();
 }

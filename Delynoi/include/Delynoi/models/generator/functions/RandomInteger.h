@@ -8,7 +8,7 @@ namespace Delynoi {
     /*
      * Generates random integer numbers.
      */
-    class Random_Integer : public Functor {
+    class Random_Integer final : public Functor {
     private:
         /*
         * Parameters for the number generation. Maximum and minimum possible values.
@@ -21,7 +21,7 @@ namespace Delynoi {
       */
         static std::default_random_engine rd;
         static std::mt19937 rng;
-        std::uniform_int_distribution<int> uni;
+        std::uniform_int_distribution<> uni;
 
     public:
         /*

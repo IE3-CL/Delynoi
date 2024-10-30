@@ -7,6 +7,7 @@ namespace Delynoi {
      */
     class Functor {
     public:
+        virtual ~Functor() = default;
         /*
          * Applies the function on a number
          * @param x parameter of the function

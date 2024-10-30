@@ -11,7 +11,7 @@ namespace Delynoi {
     /*
      * Class in charge of keeping the generator functions and applying them on all points generated.
      */
-    class PointGenerator {
+    class PointGenerator final {
     private:
         /*
          * Function classes that will be used to generate the points values
@@ -31,7 +31,7 @@ namespace Delynoi {
          * @param x y base coordinates to generate the point
          * @return generated point
          */
-        Point result(double x, double y);
+        Point result(double x, double y) const;
 
     public:
         /*
@@ -58,7 +58,7 @@ namespace Delynoi {
          * @param nX number of points in the horizontal axis
          * @param nY number of points in the vertical axis
          */
-        virtual void generate(std::vector<Point> &vector, BoundingBox box, int nX, int nY);
+        void generate(std::vector<Point> &vector, const BoundingBox &box, int nX, int nY) const;
     };
 } // namespace Delynoi
 

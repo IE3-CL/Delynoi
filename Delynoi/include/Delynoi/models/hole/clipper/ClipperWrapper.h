@@ -3,7 +3,6 @@
 
 #include <Delynoi/models/basic/Point.h>
 #include <Delynoi/models/hole/clipper/lib/clipper.hpp>
-#include <Delynoi/models/polygon/Polygon.h>
 
 namespace Delynoi {
     /*
@@ -15,7 +14,7 @@ namespace Delynoi {
         /*
          * Scales a point (which has double precision coordinates) to an integer, using the given scale.
          */
-        static ClipperLib::IntPoint scalePoint(Point point, int maxScale);
+        static ClipperLib::IntPoint scalePoint(const Point &point, int maxScale);
 
     public:
         /* Computes the intersection between two polygons using Clipper

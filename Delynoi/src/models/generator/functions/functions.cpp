@@ -10,7 +10,9 @@ namespace Delynoi {
     public:
         Constant() = default;
 
-        inline double apply(double x) override { return x; }
+        double apply(const double x) override {
+            return x;
+        }
     };
 
     class Uniform final : public Functor {
@@ -18,9 +20,13 @@ namespace Delynoi {
         double delta;
 
     public:
-        explicit Uniform(double delta) { this->delta = delta; }
+        explicit Uniform(const double delta) {
+            this->delta = delta;
+        }
 
-        inline double apply(double x) override { return x * delta; }
+        double apply(const double x) override {
+            return x * delta;
+        }
     };
 
     class Sine final : public Functor {
@@ -30,15 +36,15 @@ namespace Delynoi {
         double phase;
 
     public:
-        Sine(double a, double f, double p) {
+        Sine(const double a, const double f, const double p) {
             this->amplitude = a;
             this->frecuency = f;
             this->phase = p;
         }
 
-        inline double apply(double x) override {
+        double apply(const double x) override {
             return amplitude * std::sin(utilities::radian(frecuency * x * 180) + utilities::radian(phase));
-        };
+        }
     };
 
     class Cosine final : public Functor {
@@ -48,15 +54,15 @@ namespace Delynoi {
         double phase;
 
     public:
-        Cosine(double a, double f, double p) {
+        Cosine(const double a, const double f, const double p) {
             this->amplitude = a;
             this->frecuency = f;
             this->phase = p;
         }
 
-        inline double apply(double x) override {
+        double apply(const double x) override {
             return amplitude * std::cos(utilities::radian(frecuency * x * 180) + utilities::radian(phase));
-        };
+        }
     };
 
     class DisplaceDelta final : public Functor {
@@ -65,11 +71,11 @@ namespace Delynoi {
         bool alternating = false;
 
     public:
-        explicit DisplaceDelta(double delta) {
+        explicit DisplaceDelta(const double delta) {
             this->delta = delta;
         }
 
-        inline double apply(double x) override {
+        double apply(const double x) override {
             alternating = !alternating;
 
             if (alternating) {
@@ -88,14 +94,12 @@ namespace Delynoi {
     public:
         ConstantAlternating() = default;
 
-        inline double apply(double x) override {
+        double apply(double x) override {
             if (visitedPlaces.size() == 1) {
                 delta = std::abs(visitedPlaces[0] - x);
             }
 
-            int index = visitedPlaces.push_back(x);
-
-            if (index < visitedPlaces.size() - 1) {
+            if (const int index = visitedPlaces.push_back(x); index < visitedPlaces.size() - 1) {
                 alternating = !alternating;
                 visitedPlaces.clear();
             }
@@ -112,7 +116,7 @@ namespace Delynoi {
             return new Uniform(1.0);
         }
 
-        Functor *displace_points(double delta) {
+        Functor *displace_points(const double delta) {
             return new DisplaceDelta(delta);
         }
 
@@ -120,23 +124,23 @@ namespace Delynoi {
             return new ConstantAlternating();
         }
 
-        Functor *uniform(double delta) {
+        Functor *uniform(const double delta) {
             return new Uniform(delta);
         }
 
-        Functor *sine(double amplitude, double frecuency, double phase) {
+        Functor *sine(const double amplitude, const double frecuency, const double phase) {
             return new Sine(amplitude, frecuency, phase);
         }
 
-        Functor *cosine(double amplitude, double frecuency, double phase) {
+        Functor *cosine(const double amplitude, const double frecuency, const double phase) {
             return new Cosine(amplitude, frecuency, phase);
         }
 
-        Functor *random_integer(double min, double max) {
+        Functor *random_integer(const double min, const double max) {
             return new Random_Integer(min, max);
         }
 
-        Functor *random_double(double min, double max) {
+        Functor *random_double(const double min, const double max) {
             return new Random_Double(min, max);
         }
     } // namespace functions

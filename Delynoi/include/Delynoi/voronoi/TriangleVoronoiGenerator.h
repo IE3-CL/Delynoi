@@ -3,7 +3,6 @@
 
 #include <Delynoi/models/Mesh.h>
 #include <Delynoi/voronoi/TriangleDelaunayGenerator.h>
-#include <Delynoi/voronoi/structures/DelaunayInfo.h>
 
 namespace Delynoi {
     /*
@@ -22,7 +21,7 @@ namespace Delynoi {
          * Constructor. Using the point list (seed points) and a domain it computes the Voronoi diagram and sets it in the
          * class member
          */
-        TriangleVoronoiGenerator(std::vector<Point> &point_list, const Region &region, bool ignoreInvalidTriangles = false);
+        TriangleVoronoiGenerator(const std::vector<Point> &point_list, const Region &region, bool ignoreInvalidTriangles = false);
 
         /*
          * @return voronoi diagram
@@ -37,7 +36,7 @@ namespace Delynoi {
         /*
          * Clear mesh data
          */
-        void clear();
+        void clear() const;
     };
 } // namespace Delynoi
 

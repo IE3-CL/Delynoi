@@ -7,14 +7,14 @@ namespace Delynoi {
     /*
      * Class that triangulates a polygon using the classic ear triangulation scheme.
      */
-    class EarTriangulationGenerator : public TriangulationGenerator {
+    class EarTriangulationGenerator final : public TriangulationGenerator {
     private:
         /* Gets an independant ear out of the polygon
          * @param point mesh points
          * @param pointList list of points of the polygon
          * @return a triangle (an ear of the polygon)
          */
-        static Triangle getEar(std::vector<Point> &points, std::vector<int> &pointList);
+        static Triangle getEar(const std::vector<Point> &points, std::vector<int> &pointList);
 
     public:
         /* Triangulates a polygon.

@@ -18,7 +18,7 @@ namespace Delynoi {
          * Constructor. Takes an angle value and obtains the equivalent between 0 and 180.
          */
         explicit Angle(double a) {
-            a = a - 360.0 * int(a / 360);
+            a = a - 360.0 * static_cast<int>(a / 360);
             if (a >= 0 && a < 180) {
                 angle = a;
             } else {
@@ -32,14 +32,14 @@ namespace Delynoi {
          * @return whether this angle is lesser than the given one
          */
         bool operator<(const Angle &other) const {
-            DelynoiConfig *config = DelynoiConfig::instance();
+            const DelynoiConfig *config = DelynoiConfig::instance();
 
             if (std::abs(angle - other.angle) < config->getTolerance()) {
                 return false;
             }
 
             return angle < other.angle;
-        };
+        }
     };
 } // namespace Delynoi
 

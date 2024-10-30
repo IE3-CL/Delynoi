@@ -1,10 +1,8 @@
+// ReSharper disable CppFunctionIsNotImplemented
 #ifndef DELYNOI_SEGMENT_H
 #define DELYNOI_SEGMENT_H
 
-#include <Delynoi/config/DelynoiConfig.h>
 #include <Delynoi/models/basic/Point.h>
-#include <Delynoi/utilities/delynoi_utilities.h>
-#include <vector>
 
 namespace Delynoi {
     /*
@@ -22,7 +20,7 @@ namespace Delynoi {
         /*
          * @return the length of the segment
          */
-        double length(Point _p1, Point _p2);
+        static double length(const Point &_p1, const Point &_p2);
 
         /*
          * Determines whether four points (defining two line segments) intersect or not, and set as the last value the intersection
@@ -32,12 +30,12 @@ namespace Delynoi {
          * @param inter intersection point (only valid if segments intersect)
          * @return segments intersect or not
          */
-        bool intersects(Point _p1, Point _p2, Point o1, Point o2, Point &inter);
+        static bool intersects(const Point &_p1, const Point &_p2, const Point &o1, const Point &o2, Point &inter);
 
         /*
          * @return angle of the line segment in degrees.
          */
-        double cartesianAngle(Point _p1, Point _p2);
+        static double cartesianAngle(const Point &_p1, const Point &_p2);
 
         /*
          * Determines whether four points (defining two infinite lines) intersect or not (it is always the case unless they are parallel).
@@ -55,9 +53,10 @@ namespace Delynoi {
          * @param p1 p2 points defining a segment
          * @return whether the point is contained or not
          */
-        bool contains(Point point, Point _p1, Point _p2);
+        bool contains(const Point &point, const Point &_p1, const Point &_p2) const;
 
     public:
+        virtual ~Segment() = default;
         /*
          * Constructor. Empty segment.
          */

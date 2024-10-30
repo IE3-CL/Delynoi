@@ -7,7 +7,7 @@ namespace Delynoi {
     /*
      * Class that triangulates a Polygon (necessarily convex) using its geometrical center.
      */
-    class CenterTriangulationGenerator : public TriangulationGenerator {
+    class CenterTriangulationGenerator final : public TriangulationGenerator {
     public:
         /* Triangulates a polygon.
         * @param p polygon to triangulate

@@ -1,23 +1,32 @@
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wimplicit-const-int-float-conversion"
-
 #include <Delynoi/models/Region.h>
+
+#include <Delynoi/config/DelynoiConfig.h>
+#include <Delynoi/models/generator/PointGenerator.h>
+#include <Delynoi/models/hole/Hole.h>
+#include <Delynoi/models/hole/clipper/ClipperWrapper.h>
+#include <Delynoi/models/hole/clipper/lib/clipper.hpp>
+#include <Delynoi/models/polygon/Polygon.h>
+
+#include <climits>
+#include <fstream>
+#include <vector>
 
 using namespace Delynoi;
 
-Region::Region(std::vector<Point> &points) : Polygon(points) {
+Region::Region(const std::vector<Point> &points)
+    : Polygon(points) {
     this->p = points;
 }
 
-void Region::mutate(std::vector<Point> &points) {
+void Region::mutate(const std::vector<Point> &points) {
     this->p = points;
     Polygon::mutate(points);
 }
 
-Region::Region() : Polygon() {}
+Region::Region() = default;
 
-Region::Region(const Polygon &other, std::vector<Point> &points) : Polygon() {
-    std::vector<int> otherPoints = other.getPoints();
+Region::Region(const Polygon &other, const std::vector<Point> &points) {
+    const std::vector<int> otherPoints = other.getPoints();
 
     for (int i = 0; i < other.numberOfSides(); ++i) {
         this->p.push_back(points[otherPoints[i]]);
@@ -26,7 +35,8 @@ Region::Region(const Polygon &other, std::vector<Point> &points) : Polygon() {
     Polygon::mutate(this->p);
 }
 
-Region::Region(const Region &other) : Polygon(other) {
+Region::Region(const Region &other)
+    : Polygon(other) {
     this->p = other.p;
     this->holes.assign(other.holes.begin(), other.holes.end());
 }
@@ -42,17 +52,17 @@ std::vector<Point> Region::getSeedPoints() {
 void Region::addHole(Hole h) {
     //When we receive a hole we check whether the difference between the region and the hole is just
     //one path (according to the used library)
-    DelynoiConfig *config = DelynoiConfig::instance();
+    const DelynoiConfig *config = DelynoiConfig::instance();
     ClipperLib::Path region, hole;
     ClipperLib::Paths solution;
 
     for (auto &i: this->p) {
-        region << ClipperLib::IntPoint((int) (config->getScale() * i.getX()), (int) (config->getScale() * i.getY()));
+        region << ClipperLib::IntPoint(static_cast<int>(config->getScale() * i.getX()), static_cast<int>(config->getScale() * i.getY()));
     }
 
-    std::vector<Point> holePoints = h.getPoints();
+    const std::vector<Point> holePoints = h.getPoints();
     for (auto &holePoint: holePoints) {
-        hole << ClipperLib::IntPoint((int) (config->getScale() * holePoint.getX()), (int) (config->getScale() * holePoint.getY()));
+        hole << ClipperLib::IntPoint(static_cast<int>(config->getScale() * holePoint.getX()), static_cast<int>(config->getScale() * holePoint.getY()));
     }
 
     ClipperLib::Clipper clipper;
@@ -64,7 +74,7 @@ void Region::addHole(Hole h) {
         //Hole does intersect, so Region has to change and the hole "disappears"
         std::vector<Point> newPoints;
 
-        for (auto &i: solution[0]) {
+        for (const auto &i: solution[0]) {
             newPoints.emplace_back(i.X / (1.0 * config->getScale()), i.Y / (1.0 * config->getScale()));
         }
 
@@ -84,8 +94,8 @@ void Region::cleanInternalHoles() {
     this->holes.clear();
 }
 
-void Region::generateSeedPoints(PointGenerator _p, int nX, int nY) {
-    BoundingBox box = this->getBox();
+void Region::generateSeedPoints(const PointGenerator &_p, const int nX, const int nY) {
+    const BoundingBox box = this->getBox();
     _p.generate(this->seedPoints, box, nX, nY);
     this->clean();
 }
@@ -101,12 +111,12 @@ void Region::addSeedsFromFile(const std::string &fileName) {
 
     std::string line;
     std::getline(infile, line);
-    int numberMeshPoints = std::atoi(line.c_str());
+    int numberMeshPoints = std::atoi(line.c_str()); // NOLINT(*-err34-c)
     for (int i = 0; i < numberMeshPoints; ++i) {
         std::getline(infile, line);
         std::vector<std::string> splittedLine = utilities::splitBySpaces(line);
 
-        Point newPoint(std::atof(splittedLine[0].c_str()), std::atof(splittedLine[1].c_str()));
+        Point newPoint(std::atof(splittedLine[0].c_str()), std::atof(splittedLine[1].c_str())); // NOLINT(*-err34-c)
         this->seedPoints.push_back(newPoint);
     }
 
@@ -114,7 +124,7 @@ void Region::addSeedsFromFile(const std::string &fileName) {
     this->clean();
 }
 
-BoundingBox Region::getBox() {
+BoundingBox Region::getBox() const {
     double xMin = LLONG_MAX;
     double xMax = LLONG_MIN;
     double yMin = LLONG_MAX;
@@ -149,7 +159,7 @@ void Region::clean() {
     }
 
     newSeeds.reserve(toKeep.size());
-    for (int i: toKeep) {
+    for (const int i: toKeep) {
         newSeeds.push_back(seedPoints[i]);
     }
 
@@ -170,7 +180,7 @@ std::vector<Point> Region::getRegionPoints() {
 
 void Region::getSegments(std::vector<IndexSegment> &s) {
     Polygon::getSegments(s);
-    int offset = (int) this->p.size();
+    int offset = static_cast<int>(this->p.size());
 
     for (Hole h: this->holes) {
         h.getSegments(s, offset);
@@ -178,14 +188,14 @@ void Region::getSegments(std::vector<IndexSegment> &s) {
     }
 }
 
-bool Region::containsPoint(Point _p) {
-    std::vector<Point> regionPoints = this->p;
+bool Region::containsPoint(const Point &_p) const {
+    const std::vector<Point> regionPoints = this->p;
 
     return Polygon::containsPoint(regionPoints, _p);
 }
 
-bool Region::inEdges(Point _p) {
-    std::vector<Point> regionPoints = this->p;
+bool Region::inEdges(const Point &_p) const {
+    const std::vector<Point> regionPoints = this->p;
 
     return Polygon::inEdges(regionPoints, _p);
 }
@@ -202,9 +212,9 @@ void Region::printInPath(const std::string &path) {
     std::ofstream file;
     file.open(path, std::ios::out);
 
-    std::vector<Point> points = this->getRegionPoints();
+    const std::vector<Point> points = this->getRegionPoints();
 
-    file << (points.size() + seedPoints.size()) << std::endl;
+    file << points.size() + seedPoints.size() << std::endl;
     for (auto &point: points) {
         file << point.getString() << std::endl;
     }
@@ -225,5 +235,3 @@ void Region::printInPath(const std::string &path) {
 
     file.close();
 }
-
-#pragma clang diagnostic pop

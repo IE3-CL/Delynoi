@@ -1,3 +1,4 @@
+#include <Delynoi/utilities/geometryFunctions.h>
 #include <Delynoi/voronoi/DelaunayToVoronoi.h>
 
 using namespace Delynoi;
@@ -67,9 +68,8 @@ DelaunayToVoronoi::DelaunayToVoronoi(DelaunayInfo &del) {
 
         if (edge.t2 == -1) {
             int firstPoint = cellPoints[0];
-            int lastPoint = cellPoints[cellPoints.size() - 1];
 
-            if (geometry_functions::collinear(del.circumcenters[firstPoint], regionCenter, del.circumcenters[lastPoint])) {
+            if (int lastPoint = cellPoints[cellPoints.size() - 1]; geometry_functions::collinear(del.circumcenters[firstPoint], regionCenter, del.circumcenters[lastPoint])) {
                 IndexSegment e(lastPoint, firstPoint);
                 thisEdges.push_back(e);
 
@@ -95,7 +95,7 @@ DelaunayToVoronoi::DelaunayToVoronoi(DelaunayInfo &del) {
         std::vector<Point> &pointList = del.circumcenters.getList();
         std::vector<int> &cellPointsList = cellPoints.getList();
 
-        Polygon p = Polygon(cellPointsList, pointList);
+        auto p = Polygon(cellPointsList, pointList);
         p.fixCCW(pointList);
 
         voronoiCells.push_back(p);
@@ -103,17 +103,17 @@ DelaunayToVoronoi::DelaunayToVoronoi(DelaunayInfo &del) {
 
     UniqueList<Point> &points = del.circumcenters;
 
-    this->mesh = Mesh<Polygon>(points, voronoiCells, voronoiEdges, pointMap);
+    this->mesh = Mesh(points, voronoiCells, voronoiEdges, pointMap);
 }
 
-int DelaunayToVoronoi::getCircumcenter(DelaunayInfo &del, int triangle, int edge) {
+int DelaunayToVoronoi::getCircumcenter(DelaunayInfo &del, const int triangle, const int edge) {
     if (triangle != -1) {
         return del.triangles[triangle].getCircumcenterIndex();
     }
     Point middlePoint = IndexSegment(del.edges[edge].p1, del.edges[edge].p2).middlePoint(del.meshPoints);
     middlePoint.setBoundary();
 
-    int circumcenterIndex = del.circumcenters.push_back(middlePoint);
+    const int circumcenterIndex = del.circumcenters.push_back(middlePoint);
 
     return circumcenterIndex;
 }

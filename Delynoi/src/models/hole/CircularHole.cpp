@@ -1,8 +1,11 @@
 #include <Delynoi/models/hole/CircularHole.h>
+#include <Delynoi/models/polygon/Polygon.h>
+#include <Delynoi/utilities/delynoi_utilities.h>
 
 using namespace Delynoi;
 
-CircularHole::CircularHole(Point p, double r) : Circle(r, p) {
+CircularHole::CircularHole(const Point &p, const double r)
+    : Circle(r, p) {
     this->HolePoints = discretizeCircle();
     Hole::center = Circle::center;
     computeSegments();
@@ -10,8 +13,8 @@ CircularHole::CircularHole(Point p, double r) : Circle(r, p) {
 
 void CircularHole::computeSegments() {
     std::vector<int> indexes;
-    delynoi_utilities::TrivialIndexVector(indexes, (int) this->HolePoints.size());
+    delynoi_utilities::TrivialIndexVector(indexes, static_cast<int>(this->HolePoints.size()));
 
-    Polygon discretePolygon(indexes, this->HolePoints);
+    const Polygon discretePolygon(indexes, this->HolePoints);
     discretePolygon.getSegments(this->segments);
 }

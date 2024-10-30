@@ -2,7 +2,6 @@
 #define DELYNOI_EDGEDATA_H
 
 #include <Delynoi/utilities/utilities.h>
-#include <iostream>
 
 namespace Delynoi {
     /*

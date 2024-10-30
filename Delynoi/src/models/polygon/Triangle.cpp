@@ -4,22 +4,25 @@ using namespace Delynoi;
 
 Triangle::Triangle() = default;
 
-Triangle::Triangle(std::vector<int> points, std::vector<Point> &p) : Polygon(points, p) {
+Triangle::Triangle(std::vector<int> points, const std::vector<Point> &p)
+    : Polygon(points, p) {
     this->circumcenter = this->calculateCircumcenter(p);
 }
 
-Triangle::Triangle(std::vector<int> points, std::vector<Point> &p, UniqueList<Point> &circumcenters) : Polygon(points, p) {
+Triangle::Triangle(std::vector<int> points, const std::vector<Point> &p, UniqueList<Point> &circumcenters)
+    : Polygon(points, p) {
     this->circumcenter = this->calculateCircumcenter(p);
     this->circumcenterIndex = circumcenters.push_back(this->circumcenter);
 }
 
-Triangle::Triangle(std::vector<int> points, std::vector<Point> &p, std::vector<Point> &circumcenters) : Polygon(points, p) {
+Triangle::Triangle(std::vector<int> points, const std::vector<Point> &p, std::vector<Point> &circumcenters)
+    : Polygon(points, p) {
     this->circumcenter = this->calculateCircumcenter(p);
     this->circumcenterIndex = circumcenters.size();
     circumcenters.push_back(this->circumcenter);
 }
 
-Point Triangle::getCircumcenter() {
+Point Triangle::getCircumcenter() const {
     return this->circumcenter;
 }
 
@@ -27,12 +30,12 @@ int Triangle::getCircumcenterIndex() const {
     return this->circumcenterIndex;
 }
 
-Point Triangle::calculateCircumcenter(std::vector<Point> &p) {
-    Point A = p[this->points[0]];
-    Point B = p[this->points[1]];
-    Point C = p[this->points[2]];
+Point Triangle::calculateCircumcenter(const std::vector<Point> &p) const {
+    const Point A = p[this->points[0]];
+    const Point B = p[this->points[1]];
+    const Point C = p[this->points[2]];
 
-    double d = 2 * (A.getX() * (B.getY() - C.getY()) + B.getX() * (C.getY() - A.getY()) + C.getX() * (A.getY() - B.getY()));
+    const double d = 2 * (A.getX() * (B.getY() - C.getY()) + B.getX() * (C.getY() - A.getY()) + C.getX() * (A.getY() - B.getY()));
 
     double uX = (A.squareNorm() * (B.getY() - C.getY()) + B.squareNorm() * (C.getY() - A.getY()) + C.squareNorm() * (A.getY() - B.getY())) / d;
     double uY = (A.squareNorm() * (C.getX() - B.getX()) + B.squareNorm() * (A.getX() - C.getX()) + C.squareNorm() * (B.getX() - A.getX())) / d;
@@ -40,31 +43,31 @@ Point Triangle::calculateCircumcenter(std::vector<Point> &p) {
     return {uX, uY};
 }
 
-int Triangle::nextEdge(int center, EdgeData edge, std::unordered_map<Key, int, KeyHasher> &edgeMap) {
-    Key nextEdge = Key(center, thirdPoint(edge));
+int Triangle::nextEdge(const int center, const EdgeData edge, std::unordered_map<Key, int, KeyHasher> &edgeMap) const {
+    const auto nextEdge = Key(center, thirdPoint(edge));
 
     return edgeMap[nextEdge];
 }
 
-int Triangle::thirdPoint(EdgeData edge) {
+int Triangle::thirdPoint(const EdgeData edge) const {
     if (this->points[0] == edge.p1) {
         if (this->points[1] == edge.p2) {
             return this->points[2];
         }
         return this->points[1];
-    } else if (this->points[1] == edge.p1) {
+    }
+    if (this->points[1] == edge.p1) {
         if (this->points[0] == edge.p2) {
             return this->points[2];
         }
         return this->points[0];
-    } else {
-        if (this->points[0] == edge.p2) {
-            return this->points[1];
-        }
-        return this->points[0];
     }
+    if (this->points[0] == edge.p2) {
+        return this->points[1];
+    }
+    return this->points[0];
 }
 
-bool Triangle::isNull() {
+bool Triangle::isNull() const {
     return this->points.empty();
 }

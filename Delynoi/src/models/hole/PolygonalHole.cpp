@@ -2,7 +2,8 @@
 
 using namespace Delynoi;
 
-PolygonalHole::PolygonalHole(std::vector<Point> &p) : Polygon(p) {
+PolygonalHole::PolygonalHole(std::vector<Point> &p)
+    : Polygon(p) {
     for (auto &i: p) {
         this->HolePoints.push_back(i);
     }

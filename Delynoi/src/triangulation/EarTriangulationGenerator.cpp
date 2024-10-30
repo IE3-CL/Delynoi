@@ -2,8 +2,8 @@
 
 using namespace Delynoi;
 
-Triangle EarTriangulationGenerator::getEar(std::vector<Point> &points, std::vector<int> &pointList) {
-    int size = (int) pointList.size();
+Triangle EarTriangulationGenerator::getEar(const std::vector<Point> &points, std::vector<int> &pointList) {
+    const int size = static_cast<int>(pointList.size());
 
     if (size < 3) {
         Triangle t;
@@ -17,10 +17,8 @@ Triangle EarTriangulationGenerator::getEar(std::vector<Point> &points, std::vect
     }
 
     for (int i = 0; i < size; i++) {
-        bool test = false;
-        Triangle t({pointList[(size + i - 1) % size], pointList[i % size], pointList[(size + i + 1) % size]}, points);
-
-        if (t.isConvex(points)) {
+        if (Triangle t({pointList[(size + i - 1) % size], pointList[i % size], pointList[(size + i + 1) % size]}, points); t.isConvex(points)) {
+            bool test = false;
             for (int j = 0; j < size; j++) {
                 if (!t.isVertex(pointList[j]) && t.containsPoint(points, points[pointList[j]])) {
                     test = true;

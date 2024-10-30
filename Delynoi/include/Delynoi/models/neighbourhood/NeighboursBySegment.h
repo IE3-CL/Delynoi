@@ -2,7 +2,6 @@
 #define DELYNOI_NEIGHBOURS_H
 
 #include <Delynoi/utilities/utilities.h>
-#include <iostream>
 
 namespace Delynoi {
     /*

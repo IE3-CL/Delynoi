@@ -1,9 +1,6 @@
 #ifndef DELYNOI_TRIANGULATIONGENERATOR_H
 #define DELYNOI_TRIANGULATIONGENERATOR_H
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "UnusedParameter"
-
 #include <Delynoi/models/polygon/Triangle.h>
 
 #include <utility>
@@ -21,11 +18,13 @@ namespace Delynoi {
          */
         virtual std::vector<Triangle> triangulate(Polygon p, std::vector<Point> &points) = 0;
 
-        std::vector<Triangle> triangulate(Triangle p, std::vector<Point> &points) {
+        virtual ~TriangulationGenerator() = default;
+
+        // ReSharper disable once CppMemberFunctionMayBeStatic
+        std::vector<Triangle> triangulate(Triangle p, [[maybe_unused]] std::vector<Point> &points) {
             return {std::move(p)};
         }
     };
 } // namespace Delynoi
 
-#pragma clang diagnostic pop
 #endif

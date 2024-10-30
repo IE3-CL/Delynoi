@@ -8,10 +8,8 @@ SegmentMap::~SegmentMap() {
     this->map.clear();
 }
 
-void SegmentMap::insert(const IndexSegment &s, int polygonIndex) {
-    auto got = this->map.find(s);
-
-    if (got == this->map.end()) {
+void SegmentMap::insert(const IndexSegment &s, const int polygonIndex) {
+    if (const auto got = this->map.find(s); got == this->map.end()) {
         NeighboursBySegment n(polygonIndex);
         this->map.insert(std::make_pair(s, n));
     } else {
@@ -19,7 +17,7 @@ void SegmentMap::insert(const IndexSegment &s, int polygonIndex) {
     }
 }
 
-void SegmentMap::insert(const IndexSegment &s, NeighboursBySegment n) {
+void SegmentMap::insert(const IndexSegment &s, const NeighboursBySegment n) {
     this->map[s] = n;
 }
 
@@ -35,20 +33,20 @@ std::unordered_map<IndexSegment, NeighboursBySegment, SegmentHasher> SegmentMap:
     return this->map;
 }
 
-int SegmentMap::size() {
+int SegmentMap::size() const {
     return this->map.size();
 }
 
-void SegmentMap::printInFile(const std::string &fileName) {
+void SegmentMap::printInFile(const std::string &fileName) const {
     this->printInPath(utilities::getPath() + fileName);
 }
 
-void SegmentMap::printInPath(const std::string &path) {
+void SegmentMap::printInPath(const std::string &path) const {
     std::ofstream file;
     file.open(path, std::ios::out);
 
-    for (const auto &v: this->map) {
-        file << v.first.getString() + " " + v.second.getString() << std::endl;
+    for (const auto &[fst, snd]: this->map) {
+        file << fst.getString() + " " + snd.getString() << std::endl;
     }
 
     file.close();

@@ -2,10 +2,8 @@
 #define DELYNOI_DELAUNAYTOVORONOI_H
 
 #include <Delynoi/models/Mesh.h>
-#include <Delynoi/models/basic/Point.h>
 #include <Delynoi/models/polygon/Triangle.h>
 #include <Delynoi/voronoi/structures/DelaunayInfo.h>
-#include <chrono>
 
 namespace Delynoi {
     /*

@@ -4,7 +4,7 @@ using namespace Delynoi;
 
 NeighboursByPoint::NeighboursByPoint() = default;
 
-NeighboursByPoint::NeighboursByPoint(int n) {
+NeighboursByPoint::NeighboursByPoint(const int n) {
     this->neighbours.push_back(n);
 }
 
@@ -12,7 +12,7 @@ NeighboursByPoint::NeighboursByPoint(std::vector<int> n) {
     this->neighbours.assign(n.begin(), n.end());
 }
 
-void NeighboursByPoint::add(int n) {
+void NeighboursByPoint::add(const int n) {
     this->neighbours.push_back(n);
 }
 

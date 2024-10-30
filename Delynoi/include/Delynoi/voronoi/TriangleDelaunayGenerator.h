@@ -6,11 +6,6 @@
 #include <Delynoi/utilities/delynoi_utilities.h>
 #include <Delynoi/voronoi/structures/DelaunayInfo.h>
 #include <Delynoi/voronoi/structures/PointData.h>
-#include <chrono>
-
-extern "C" {
-#include <Delynoi/voronoi/lib/triangle.h>
-}
 
 namespace Delynoi {
     /*
@@ -96,10 +91,10 @@ namespace Delynoi {
         * @return Delaunay triangulation in Mesh form
         */
         template<typename T>
-        Mesh<T> initializeMesh(bool ignoreInvalidTriangles = false) {
+        Mesh<T> initializeMesh(const bool ignoreInvalidTriangles = false) {
             UniqueList<Point> _points;
             auto *pointMap = new PointMap;
-            std::vector<int> indexes = _points.push_list(this->meshPoints);
+            const std::vector<int> indexes = _points.push_list(this->meshPoints);
 
             std::vector<T> polygons;
             for (int i = 0; i < triangles.size(); i++) {
@@ -115,13 +110,13 @@ namespace Delynoi {
                 try {
                     delynoi_utilities::checkTriangleIntegrity(newPoints);
                     polygons.push_back(T(newPoints, meshPoints));
-                } catch (std::exception &e) {
-                    if (!ignoreInvalidTriangles) throw e;
+                } catch (std::exception &) {
+                    if (!ignoreInvalidTriangles) throw;
                 }
             }
 
             return Mesh<T>(_points, polygons, this->delaunayEdges, pointMap);
-        };
+        }
     };
 } // namespace Delynoi
 

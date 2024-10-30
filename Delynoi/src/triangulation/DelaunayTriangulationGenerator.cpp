@@ -2,8 +2,8 @@
 
 using namespace Delynoi;
 
-std::vector<Triangle> DelaunayTriangulationGenerator::triangulate(Polygon p, std::vector<Point> &points) {
-    Region r(p, points);
+std::vector<Triangle> DelaunayTriangulationGenerator::triangulate(const Polygon p, std::vector<Point> &points) {
+    const Region r(p, points);
 
     TriangleDelaunayGenerator generator(points, r);
     Mesh<Triangle> triangulation = generator.getConstrainedDelaunayTriangulation();

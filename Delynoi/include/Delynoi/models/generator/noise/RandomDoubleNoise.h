@@ -2,14 +2,13 @@
 #define DELYNOI_RANDOMDOUBLENOISE_H
 
 #include <Delynoi/models/generator/Functor.h>
-#include <climits>
 #include <random>
 
 namespace Delynoi {
     /*
      * Generates random double noise and applies it to a given Function class.
      */
-    class RandomDoubleNoise : public Functor {
+    class RandomDoubleNoise final : public Functor {
     private:
         /*
        * Parameters for noise generation. Maximum and minimum possible noise value. Note that there is no constraint in
@@ -28,8 +27,8 @@ namespace Delynoi {
          */
         static std::default_random_engine rd;
         static std::mt19937 rng;
-        std::uniform_real_distribution<double> uni;
-        std::uniform_int_distribution<int> uni_int;
+        std::uniform_real_distribution<> uni;
+        std::uniform_int_distribution<> uni_int;
 
     public:
         /*

@@ -3,7 +3,6 @@
 
 #include <Delynoi/models/basic/IndexSegment.h>
 #include <Delynoi/models/neighbourhood/NeighboursBySegment.h>
-#include <Delynoi/utilities/Pair.h>
 #include <Delynoi/voronoi/structures/mapdata.h>
 #include <fstream>
 #include <unordered_map>
@@ -71,17 +70,17 @@ namespace Delynoi {
         /*
          * @return number of elements on the map
          */
-        int size();
+        int size() const;
 
         /* Prints the map information in a file relative to user path
          * @param fileName name of the file to print
          */
-        void printInFile(const std::string &fileName);
+        void printInFile(const std::string &fileName) const;
 
         /* Prints the map information in a file relative to absolute path
          * @param fileName name of the file to print
          */
-        void printInPath(const std::string &path);
+        void printInPath(const std::string &path) const;
 
         /* Checks if a given segment is in the map
          * @param s segment to check

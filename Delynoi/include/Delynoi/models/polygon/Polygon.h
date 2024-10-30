@@ -3,15 +3,7 @@
 
 #include <Delynoi/models/basic/IndexSegment.h>
 #include <Delynoi/models/basic/Point.h>
-#include <Delynoi/models/basic/Segment.h>
-#include <Delynoi/models/neighbourhood/SegmentMap.h>
-#include <Delynoi/utilities/Pair.h>
-#include <Delynoi/utilities/UniqueList.h>
-#include <Delynoi/utilities/convexHull.h>
-#include <Delynoi/utilities/geometryFunctions.h>
-#include <algorithm>
 #include <climits>
-#include <map>
 #include <vector>
 
 namespace Delynoi {
@@ -42,13 +34,13 @@ namespace Delynoi {
          * @param p mesh points
          * @return polygon area
          */
-        double calculateArea(std::vector<Point> &p);
+        double calculateArea(const std::vector<Point> &p) const;
 
         /* Calculates the polygon centroid
          * @param p mesh points
          * @return polygon centroid
          */
-        Point calculateCentroid(std::vector<Point> &p);
+        Point calculateCentroid(const std::vector<Point> &p) const;
 
         /*
          * Calculates the polygon hash value
@@ -59,12 +51,12 @@ namespace Delynoi {
         /*
          * Constructor. Receives a list of point indexes and the mesh points to create the polygon
          */
-        Polygon(std::vector<int> &points, std::vector<Point> &p);
+        Polygon(std::vector<int> &points, const std::vector<Point> &p);
 
         /*
          * Constructor. Receives a list of points representing the polygon
          */
-        explicit Polygon(std::vector<Point> &p);
+        explicit Polygon(const std::vector<Point> &p);
 
         /*
          * Copy constructor.
@@ -79,22 +71,22 @@ namespace Delynoi {
         /*
          * @return polygon diameter
          */
-        double getDiameter(std::vector<Point> &_points);
+        double getDiameter(const std::vector<Point> &_points);
 
         /*
          * @return polygon area
          */
-        double getArea(std::vector<Point> &_points);
+        double getArea(const std::vector<Point> &_points);
 
         /*
          * @return polygon centroid
          */
-        Point getCentroid(std::vector<Point> &_points);
+        Point getCentroid(const std::vector<Point> &_points);
 
         /* Gets the polygon segments and set them in the given vector
          * @param segments vector that will contain the segments
          */
-        void getSegments(std::vector<IndexSegment> &segments);
+        void getSegments(std::vector<IndexSegment> &segments) const;
 
         /*
          * @return polygon points indexes list
@@ -110,7 +102,7 @@ namespace Delynoi {
          * @param p mesh points
          * @return polygon point list (Point instances, not their indexes)
          */
-        std::vector<Point> getPoints(std::vector<Point> &p);
+        std::vector<Point> getPoints(const std::vector<Point> &p);
 
         /*
          * @return number of sides of the polygon
@@ -140,45 +132,45 @@ namespace Delynoi {
         /* Changes the points defining the polygon, changing the value of the object without destroying this instance
          * @param p points to assign to this polygon
          */
-        void mutate(std::vector<Point> &p);
+        void mutate(const std::vector<Point> &p);
 
         /* Determines if a point is inside the polygon
          * @param p mesh points
          * @param point point to check
          * @return whether the point is inside the polygon or not
          */
-        bool containsPoint(std::vector<Point> &p, Point point);
+        bool containsPoint(const std::vector<Point> &p, const Point &point) const;
 
         /* Determines if a point is in the border of the polygon
          * @param p mesh points
          * @param point point to check
          * @return whether the point is in the border of the polygon or not
          */
-        bool inEdges(std::vector<Point> &p, Point point);
+        bool inEdges(const std::vector<Point> &p, const Point &point) const;
 
         /* Calculates the signed area of the polygon (using the counter-clockwise rule)
          * @param p mesh points
          * @return signed polygon area
          */
-        double signedArea(std::vector<Point> &p);
+        double signedArea(const std::vector<Point> &p) const;
 
         /* Checks if a segment is part of the polygon
          * @param s segment to check
          * @return if the segment is part of the polygon
          */
-        bool containsEdge(IndexSegment &s);
+        bool containsEdge(const IndexSegment &s) const;
 
         /* Checks if the polygon is convex
          * @param p mesh points
          * @return if the polygon is convex or not
          */
-        bool isConvex(std::vector<Point> &p);
+        bool isConvex(const std::vector<Point> &p) const;
 
         /* Checks if the polygon points are counter or clockwise checking the signed area of the points
          * @param p mesh points
          * @return if the points are ordered clockwise or not
          */
-        bool isClockwise(std::vector<Point> &p);
+        bool isClockwise(const std::vector<Point> &p) const;
 
         /* Checks if a given point index is part of the polygon (is a vertex)
          * @param index point index to check
@@ -190,7 +182,7 @@ namespace Delynoi {
          * @param points mesh points
          * @return if the polygon is self-intersecting
          */
-        bool isSelfIntersecting(std::vector<Point> &_points);
+        bool isSelfIntersecting(const std::vector<Point> &_points) const;
 
         /*
          * Hash value of the polygon (calculated using the indexes of the points)
@@ -201,26 +193,26 @@ namespace Delynoi {
          * case.
          * @param p mesh points
          */
-        void fixCCW(std::vector<Point> &p);
+        void fixCCW(const std::vector<Point> &p);
 
         /* Finds the segment of the polygon that contains a given point
          * @param p mesh points
          * @param point point to use
          * @return segment that contains point
          */
-        IndexSegment containerEdge(std::vector<Point> &p, Point point);
+        IndexSegment containerEdge(const std::vector<Point> &p, const Point &point) const;
 
         /* Gets the average vertex value of the polygon
          * @param p mesh points
          * @return average point
          */
-        Point getAverage(std::vector<Point> &p);
+        Point getAverage(const std::vector<Point> &p);
 
         /* Computes the maximum distance between any two vertexes of the polygon
          * @param points mesh points
          * @return max distance between points of the polygon
          */
-        double getMaxDistance(std::vector<Point> &points);
+        double getMaxDistance(const std::vector<Point> &points) const;
     };
 } // namespace Delynoi
 

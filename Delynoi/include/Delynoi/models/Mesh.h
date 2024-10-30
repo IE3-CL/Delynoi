@@ -1,13 +1,11 @@
 #ifndef DELYNOI_MESH_H
 #define DELYNOI_MESH_H
 
+#include <Delynoi/config/DelynoiConfig.h>
 #include <Delynoi/models/neighbourhood/PointMap.h>
 #include <Delynoi/models/neighbourhood/SegmentMap.h>
-#include <Delynoi/models/polygon/Polygon.h>
-#include <Delynoi/models/polygon/Triangle.h>
 #include <Delynoi/utilities/UniqueList.h>
 #include <fstream>
-#include <utility>
 
 namespace Delynoi {
     /*
@@ -56,7 +54,7 @@ namespace Delynoi {
         /*
          * Clear mesh data
          */
-        void clear();
+        void clear() const;
 
         /* Prints the mesh contents in a file stream
          * @param file file stream to print the mesh
@@ -133,7 +131,7 @@ namespace Delynoi {
          * @param s segment to lookup
          * @return all incident polygons to s
          */
-        NeighboursBySegment getNeighbours(IndexSegment s);
+        NeighboursBySegment getNeighbours(const IndexSegment &s) const;
     };
 
     template<typename T>
@@ -149,6 +147,7 @@ namespace Delynoi {
 
     template<typename T>
     Mesh<T>::Mesh(UniqueList<Point> &p, std::vector<T> &e, SegmentMap *s, PointMap *pM) {
+        // ReSharper disable once CppTemplateArgumentsCanBeDeduced
         this->points = UniqueList<Point>(p);
         this->polygons = e;
         this->edges = s;
@@ -164,36 +163,36 @@ namespace Delynoi {
     }
 
     template<typename T>
-    void Mesh<T>::clear() {
+    void Mesh<T>::clear() const {
         delete this->edges;
         delete this->pointMap;
     }
 
     template<typename T>
-    void Mesh<T>::createFromFile(const std::string &fileName, int startIndex) {
+    void Mesh<T>::createFromFile(const std::string &fileName, const int startIndex) {
         std::ifstream infile = utilities::openFile(fileName);
         createFromStream(infile, startIndex);
         infile.close();
     }
 
     template<typename T>
-    void Mesh<T>::createFromStream(std::ifstream &infile, int startIndex) {
+    void Mesh<T>::createFromStream(std::ifstream &infile, const int startIndex) {
         if (this->edges == nullptr) this->edges = new SegmentMap;
         if (this->pointMap == nullptr) this->pointMap = new PointMap;
 
         std::string line;
         std::getline(infile, line);
-        int numberMeshPoints = std::atoi(line.c_str());
+        const int numberMeshPoints = std::atoi(line.c_str()); // NOLINT(*-err34-c)
         for (int i = 0; i < numberMeshPoints; ++i) {
             std::getline(infile, line);
             std::vector<std::string> splittedLine = utilities::splitBySpaces(line);
 
-            Point newPoint(std::atof(splittedLine[0].c_str()), std::atof(splittedLine[1].c_str()));
+            Point newPoint(std::atof(splittedLine[0].c_str()), std::atof(splittedLine[1].c_str())); // NOLINT(*-err34-c)
             this->points.push_back(newPoint);
         }
 
         std::getline(infile, line);
-        int numberMeshPolygons = std::atoi(line.c_str());
+        const int numberMeshPolygons = std::atoi(line.c_str()); // NOLINT(*-err34-c)
 
         for (int i = 0; i < numberMeshPolygons; ++i) {
             std::getline(infile, line);
@@ -201,7 +200,7 @@ namespace Delynoi {
 
             std::vector<int> polygonPoints;
             for (int j = 1; j < splittedLine.size(); ++j) {
-                polygonPoints.push_back(std::atoi(splittedLine[j].c_str()) - startIndex);
+                polygonPoints.push_back(std::atoi(splittedLine[j].c_str()) - startIndex); // NOLINT(*-err34-c)
             }
 
             T newPolygon(polygonPoints, this->points.getList());
@@ -209,7 +208,7 @@ namespace Delynoi {
             std::vector<IndexSegment> segments;
             newPolygon.getSegments(segments);
 
-            for (IndexSegment s: segments) {
+            for (const IndexSegment &s: segments) {
                 this->edges->insert(s, i);
             }
         }
@@ -254,7 +253,7 @@ namespace Delynoi {
 
         if (this->edges != nullptr) {
             file << this->edges->size() << std::endl;
-            for (auto e: this->edges->getMap()) {
+            for (const auto &e: this->edges->getMap()) {
                 IndexSegment edge = e.first;
                 file << edge.getString() << std::endl;
             }
@@ -292,7 +291,7 @@ namespace Delynoi {
     }
 
     template<typename T>
-    NeighboursBySegment Mesh<T>::getNeighbours(IndexSegment s) {
+    NeighboursBySegment Mesh<T>::getNeighbours(const IndexSegment &s) const {
         return this->edges->get(s);
     }
 } // namespace Delynoi

@@ -20,7 +20,7 @@ namespace Delynoi {
         /*
          * Constructor
          */
-        BoundingBox(Point p1, Point p2);
+        BoundingBox(const Point &p1, const Point &p2);
 
         /*
          * @return the first corner of the bounding box
@@ -35,32 +35,32 @@ namespace Delynoi {
         /*
          * @return width of the box
          */
-        double getWidth();
+        double getWidth() const;
 
         /*
          * @return height of the box
          */
-        double getHeight();
+        double getHeight() const;
 
         /*
          * @return x-axis value of the left side of the box
          */
-        double xMin();
+        double xMin() const;
 
         /*
          * @return y-axis value of the bottom side of the box
          */
-        double yMin();
+        double yMin() const;
 
         /*
          * @return x-axis value of the right side of the box
          */
-        double xMax();
+        double xMax() const;
 
         /*
          * @return y-axis value of the top side of the box
          */
-        double yMax();
+        double yMax() const;
 
         /* Equality operator
          * @param
@@ -72,7 +72,7 @@ namespace Delynoi {
          * @param p point to check
          * @return whether the point is inside the box or not
          */
-        bool contains(Point p);
+        bool contains(const Point &p) const;
 
         /* Fills a vector with the segments of the box
          * @param segments vector in which the segments of the box will be kept

@@ -2,7 +2,7 @@
 
 using namespace Delynoi;
 
-ClipperLib::Paths ClipperWrapper::polyIntersection(const std::vector<Point> &parent, const std::vector<Point> &child, int maxScale) {
+ClipperLib::Paths ClipperWrapper::polyIntersection(const std::vector<Point> &parent, const std::vector<Point> &child, const int maxScale) {
     ClipperLib::Path region, hole;
     ClipperLib::Paths solution;
 
@@ -22,6 +22,6 @@ ClipperLib::Paths ClipperWrapper::polyIntersection(const std::vector<Point> &par
     return solution;
 }
 
-ClipperLib::IntPoint ClipperWrapper::scalePoint(Point point, int maxScale) {
-    return {(int) (maxScale * point.getX()), (int) (maxScale * point.getY())};
+ClipperLib::IntPoint ClipperWrapper::scalePoint(const Point &point, const int maxScale) {
+    return {static_cast<int>(maxScale * point.getX()), static_cast<int>(maxScale * point.getY())};
 }

@@ -6,6 +6,6 @@ else()
     SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -pg")
 endif()
 
-set(SOURCE_FILES TimeSquareTestMain.cpp)
+set(SOURCE_FILES AllTests.cpp)
 add_executable(DelynoiTest ${SOURCE_FILES})
 target_link_libraries(DelynoiTest Delynoi)

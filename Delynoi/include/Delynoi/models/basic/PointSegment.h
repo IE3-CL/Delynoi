@@ -8,12 +8,12 @@ namespace Delynoi {
     /*
      * This class models a segment which endpoints are represented by the points directly.
      */
-    class PointSegment : public Segment<Point> {
+    class PointSegment final : public Segment<Point> {
     public:
         /*
          * Constructor. Creates a segment with two endpoints.
          */
-        PointSegment(Point p1, Point p2);
+        PointSegment(const Point &p1, const Point &p2);
 
         /*
          * Constructor. Creates an empty segment.
@@ -23,14 +23,14 @@ namespace Delynoi {
         /*
          * @return the length of the segment
          */
-        double length();
+        double length() const;
 
         /*
          * Determines whether a point is contained in the segment.
          * @param point  point to check
          * @return whether the point is contained or not
          */
-        bool contains(Point point);
+        bool contains(const Point &point) const;
 
         /*
         * Returns the string representation of the segment.
@@ -41,7 +41,7 @@ namespace Delynoi {
         /*
        * @return angle of the line segment in degrees.
        */
-        double cartesianAngle();
+        double cartesianAngle() const;
 
         /* Equality operator.
          * @param other segment to compare

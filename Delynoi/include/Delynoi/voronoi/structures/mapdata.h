@@ -13,7 +13,7 @@ namespace Delynoi {
         int second;
         std::size_t hash;
 
-        Key(int f, int s) {
+        Key(const int f, const int s) {
             first = f;
             second = s;
             hash = utilities::hash32(first) + utilities::hash32(second);

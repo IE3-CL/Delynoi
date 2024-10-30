@@ -9,7 +9,7 @@ namespace Delynoi {
     /*
      * Class modeling a polygonal hole.
      */
-    class PolygonalHole : public Hole, public Polygon {
+    class PolygonalHole final : public Hole, public Polygon {
     public:
         /*
          * Constructor.

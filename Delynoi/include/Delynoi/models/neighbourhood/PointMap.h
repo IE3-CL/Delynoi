@@ -3,7 +3,6 @@
 
 #include <Delynoi/models/basic/Point.h>
 #include <Delynoi/models/neighbourhood/NeighboursByPoint.h>
-#include <fstream>
 #include <map>
 #include <vector>
 
@@ -42,13 +41,13 @@ namespace Delynoi {
          * @param p point to insert
          * @param neighbours list of the indexes of polygons that contain the point
          */
-        void insert(Point &p, std::vector<int> &neighbours);
+        void insert(Point &p, const std::vector<int> &neighbours);
 
         /*
          * @param p point to lookup
          * @return all polygons that contain point p
          */
-        NeighboursByPoint &get(Point p);
+        NeighboursByPoint &get(const Point &p);
 
         /*
          * @return map that contains all relationship information
@@ -58,17 +57,17 @@ namespace Delynoi {
         /*
          * @return number of elements of the map
          */
-        int size();
+        int size() const;
 
         /* Prints the map to a file relative to user path
          * @param fileName name of the file to print
          */
-        void printInFile(const std::string &fileName);
+        void printInFile(const std::string &fileName) const;
 
         /* Prints the map to a file relative to absolute path
          * @param fileName name of the file to print
          */
-        void printInPath(const std::string &path);
+        void printInPath(const std::string &path) const;
     };
 } // namespace Delynoi
 

@@ -15,7 +15,7 @@ namespace Delynoi {
     public:
         UniqueList();
 
-        UniqueList(const UniqueList<T> &other);
+        UniqueList(const UniqueList &other);
 
         int push_back(T &item);
 
@@ -25,7 +25,7 @@ namespace Delynoi {
 
         std::vector<int> push_list(std::vector<T> &_list);
 
-        std::vector<int> push_list(UniqueList<T> &_list);
+        std::vector<int> push_list(UniqueList &_list);
 
         void pop_front();
 
@@ -37,11 +37,11 @@ namespace Delynoi {
 
         T &operator[](int i);
 
-        bool operator==(const UniqueList<T> &other);
+        bool operator==(const UniqueList &other);
 
         bool contains(T elem);
 
-        bool hasCommonElement(UniqueList<T> &other);
+        bool hasCommonElement(UniqueList &other);
 
         void clear();
 
@@ -52,7 +52,7 @@ namespace Delynoi {
     UniqueList<T>::UniqueList() = default;
 
     template<class T>
-    UniqueList<T>::UniqueList(const UniqueList<T> &other) {
+    UniqueList<T>::UniqueList(const UniqueList &other) {
         this->list = other.list;
         this->map = other.map;
     }
@@ -65,17 +65,16 @@ namespace Delynoi {
             map.insert(it, std::make_pair(item, list.size()));
             list.push_back(item);
 
-            return (int) list.size() - 1;
-        } else {
-            return it->second;
+            return static_cast<int>(list.size()) - 1;
         }
+        return it->second;
     }
 
     template<class T>
     int UniqueList<T>::force_push_back(T &item) {
         list.push_back(item);
 
-        return (int) list.size() - 1;
+        return static_cast<int>(list.size()) - 1;
     }
 
     template<class T>
@@ -88,7 +87,7 @@ namespace Delynoi {
 
     template<class T>
     int UniqueList<T>::size() {
-        return (int) list.size();
+        return static_cast<int>(list.size());
     }
 
     template<class T>
@@ -102,7 +101,7 @@ namespace Delynoi {
     }
 
     template<class T>
-    bool UniqueList<T>::operator==(const UniqueList<T> &other) {
+    bool UniqueList<T>::operator==(const UniqueList &other) {
         return this->list == other.getList();
     }
 
@@ -123,7 +122,7 @@ namespace Delynoi {
     }
 
     template<class T>
-    std::vector<int> UniqueList<T>::push_list(UniqueList<T> &_list) {
+    std::vector<int> UniqueList<T>::push_list(UniqueList &_list) {
         std::vector<int> index;
 
         for (int i = 0; i < _list.size(); i++) {
@@ -145,7 +144,7 @@ namespace Delynoi {
     }
 
     template<class T>
-    bool UniqueList<T>::hasCommonElement(UniqueList<T> &other) {
+    bool UniqueList<T>::hasCommonElement(UniqueList &other) {
         for (int i = 0; i < other.size(); i++) {
             if (this->contains(other[i])) {
                 return true;

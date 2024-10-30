@@ -50,9 +50,7 @@ namespace Delynoi {
         /*
          * Constructor
          */
-        DelaunayInfo(std::vector<Triangle> &t, std::vector<Point> &p, SegmentMap *e, std::vector<PointData> &pD,
-                     UniqueList<int> &rP, std::vector<EdgeData> &eD, std::unordered_map<Key, int, KeyHasher> &eM,
-                     UniqueList<Point> &c) {
+        DelaunayInfo(const std::vector<Triangle> &t, const std::vector<Point> &p, SegmentMap *e, const std::vector<PointData> &pD, const UniqueList<int> &rP, const std::vector<EdgeData> &eD, const std::unordered_map<Key, int, KeyHasher> &eM, const UniqueList<Point> &c) {
             triangles = t;
             meshPoints = p;
             delaunayEdges = e;

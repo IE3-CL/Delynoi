@@ -20,9 +20,9 @@ namespace Delynoi {
 
         T dot(Pair other);
 
-        Pair<T> operator*(double other);
+        Pair operator*(double other);
 
-        Pair<T> operator+(const Pair &other) const;
+        Pair operator+(const Pair &other) const;
     };
 
     template<typename T>
@@ -52,12 +52,12 @@ namespace Delynoi {
 
     template<typename T>
     Pair<T> Pair<T>::operator*(const double other) {
-        return Pair<T>(this->first * other, this->second * other);
+        return Pair(this->first * other, this->second * other);
     }
 
     template<typename T>
     Pair<T> Pair<T>::operator+(const Pair &other) const {
-        return Pair<T>(this->first + other.first, this->second + other.second);
+        return Pair(this->first + other.first, this->second + other.second);
     }
 
     template<typename T>

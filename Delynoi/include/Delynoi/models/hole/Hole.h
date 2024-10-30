@@ -20,6 +20,7 @@ namespace Delynoi {
         std::vector<IndexSegment> segments;
 
     public:
+        virtual ~Hole() = default;
         /*
          * Default constructor.
          */
@@ -28,7 +29,7 @@ namespace Delynoi {
         /*
          * Constructor.
          */
-        Hole(std::vector<Point> points, Point center, std::vector<IndexSegment> seg) {
+        Hole(std::vector<Point> points, const Point &center, std::vector<IndexSegment> seg) {
             this->center = center;
             this->HolePoints.assign(points.begin(), points.end());
             this->segments.assign(seg.begin(), seg.end());
@@ -48,30 +49,30 @@ namespace Delynoi {
          */
         virtual Point getCenter() {
             return this->center;
-        };
+        }
 
         /*
          * @param s vector in which the hole segments will be set
          * @param offset value to add to the segment (representing that the hole could belong in a mesh with many points)
          */
-        void getSegments(std::vector<IndexSegment> &s, int offset) {
-            for (IndexSegment seg: this->segments) {
+        void getSegments(std::vector<IndexSegment> &s, const int offset) {
+            for (const IndexSegment &seg: this->segments) {
                 s.push_back(seg.add(offset));
             }
-        };
+        }
 
         /*
          * @return list of points defining the hole
          */
         virtual std::vector<Point> getPoints() {
             return this->HolePoints;
-        };
+        }
 
         /* Checks if a point is inside the hole
          * @param p point to check
          * @return if the point is inside the hole or not
          */
-        bool containsPoint(Point point) {
+        bool containsPoint(const Point &point) {
             int j = HolePoints.size() - 1;
             bool oddNodes = false;
 
@@ -107,7 +108,7 @@ namespace Delynoi {
             }
 
             return container.getFirst() != -1 && container.getSecond() != -1;
-        };
+        }
     };
 } // namespace Delynoi
 

@@ -8,7 +8,7 @@ namespace Delynoi {
     /*
      * Generates random double numbers.
      */
-    class Random_Double : public Functor {
+    class Random_Double final : public Functor {
     public:
         /*
         * Parameters for the number generation. Maximum and minimum possible values.
@@ -21,7 +21,7 @@ namespace Delynoi {
        */
         static std::default_random_engine rd;
         static std::mt19937 rng;
-        std::uniform_real_distribution<double> uni;
+        std::uniform_real_distribution<> uni;
 
         /*
          * Constructor.

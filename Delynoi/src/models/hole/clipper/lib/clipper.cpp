@@ -137,7 +137,8 @@ struct LocMinSorter
 inline cInt Round(double val)
 {
   if ((val < 0)) return static_cast<cInt>(val - 0.5);
-  else return static_cast<cInt>(val + 0.5);
+    else
+        return static_cast<cInt>(val + 0.5);
 }
 //------------------------------------------------------------------------------
 
@@ -162,9 +163,9 @@ void PolyTree::Clear()
 PolyNode* PolyTree::GetFirst() const
 {
   if (!Childs.empty())
-      return Childs[0];
-  else
-      return 0;
+        return Childs[0];
+    else
+        return 0;
 }
 //------------------------------------------------------------------------------
 
@@ -203,20 +204,20 @@ void PolyNode::AddChild(PolyNode& child)
 PolyNode* PolyNode::GetNext() const
 {
   if (!Childs.empty())
-      return Childs[0];
-  else
-      return GetNextSiblingUp();
+        return Childs[0];
+    else
+        return GetNextSiblingUp();
 }
 //------------------------------------------------------------------------------
 
 PolyNode* PolyNode::GetNextSiblingUp() const
 {
   if (!Parent) //protects against PolyTree.GetNextSiblingUp()
-      return 0;
-  else if (Index == Parent->Childs.size() - 1)
-      return Parent->GetNextSiblingUp();
-  else
-      return Parent->Childs[Index + 1];
+        return 0;
+    else if (Index == Parent->Childs.size() - 1)
+        return Parent->GetNextSiblingUp();
+    else
+        return Parent->Childs[Index + 1];
 }
 //------------------------------------------------------------------------------
 

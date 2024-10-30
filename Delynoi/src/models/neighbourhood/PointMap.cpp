@@ -1,5 +1,7 @@
 #include <Delynoi/models/neighbourhood/PointMap.h>
 
+#include <fstream>
+
 using namespace Delynoi;
 
 PointMap::PointMap() = default;
@@ -8,10 +10,8 @@ PointMap::~PointMap() {
     map.clear();
 }
 
-void PointMap::insert(Point p, int neighbour) {
-    auto got = this->map.find(p);
-
-    if (got == this->map.end()) {
+void PointMap::insert(Point p, const int neighbour) {
+    if (const auto got = this->map.find(p); got == this->map.end()) {
         NeighboursByPoint n(neighbour);
         this->map.insert(std::make_pair(p, n));
     } else {
@@ -20,10 +20,8 @@ void PointMap::insert(Point p, int neighbour) {
     }
 }
 
-void PointMap::insert(Point &p, std::vector<int> &neighbours) {
-    auto got = this->map.find(p);
-
-    if (got == this->map.end()) {
+void PointMap::insert(Point &p, const std::vector<int> &neighbours) {
+    if (const auto got = this->map.find(p); got == this->map.end()) {
         NeighboursByPoint n(neighbours);
         this->map.insert(std::make_pair(p, n));
     } else {
@@ -32,7 +30,7 @@ void PointMap::insert(Point &p, std::vector<int> &neighbours) {
     }
 }
 
-NeighboursByPoint &PointMap::get(Point p) {
+NeighboursByPoint &PointMap::get(const Point &p) {
     return this->map[p];
 }
 
@@ -40,23 +38,23 @@ std::map<Point, NeighboursByPoint> &PointMap::getMap() {
     return this->map;
 }
 
-int PointMap::size() {
+int PointMap::size() const {
     return this->map.size();
 }
 
-void PointMap::printInFile(const std::string &fileName) {
+void PointMap::printInFile(const std::string &fileName) const {
     this->printInPath(utilities::getPath() + fileName);
 }
 
-void PointMap::printInPath(const std::string &path) {
+void PointMap::printInPath(const std::string &path) const {
     std::ofstream file;
     file.open(path, std::ios::out);
 
-    for (const auto &v: this->map) {
-        file << v.first.getString() + " ";
-        NeighboursByPoint n = v.second;
+    for (const auto &[fst, snd]: this->map) {
+        file << fst.getString() + " ";
+        NeighboursByPoint n = snd;
 
-        for (int i: n.getNeighbours()) {
+        for (const int i: n.getNeighbours()) {
             file << i << " ";
         }
 

@@ -40,12 +40,12 @@ namespace Delynoi {
         /*
          * Deletes the copy constructor following the singleton pattern
          */
-        DelynoiConfig(const DelynoiConfig &other) = delete;
+        DelynoiConfig(const DelynoiConfig &other) = delete; // NOLINT(*-use-equals-delete)
 
         /*
         * Deletes the assignment operator following the singleton pattern
         */
-        DelynoiConfig &operator=(const DelynoiConfig &copy) = delete;
+        DelynoiConfig &operator=(const DelynoiConfig &copy) = delete; // NOLINT(*-use-equals-delete)
 
     public:
         /*

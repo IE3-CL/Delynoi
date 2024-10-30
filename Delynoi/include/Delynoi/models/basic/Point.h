@@ -2,8 +2,6 @@
 #define DELYNOI_POINT_H
 
 #include <Delynoi/utilities/utilities.h>
-#include <cmath>
-#include <sstream>
 #include <string>
 
 namespace Delynoi {

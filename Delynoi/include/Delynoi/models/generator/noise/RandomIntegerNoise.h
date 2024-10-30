@@ -8,7 +8,7 @@ namespace Delynoi {
     /*
      * Generates random integer noise and applies it to a given Function class.
      */
-    class RandomIntegerNoise : public Functor {
+    class RandomIntegerNoise final : public Functor {
     private:
         /*
          * Parameters for noise generation. Maximum and minimum possible noise value. Note that there is no constraint in
@@ -27,7 +27,7 @@ namespace Delynoi {
          */
         static std::default_random_engine rd;
         static std::mt19937 rng;
-        std::uniform_int_distribution<int> uni;
+        std::uniform_int_distribution<> uni;
 
     public:
         /*

@@ -4,54 +4,51 @@
 #include <Delynoi/utilities/Pair.h>
 #include <algorithm>
 #include <iomanip>
-#include <iostream>
 #include <regex>
 #include <sstream>
 #include <vector>
 
-namespace Delynoi {
-    namespace utilities {
-        template<typename T>
-        std::string toString(T a) {
-            std::stringstream sstream;
-            sstream << a;
-            std::string s = sstream.str();
+namespace Delynoi::utilities {
+    template<typename T>
+    std::string toString(T a) {
+        std::stringstream sstream;
+        sstream << a;
+        std::string s = sstream.str();
 
-            return s;
-        }
+        return s;
+    }
 
-        template<typename T>
-        int indexOf(const std::vector<T> &vector, T element) {
-            int pos = std::find(vector.begin(), vector.end(), element) - vector.begin();
+    template<typename T>
+    int indexOf(const std::vector<T> &vector, T element) {
+        const int pos = std::find(vector.begin(), vector.end(), element) - vector.begin();
 
-            return pos < (int) vector.size() ? pos : -1;
-        }
+        return pos < static_cast<int>(vector.size()) ? pos : -1;
+    }
 
-        template<typename T>
-        int sign(T x) {
-            return (x > 0) - (x < 0);
-        }
+    template<typename T>
+    int sign(T x) {
+        return (x > 0) - (x < 0);
+    }
 
-        extern std::string toStringWithPrecision(double d, int precision);
+    extern std::string toStringWithPrecision(double d, int precision);
 
-        extern int hash32(int key);
+    extern int hash32(int key);
 
-        extern int random_integer(int min, int max);
+    extern int random_integer(int min, int max);
 
-        extern std::string getPath();
+    extern std::string getPath();
 
-        extern Pair<double> normalize(const Pair<double> &vector);
+    extern Pair<double> normalize(const Pair<double> &vector);
 
-        extern double radian(double angle);
+    extern double radian(double angle);
 
-        extern double degrees(double angle);
+    extern double degrees(double angle);
 
-        extern std::vector<std::string> split(std::string s, const std::regex &regex);
+    extern std::vector<std::string> split(std::string s, const std::regex &regex);
 
-        extern std::vector<std::string> splitBySpaces(std::string s);
+    extern std::vector<std::string> splitBySpaces(std::string s);
 
-        extern std::ifstream openFile(const std::string &fileName);
-    } // namespace utilities
-} // namespace Delynoi
+    extern std::ifstream openFile(const std::string &fileName);
+} // namespace Delynoi::utilities
 
 #endif

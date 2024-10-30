@@ -3,7 +3,7 @@
 
 using namespace Delynoi;
 
-TriangleVoronoiGenerator::TriangleVoronoiGenerator(std::vector<Point> &point_list, const Region &region, bool ignoreInvalidTriangles) {
+TriangleVoronoiGenerator::TriangleVoronoiGenerator(const std::vector<Point> &point_list, const Region &region, const bool ignoreInvalidTriangles) {
     TriangleDelaunayGenerator delaunayGenerator(point_list, region);
     DelaunayInfo _delaunay = delaunayGenerator.getConformingDelaunay();
 
@@ -19,7 +19,7 @@ Mesh<Polygon> &TriangleVoronoiGenerator::getTriangulation() {
     return this->delaunay;
 }
 
-void TriangleVoronoiGenerator::clear() {
+void TriangleVoronoiGenerator::clear() const {
     this->voronoi.clear();
     this->delaunay.clear();
 }

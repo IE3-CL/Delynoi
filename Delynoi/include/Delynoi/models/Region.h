@@ -1,20 +1,10 @@
 #ifndef DELYNOI_REGION_H
 #define DELYNOI_REGION_H
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "HidingNonVirtualFunction"
-
-#include <Delynoi/config/DelynoiConfig.h>
-#include <Delynoi/models/basic/Segment.h>
 #include <Delynoi/models/generator/PointGenerator.h>
 #include <Delynoi/models/hole/Hole.h>
-#include <Delynoi/models/hole/PolygonalHole.h>
-#include <Delynoi/models/hole/clipper/ClipperWrapper.h>
-#include <Delynoi/models/hole/clipper/lib/clipper.hpp>
 #include <Delynoi/models/polygon/Polygon.h>
-#include <Delynoi/utilities/delynoi_utilities.h>
-#include <algorithm>
-#include <climits>
+
 #include <vector>
 
 namespace Delynoi {
@@ -48,7 +38,7 @@ namespace Delynoi {
         /*
          * Constructor.
          */
-        explicit Region(std::vector<Point> &points);
+        explicit Region(const std::vector<Point> &points);
 
         /*
          * Default constructor
@@ -58,7 +48,7 @@ namespace Delynoi {
         /*
          * Constructor. Creates a region from a polygon instance and the list of mesh points
          */
-        Region(const Polygon &other, std::vector<Point> &points);
+        Region(const Polygon &other, const std::vector<Point> &points);
 
         /*
          * Copy constructor.
@@ -68,7 +58,7 @@ namespace Delynoi {
         /* Changes the points of the region (defining a new one), without changing the instance itself
          * @param points new points of the region
          */
-        void mutate(std::vector<Point> &points);
+        void mutate(const std::vector<Point> &points);
 
         /*
          * @return list of seed points of the region
@@ -102,7 +92,7 @@ namespace Delynoi {
          * @param nX number of points to create in the horizontal axis
          * @param nY number of points to create in the vertical axis
          */
-        void generateSeedPoints(PointGenerator _p, int nX, int nY);
+        void generateSeedPoints(const PointGenerator &_p, int nX, int nY);
 
         /* Adds already seed points to the list
          * @param seeds list of points to add
@@ -117,7 +107,7 @@ namespace Delynoi {
         /*
          * @return the axis oriented bounding box of the region
          */
-        BoundingBox getBox();
+        BoundingBox getBox() const;
 
         /* Sets the region segments in a vector
          * @param s vector where the segments will be assigned
@@ -128,13 +118,13 @@ namespace Delynoi {
          * @param p point to check
          * @return whether the point is inside the region or not
          */
-        bool containsPoint(Point _p);
+        bool containsPoint(const Point &_p) const;
 
         /* Checks if a given point is in the border of the region
          * @param p point to check
          * @return whether the point is in the boundary or not
          */
-        bool inEdges(Point _p);
+        bool inEdges(const Point &_p) const;
 
         /*
          * Empties the seed point list
@@ -153,5 +143,4 @@ namespace Delynoi {
     };
 } // namespace Delynoi
 
-#pragma clang diagnostic pop
 #endif

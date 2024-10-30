@@ -4,11 +4,11 @@ using namespace Delynoi;
 
 NeighboursBySegment::NeighboursBySegment() = default;
 
-NeighboursBySegment::NeighboursBySegment(int i1) {
+NeighboursBySegment::NeighboursBySegment(const int i1) {
     this->n1 = i1;
 }
 
-NeighboursBySegment::NeighboursBySegment(int i1, int i2) {
+NeighboursBySegment::NeighboursBySegment(const int i1, const int i2) {
     this->n1 = i1;
     this->n2 = i2;
 }
@@ -18,7 +18,7 @@ NeighboursBySegment::NeighboursBySegment(const Pair<int> &p) {
     this->n2 = p.second;
 }
 
-void NeighboursBySegment::setNeighbour(int i) {
+void NeighboursBySegment::setNeighbour(const int i) {
     this->n2 = i;
 }
 
@@ -39,10 +39,10 @@ bool NeighboursBySegment::operator==(const NeighboursBySegment &other) const {
            this->getFirst() == other.getSecond() && this->getSecond() == other.getFirst();
 }
 
-void NeighboursBySegment::setFirst(int value) {
+void NeighboursBySegment::setFirst(const int value) {
     this->n1 = value;
 }
 
-void NeighboursBySegment::setSecond(int value) {
+void NeighboursBySegment::setSecond(const int value) {
     this->n2 = value;
 }

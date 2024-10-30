@@ -2,18 +2,20 @@
 #include <Delynoi/models/polygon/Circle.h>
 #include <Delynoi/utilities/delynoi_utilities.h>
 
+#include <cmath>
+
 using namespace Delynoi;
 
-Circle::Circle(double r, Point c) {
+Circle::Circle(const double r, const Point &c) {
     this->radius = r;
     this->center = c;
 }
 
-std::vector<Point> Circle::discretizeCircle() {
-    DelynoiConfig *config = DelynoiConfig::instance();
+std::vector<Point> Circle::discretizeCircle() const {
+    const DelynoiConfig *config = DelynoiConfig::instance();
 
     std::vector<Point> points;
-    double delta = 360.0 / config->getDiscretizationGrade();
+    const double delta = 360.0 / config->getDiscretizationGrade();
 
     double angle = 0;
     while (angle < 360) {

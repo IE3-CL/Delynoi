@@ -1,6 +1,10 @@
 #include <Delynoi/voronoi/TriangleDelaunayGenerator.h>
 #include <utility>
 
+extern "C" {
+#include <Delynoi/voronoi/lib/triangle.h>
+}
+
 using namespace Delynoi;
 
 TriangleDelaunayGenerator::TriangleDelaunayGenerator(const std::vector<Point> &points, const Region &region) {
@@ -16,8 +20,7 @@ void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, cha
 
 void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, char *switches, const std::vector<PointSegment> &restrictedSegments) {
     this->empty = true;
-    struct triangulateio in {
-    }, out{};
+    triangulateio in{}, out{};
 
     std::vector<Point> regionPoints = region.getRegionPoints();
     UniqueList<Point> pointList;
@@ -25,9 +28,9 @@ void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, cha
     std::vector<int> regionIndex = pointList.push_list(regionPoints);
 
     in.numberofpoints = pointList.size();
-    in.pointlist = (REAL_TRIANGLE *) malloc(in.numberofpoints * 2 * sizeof(REAL_TRIANGLE));
+    in.pointlist = static_cast<double *>(malloc(in.numberofpoints * 2 * sizeof(REAL_TRIANGLE)));
     in.numberofpointattributes = 1;
-    in.pointattributelist = (REAL_TRIANGLE *) malloc(in.numberofpoints * in.numberofpointattributes * sizeof(REAL_TRIANGLE));
+    in.pointattributelist = static_cast<double *>(malloc(in.numberofpoints * in.numberofpointattributes * sizeof(REAL_TRIANGLE)));
     int _points = 0;
 
     for (int i = 0; i < pointList.size(); i++) {
@@ -37,14 +40,14 @@ void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, cha
         _points += 2;
     }
 
-    in.pointmarkerlist = (int *) NULL;
+    in.pointmarkerlist = static_cast<int *>(nullptr);
 
     std::vector<IndexSegment> segments;
     region.getSegments(segments);
 
-    in.numberofsegments = (int) (segments.size() + restrictedSegments.size());
-    in.segmentlist = (int *) malloc(in.numberofsegments * 2 * sizeof(int));
-    in.segmentmarkerlist = (int *) NULL;
+    in.numberofsegments = static_cast<int>(segments.size() + restrictedSegments.size());
+    in.segmentlist = static_cast<int *>(malloc(in.numberofsegments * 2 * sizeof(int)));
+    in.segmentmarkerlist = static_cast<int *>(nullptr);
     int k;
     for (k = 0; k < segments.size(); k++) {
         in.segmentlist[2 * k] = regionIndex[segments[k].getFirst()];
@@ -58,8 +61,8 @@ void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, cha
     }
 
     std::vector<Hole> &holes = region.getHoles();
-    in.numberofholes = (int) holes.size();
-    in.holelist = (REAL_TRIANGLE *) malloc(in.numberofholes * 2 * sizeof(REAL_TRIANGLE));
+    in.numberofholes = static_cast<int>(holes.size());
+    in.holelist = static_cast<double *>(malloc(in.numberofholes * 2 * sizeof(REAL_TRIANGLE)));
     for (int i = 0; i < holes.size(); i++) {
         in.holelist[2 * i] = holes[i].getCenter().getX();
         in.holelist[2 * i + 1] = holes[i].getCenter().getY();
@@ -67,17 +70,17 @@ void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, cha
 
     in.numberofregions = 0;
 
-    out.pointlist = (REAL_TRIANGLE *) NULL;
-    out.pointattributelist = (REAL_TRIANGLE *) NULL;
-    out.pointmarkerlist = (int *) NULL;
-    out.trianglelist = (int *) NULL;
-    out.triangleattributelist = (REAL_TRIANGLE *) NULL;
-    out.segmentmarkerlist = (int *) NULL;
-    out.segmentlist = (int *) NULL;
-    out.edgelist = (int *) NULL;
-    out.edgemarkerlist = (int *) NULL;
+    out.pointlist = static_cast<double *>(nullptr);
+    out.pointattributelist = static_cast<double *>(nullptr);
+    out.pointmarkerlist = static_cast<int *>(nullptr);
+    out.trianglelist = static_cast<int *>(nullptr);
+    out.triangleattributelist = static_cast<double *>(nullptr);
+    out.segmentmarkerlist = static_cast<int *>(nullptr);
+    out.segmentlist = static_cast<int *>(nullptr);
+    out.edgelist = static_cast<int *>(nullptr);
+    out.edgemarkerlist = static_cast<int *>(nullptr);
 
-    triangulate(switches, &in, &out, (struct triangulateio *) NULL);
+    triangulate(switches, &in, &out, nullptr);
 
     for (int i = 0; i < out.numberofpoints; i++) {
         PointData data(i);
@@ -97,8 +100,7 @@ void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, cha
     }
 
     for (int i = 0; i < out.numberoftriangles; i++) {
-        std::vector<int> triangle_points = {out.trianglelist[3 * i], out.trianglelist[3 * i + 1],
-                                            out.trianglelist[3 * i + 2]};
+        std::vector triangle_points = {out.trianglelist[3 * i], out.trianglelist[3 * i + 1], out.trianglelist[3 * i + 2]};
         realPoints.push_back(out.trianglelist[3 * i]);
         realPoints.push_back(out.trianglelist[3 * i + 1]);
         realPoints.push_back(out.trianglelist[3 * i + 2]);
@@ -140,7 +142,7 @@ void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, cha
     free(out.edgemarkerlist);
 }
 
-Mesh<Triangle> &TriangleDelaunayGenerator::getConformingDelaunayTriangulation(bool ignoreInvalidTriangles) {
+Mesh<Triangle> &TriangleDelaunayGenerator::getConformingDelaunayTriangulation(const bool ignoreInvalidTriangles) {
     if (!this->empty) {
         char switches[] = "pzejDQ";
         callTriangle(seedPoints, switches);
@@ -191,7 +193,7 @@ DelaunayInfo TriangleDelaunayGenerator::getConformingDelaunay() {
     return DelaunayInfo(triangles, meshPoints, delaunayEdges, points, realPoints, edges, edgeMap, circumcenters);
 }
 
-Mesh<Triangle> TriangleDelaunayGenerator::getConstrainedDelaunayTriangulation(bool ignoreInvalidTriangles) {
+Mesh<Triangle> TriangleDelaunayGenerator::getConstrainedDelaunayTriangulation(const bool ignoreInvalidTriangles) {
     if (!this->empty) {
         char switches[] = "pzejQ";
         callTriangle(seedPoints, switches);
@@ -200,7 +202,7 @@ Mesh<Triangle> TriangleDelaunayGenerator::getConstrainedDelaunayTriangulation(bo
     return initializeMesh<Triangle>(ignoreInvalidTriangles);
 }
 
-Mesh<Triangle> TriangleDelaunayGenerator::getConstrainedDelaunayTriangulation(const std::vector<PointSegment> &restrictedSegments, bool ignoreInvalidTriangles) {
+Mesh<Triangle> TriangleDelaunayGenerator::getConstrainedDelaunayTriangulation(const std::vector<PointSegment> &restrictedSegments, const bool ignoreInvalidTriangles) {
     if (!this->empty) {
         char switches[] = "pzejQ";
         callTriangle(seedPoints, switches, restrictedSegments);
