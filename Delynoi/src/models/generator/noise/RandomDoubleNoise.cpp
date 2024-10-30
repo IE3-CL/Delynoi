@@ -1,4 +1,5 @@
 #include <Delynoi/models/generator/noise/RandomDoubleNoise.h>
+#include <climits> // Used on linux
 
 using namespace Delynoi;
 
