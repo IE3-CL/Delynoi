@@ -60,8 +60,8 @@ double Polygon::calculateDiameter(std::vector<Point> &p) {
     std::vector<std::pair<Point, Point>> rotatingCalipers = convex::rotatingCalipers(p);
     double max = -1;
 
-    for (auto &[fst, snd]: rotatingCalipers) {
-        const double distance = delynoi_utilities::norm(fst - snd);
+    for (auto &rotatingCaliper: rotatingCalipers) {
+        const double distance = delynoi_utilities::norm(rotatingCaliper.first - rotatingCaliper.second);
         if (distance > max) {
             max = distance;
         }

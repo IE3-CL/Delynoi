@@ -69,7 +69,8 @@ DelaunayToVoronoi::DelaunayToVoronoi(DelaunayInfo &del) {
         if (edge.t2 == -1) {
             int firstPoint = cellPoints[0];
 
-            if (int lastPoint = cellPoints[cellPoints.size() - 1]; geometry_functions::collinear(del.circumcenters[firstPoint], regionCenter, del.circumcenters[lastPoint])) {
+            int lastPoint = cellPoints[cellPoints.size() - 1];
+            if (geometry_functions::collinear(del.circumcenters[firstPoint], regionCenter, del.circumcenters[lastPoint])) {
                 IndexSegment e(lastPoint, firstPoint);
                 thisEdges.push_back(e);
 

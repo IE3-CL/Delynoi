@@ -100,7 +100,8 @@ void TriangleDelaunayGenerator::callTriangle(std::vector<Point> &point_list, cha
     }
 
     for (int i = 0; i < out.numberoftriangles; i++) {
-        std::vector triangle_points = {out.trianglelist[3 * i], out.trianglelist[3 * i + 1], out.trianglelist[3 * i + 2]};
+        // ReSharper disable once CppTemplateArgumentsCanBeDeduced
+        std::vector<int> triangle_points = {out.trianglelist[3 * i], out.trianglelist[3 * i + 1], out.trianglelist[3 * i + 2]}; // MacOS requires <int>
         realPoints.push_back(out.trianglelist[3 * i]);
         realPoints.push_back(out.trianglelist[3 * i + 1]);
         realPoints.push_back(out.trianglelist[3 * i + 2]);
