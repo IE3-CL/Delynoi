@@ -16,7 +16,8 @@ std::vector<Triangle> CenterTriangulationGenerator::triangulate(Polygon p, std::
     const int centerIndex = points.size() - 1;
 
     for (int i = 0; i < n; ++i) {
-        const std::vector trianglePoints = {polyPoints[i], polyPoints[(i + 1) % n], centerIndex};
+        // ReSharper disable once CppTemplateArgumentsCanBeDeduced
+        const std::vector<int> trianglePoints = {polyPoints[i], polyPoints[(i + 1) % n], centerIndex}; // MacOS requires int
 
         Triangle t(trianglePoints, points);
         triangles.push_back(t);

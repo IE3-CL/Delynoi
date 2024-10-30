@@ -17,7 +17,8 @@ Triangle EarTriangulationGenerator::getEar(const std::vector<Point> &points, std
     }
 
     for (int i = 0; i < size; i++) {
-        if (Triangle t({pointList[(size + i - 1) % size], pointList[i % size], pointList[(size + i + 1) % size]}, points); t.isConvex(points)) {
+        Triangle t({pointList[(size + i - 1) % size], pointList[i % size], pointList[(size + i + 1) % size]}, points);
+        if (t.isConvex(points)) {
             bool test = false;
             for (int j = 0; j < size; j++) {
                 if (!t.isVertex(pointList[j]) && t.containsPoint(points, points[pointList[j]])) {

@@ -52,9 +52,9 @@ void PointMap::printInPath(const std::string &path) const {
     std::ofstream file;
     file.open(path, std::ios::out);
 
-    for (const auto &[fst, snd]: this->map) {
-        file << fst.getString() + " ";
-        NeighboursByPoint n = snd;
+    for (const auto &v: this->map) { // Structured binding only C++ std17
+        file << v.first.getString() + " ";
+        NeighboursByPoint n = v.second;
 
         for (const int i: n.getNeighbours()) {
             file << i << " ";

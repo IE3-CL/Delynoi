@@ -46,8 +46,8 @@ void SegmentMap::printInPath(const std::string &path) const {
     std::ofstream file;
     file.open(path, std::ios::out);
 
-    for (const auto &[fst, snd]: this->map) {
-        file << fst.getString() + " " + snd.getString() << std::endl;
+    for (const auto &v: this->map) { // Structured binding only C++ std17
+        file << v.first.getString() + " " + v.second.getString() << std::endl;
     }
 
     file.close();
