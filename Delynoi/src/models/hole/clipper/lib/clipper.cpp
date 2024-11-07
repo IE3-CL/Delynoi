@@ -1060,7 +1060,7 @@ bool ClipperBase::AddPath(const Path &pg, PolyType PolyTyp, bool Closed)
   if ((Closed && highI < 2) || (!Closed && highI < 1)) return false;
 
   //create a new edge array ...
-  TEdge *edges = new TEdge [highI +1];
+  auto *edges = new TEdge [highI +1];
 
   bool IsFlat = true;
   //1. Basic (first) edge initialization ...
@@ -1254,7 +1254,7 @@ void ClipperBase::Reset()
 
   m_Scanbeam = ScanbeamList(); //clears/resets priority_queue
   //reset all edges ...
-  for (MinimaList::iterator lm = m_MinimaList.begin(); lm != m_MinimaList.end(); ++lm)
+  for (auto lm = m_MinimaList.begin(); lm != m_MinimaList.end(); ++lm)
   {
     InsertScanbeam(lm->Y);
     TEdge* e = lm->LeftBound;
@@ -1297,7 +1297,7 @@ bool ClipperBase::PopLocalMinima(cInt Y, const LocalMinimum *&locMin)
 IntRect ClipperBase::GetBounds()
 {
   IntRect result;
-  MinimaList::iterator lm = m_MinimaList.begin();
+  auto lm = m_MinimaList.begin();
   if (lm == m_MinimaList.end())
   {
     result.left = result.top = result.right = result.bottom = 0;
@@ -1381,7 +1381,7 @@ void ClipperBase::DeleteFromAEL(TEdge *e)
 
 OutRec* ClipperBase::CreateOutRec()
 {
-  OutRec* result = new OutRec;
+  auto * result = new OutRec;
   result->IsHole = false;
   result->IsOpen = false;
   result->FirstLeft = 0;
@@ -1943,7 +1943,7 @@ void Clipper::CopyAELToSEL()
 
 void Clipper::AddJoin(OutPt *op1, OutPt *op2, const IntPoint OffPt)
 {
-  Join* j = new Join;
+  auto * j = new Join;
   j->OutPt1 = op1;
   j->OutPt2 = op2;
   j->OffPt = OffPt;
@@ -1969,7 +1969,7 @@ void Clipper::ClearGhostJoins()
 
 void Clipper::AddGhostJoin(OutPt *op, const IntPoint OffPt)
 {
-  Join* j = new Join;
+  auto * j = new Join;
   j->OutPt1 = op;
   j->OutPt2 = 0;
   j->OffPt = OffPt;
@@ -2468,7 +2468,7 @@ OutPt* Clipper::AddOutPt(TEdge *e, const IntPoint &pt)
   {
     OutRec *outRec = CreateOutRec();
     outRec->IsOpen = (e->WindDelta == 0);
-    OutPt* newOp = new OutPt;
+    auto * newOp = new OutPt;
     outRec->Pts = newOp;
     newOp->Idx = outRec->Idx;
     newOp->Pt = pt;
@@ -2486,9 +2486,10 @@ OutPt* Clipper::AddOutPt(TEdge *e, const IntPoint &pt)
 
 	bool ToFront = (e->Side == esLeft);
 	if (ToFront && (pt == op->Pt)) return op;
-    else if (!ToFront && (pt == op->Prev->Pt)) return op->Prev;
+    else if (!ToFront && (pt == op->Prev->Pt))
+        return op->Prev;
 
-    OutPt* newOp = new OutPt;
+    auto * newOp = new OutPt;
     newOp->Idx = outRec->Idx;
     newOp->Pt = pt;
     newOp->Next = op;
@@ -2744,12 +2745,12 @@ void Clipper::ProcessHorizontal(TEdge *horzEdge)
 
 		if(dir == dLeftToRight)
         {
-          IntPoint Pt = IntPoint(e->Curr.X, horzEdge->Curr.Y);
+          auto Pt = IntPoint(e->Curr.X, horzEdge->Curr.Y);
           IntersectEdges(horzEdge, e, Pt);
         }
         else
         {
-          IntPoint Pt = IntPoint(e->Curr.X, horzEdge->Curr.Y);
+          auto Pt = IntPoint(e->Curr.X, horzEdge->Curr.Y);
           IntersectEdges( e, horzEdge, Pt);
         }
         TEdge* eNext = GetNextInAEL(e, dir);
@@ -2880,7 +2881,7 @@ void Clipper::BuildIntersectList(const cInt topY)
       {
         IntersectPoint(*e, *eNext, Pt);
         if (Pt.Y < topY) Pt = IntPoint(TopX(*e, topY), topY);
-        IntersectNode * newNode = new IntersectNode;
+        auto * newNode = new IntersectNode;
         newNode->Edge1 = e;
         newNode->Edge2 = eNext;
         newNode->Pt = Pt;
@@ -3223,7 +3224,7 @@ void Clipper::BuildResult2(PolyTree& polytree)
         int cnt = PointCount(outRec->Pts);
         if ((outRec->IsOpen && cnt < 2) || (!outRec->IsOpen && cnt < 3)) continue;
         FixHoleLinkage(*outRec);
-        PolyNode* pn = new PolyNode();
+        auto * pn = new PolyNode();
         //nb: polytree takes ownership of all the PolyNodes
         polytree.AllNodes.push_back(pn);
         outRec->PolyNd = pn;
@@ -3342,7 +3343,7 @@ void Clipper::InsertEdgeIntoAEL(TEdge *edge, TEdge* startEdge)
 
 OutPt* DupOutPt(OutPt* outPt, bool InsertAfter)
 {
-  OutPt* result = new OutPt;
+  auto * result = new OutPt;
   result->Pt = outPt->Pt;
   result->Idx = outPt->Idx;
   if (InsertAfter)
@@ -3805,7 +3806,7 @@ void ClipperOffset::AddPath(const Path& path, JoinType joinType, EndType endType
 {
   int highI = (int)path.size() - 1;
   if (highI < 0) return;
-  PolyNode* newNode = new PolyNode();
+  auto * newNode = new PolyNode();
   newNode->m_jointype = joinType;
   newNode->m_endtype = endType;
 
@@ -4389,13 +4390,12 @@ void CleanPolygon(const Path& in_poly, Path& out_poly, double distance)
 
   size_t size = in_poly.size();
 
-  if (size == 0)
-  {
-    out_poly.clear();
-    return;
+  if (size == 0) {
+      out_poly.clear();
+      return;
   }
 
-  OutPt* outPts = new OutPt[size];
+  auto * outPts = new OutPt[size];
   for (size_t i = 0; i < size; ++i)
   {
     outPts[i].Pt = in_poly[i];

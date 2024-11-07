@@ -1396,9 +1396,9 @@ REAL_TRIANGLE area;                                      /* The area of the tria
   maxlen = (odlen > maxlen) ? odlen : maxlen;
 
   if (maxlen > 0.05 * (triorg[0] * triorg[0] + triorg[1] * triorg[1]) + 0.02) {
-    return 1;
+      return 1;
   } else {
-    return 0;
+      return 0;
   }
 }
 
@@ -5267,16 +5267,16 @@ vertex pc;
 
   if (detleft > 0.0) {
     if (detright <= 0.0) {
-      return det;
-    } else {
-      detsum = detleft + detright;
-    }
+          return det;
+      } else {
+          detsum = detleft + detright;
+      }
   } else if (detleft < 0.0) {
     if (detright >= 0.0) {
-      return det;
-    } else {
-      detsum = -detleft - detright;
-    }
+          return det;
+      } else {
+          detsum = -detleft - detright;
+      }
   } else {
     return det;
   }
@@ -6492,16 +6492,12 @@ vertex pd;
 
 {
   if (b->weighted == 0) {
-    return incircle(m, b, pa, pb, pc, pd);
-  } else if (b->weighted == 1) {
-    return orient3d(m, b, pa, pb, pc, pd,
-                    pa[0] * pa[0] + pa[1] * pa[1] - pa[2],
-                    pb[0] * pb[0] + pb[1] * pb[1] - pb[2],
-                    pc[0] * pc[0] + pc[1] * pc[1] - pc[2],
-                    pd[0] * pd[0] + pd[1] * pd[1] - pd[2]);
-  } else {
-    return orient3d(m, b, pa, pb, pc, pd, pa[2], pb[2], pc[2], pd[2]);
-  }
+        return incircle(m, b, pa, pb, pc, pd);
+    } else if (b->weighted == 1) {
+        return orient3d(m, b, pa, pb, pc, pd, pa[0] * pa[0] + pa[1] * pa[1] - pa[2], pb[0] * pb[0] + pb[1] * pb[1] - pb[2], pc[0] * pc[0] + pc[1] * pc[1] - pc[2], pd[0] * pd[0] + pd[1] * pd[1] - pd[2]);
+    } else {
+        return orient3d(m, b, pa, pb, pc, pd, pa[2], pb[2], pc[2], pd[2]);
+    }
 }
 
 /*****************************************************************************/
