@@ -39,14 +39,13 @@
 *******************************************************************************/
 
 #include <Delynoi/models/hole/clipper/lib/clipper.hpp>
-#include <cmath>
-#include <vector>
 #include <algorithm>
-#include <stdexcept>
-#include <cstring>
+#include <cmath>
 #include <cstdlib>
-#include <ostream>
+#include <cstring>
 #include <functional>
+#include <ostream>
+#include <vector>
 
 namespace Delynoi {
 namespace ClipperLib {
